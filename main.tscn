@@ -1,11 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=14 format=3 uid="uid://c6dd3yagmchk6"]
+
+[ext_resource type="Script" uid="uid://b24cp0q5u14rh" path="res://Main.cs" id="1_ig7tw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7dm0k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dm0k"]
-albedo_color = Color(0.95686275, 0.6431373, 0.3764706, 1)
+albedo_color = Color(0.627451, 0.32156864, 0.1764706, 1)
 
-[node name="Main" type="Node3D"]
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+albedo_color = Color(0.3180198, 0.31801978, 0.31801975, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
+albedo_color = Color(0.37036446, 0.3703645, 0.37036446, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_0xm2m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
+size = Vector3(1, 1, 0.5040283)
+
+[sub_resource type="QuadMesh" id="QuadMesh_7dm0k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
+size = Vector3(1, 1, 0.15478516)
+
+[node name="Main" type="Node3D" node_paths=PackedStringArray("CameraBlue", "CameraRed")]
+script = ExtResource("1_ig7tw")
+CameraBlue = NodePath("PhotoFrames/Frame2/Camera3D")
+CameraRed = NodePath("PhotoFrames/Frame1/Camera3D")
 
 [node name="HallwayGeometry" type="Node3D" parent="."]
 
@@ -13,3 +44,45 @@ albedo_color = Color(0.95686275, 0.6431373, 0.3764706, 1)
 transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("BoxMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_7dm0k")
+
+[node name="LeftWall" type="MeshInstance3D" parent="HallwayGeometry"]
+transform = Transform3D(0.1, 0, 0, 0, 3, 0, 0, 0, 2, -5, 1.5, 0)
+mesh = SubResource("BoxMesh_ig7tw")
+surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
+
+[node name="RightWall" type="MeshInstance3D" parent="HallwayGeometry"]
+transform = Transform3D(0.1, 0, 0, 0, 3, 0, 0, 0, 2, 5, 1.5, 0)
+mesh = SubResource("BoxMesh_0xm2m")
+surface_material_override/0 = SubResource("StandardMaterial3D_ig7tw")
+
+[node name="PhotoFrames" type="Node3D" parent="."]
+
+[node name="Frame1" type="MeshInstance3D" parent="PhotoFrames"]
+transform = Transform3D(-3.4969112e-08, 0, 1, 0, 1.2, 0, -0.8, 0, -4.371139e-08, -4.9, 2, 0)
+mesh = SubResource("QuadMesh_0xm2m")
+surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
+metadata/_edit_group_ = true
+
+[node name="Area3D" type="Area3D" parent="PhotoFrames/Frame1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhotoFrames/Frame1/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.684342e-14, 0, -0.24798584)
+shape = SubResource("BoxShape3D_1bvp3")
+
+[node name="Camera3D" type="Camera3D" parent="PhotoFrames/Frame1"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Frame2" type="MeshInstance3D" parent="PhotoFrames"]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 4.9, 2, 0)
+mesh = SubResource("QuadMesh_7dm0k")
+surface_material_override/0 = SubResource("StandardMaterial3D_1bvp3")
+metadata/_edit_group_ = true
+
+[node name="Area3D" type="Area3D" parent="PhotoFrames/Frame2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhotoFrames/Frame2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0769043)
+shape = SubResource("BoxShape3D_lquwl")
+
+[node name="Camera3D" type="Camera3D" parent="PhotoFrames/Frame2"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
