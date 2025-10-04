@@ -1,7 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj2qxv8y7n4k5"]
+[gd_scene load_steps=8 format=3 uid="uid://bj2qxv8y7n4k5"]
 
 [ext_resource type="Script" uid="uid://b8ptpjqw1jk17" path="res://Scenes/DialogSystem/DialogSystem.cs" id="1_dialog"]
 [ext_resource type="Texture2D" uid="uid://cd4accaui6wx6" path="res://Scenes/PhotoFrame/InspectorCrawford/InspectorCrawford.png" id="2_fhvbr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_background"]
+bg_color = Color(0.937, 0.89, 0.847, 1)
+bg_color_end = Color(0.902, 0.878, 0.784, 1)
+fill_from_top = true
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.478, 0.416, 0.353, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dialogue_panel"]
+bg_color = Color(0.95, 0.93, 0.88, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.6, 0.5, 0.4, 0.3)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+bg_color = Color(0.761, 0.706, 0.545, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0.82, 0.765, 0.62, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+bg_color = Color(0.702, 0.655, 0.463, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="DialogSystem" type="CanvasLayer" node_paths=PackedStringArray("DialogBox", "DialogTextLabel", "leftPortrait", "rightPortrait", "leftNameLabel", "rightNameLabel", "ContinueButton")]
 script = ExtResource("1_dialog")
@@ -14,23 +61,24 @@ rightNameLabel = NodePath("DialogBox/MarginContainer/MainContainer/NamesRow/Name
 ContinueButton = NodePath("DialogBox/MarginContainer/MainContainer/PortraitsRow/DialogPanel/PaddingContainer/VBoxContainer/ContinueButton")
 
 [node name="DialogBox" type="Control" parent="."]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 220)
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -240.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Background" type="ColorRect" parent="DialogBox"]
+[node name="Background" type="Panel" parent="DialogBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.29411766)
+theme_override_styles/panel = SubResource("StyleBoxFlat_background")
 
 [node name="MarginContainer" type="MarginContainer" parent="DialogBox"]
 layout_mode = 1
@@ -39,21 +87,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
 
 [node name="MainContainer" type="VBoxContainer" parent="DialogBox/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 5
+theme_override_constants/separation = 6
 
 [node name="NamesRow" type="HBoxContainer" parent="DialogBox/MarginContainer/MainContainer"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
 [node name="NameLeft" type="Label" parent="DialogBox/MarginContainer/MainContainer/NamesRow"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 26
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -64,8 +118,18 @@ size_flags_horizontal = 3
 [node name="NameRight" type="Label" parent="DialogBox/MarginContainer/MainContainer/NamesRow"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 26
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="DialogBox/MarginContainer/MainContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.478, 0.416, 0.353, 1)
 
 [node name="PortraitsRow" type="HBoxContainer" parent="DialogBox/MarginContainer/MainContainer"]
 layout_mode = 2
@@ -82,6 +146,7 @@ expand_mode = 5
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_dialogue_panel")
 
 [node name="PaddingContainer" type="MarginContainer" parent="DialogBox/MarginContainer/MainContainer/PortraitsRow/DialogPanel"]
 layout_mode = 1
@@ -90,10 +155,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DialogBox/MarginContainer/MainContainer/PortraitsRow/DialogPanel/PaddingContainer"]
 layout_mode = 2
@@ -102,12 +167,22 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/normal_font_size = 22
 scroll_active = false
 vertical_alignment = 1
 
 [node name="ContinueButton" type="Button" parent="DialogBox/MarginContainer/MainContainer/PortraitsRow/DialogPanel/PaddingContainer/VBoxContainer"]
-custom_minimum_size = Vector2(40, 20)
+custom_minimum_size = Vector2(100, 32)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
 alignment = 2
 
 [node name="RightPortrait" type="TextureRect" parent="DialogBox/MarginContainer/MainContainer/PortraitsRow"]

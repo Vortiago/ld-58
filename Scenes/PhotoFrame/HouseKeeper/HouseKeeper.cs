@@ -13,40 +13,45 @@ public partial class HouseKeeper : Node3D
 	private CameraStateMonitor _cameraStateMonitor;
 
 	private DialogSystem _dialogSystem;
+	private Main _main;
 	private int _visitCount = 0;
-	private Texture2D _ladyMargaretPortrait;
+	private Texture2D _sarahMillsPortrait;
 
 	// Dialog configuration - First Visit
 	private readonly string[] _firstVisitDialog = new[]
 	{
-		"Lady Margaret, I understand this is difficult. Can you tell me what you saw that night?",
-		"It… it was chaos. I stepped out of the dining room just after Lord Edgar called for more brandy. There, by the corner table, I saw him—slumped, pale as marble.",
-		"Did you notice anything before you saw him fall?",
-		"Yes. Mud on the carpet. Someone had trailed it from the side corridor. I frowned, returned inside to fetch a cloth, and when I came back…",
-		"Go on.",
-		"…he was gone. Only that ornate letter opener remained, stained.",
-		"Did you glimpse anyone fleeing?",
-		"I caught movement in the shadow—someone slender, cloak sweeping. I thought… I thought it was Thomas Hartwell. He looked… unsettled.",
-		"Thank you, Lady Margaret. Anything else?",
-		"Edgar had been uneasy all evening. He muttered about betrayal—business dealings gone wrong. He showed me papers half-hidden under the table…",
-		"We'll retrieve those documents, ma'am. You've been most helpful.",
-		"I only pray we uncover the truth."
+		"Sarah, your portrait has hung here for many years. Tell me what you saw last night.",
+		"Inspector, it was dreadful! From my frame, I heard shouting—Lord Edgar's voice, angry and desperate.",
+		"What time did this happen?",
+		"Just after eleven-thirty, sir. I watched from my portrait as shadows moved near the corner table...",
+		"Shadows? Did you see who it was?",
+		"Mr. Hartwell! He came rushing past, right beneath where I hang. He looked panicked, wouldn't look up. And Inspector—there was blood on his sleeve!",
+		"Blood on his sleeve? You're absolutely certain it was Thomas Hartwell?",
+		"No doubt in my mind, sir. I've been painted in this house for twenty years—I know every face that walks these halls.",
+		"From your vantage point, did you notice anything else? Any evidence?",
+		"Yes! From my frame's angle, I could see by the plant stand—there's a handkerchief there, monogrammed, looks expensive.",
+		"A handkerchief? What were the initials?",
+		"'T.H.', sir. Same as Mr. Hartwell's. And it had blood on it too—I could see the dark stains even in the dim light.",
+		"Excellent observation, Sarah. Anything else from what you could see?",
+		"Only that Lord Edgar was a good man, Inspector. From up here, I've watched this household for decades. You must find who did this terrible thing."
 	};
 
 	// Dialog configuration - Subsequent Visits
 	private readonly string[] _subsequentVisitDialog = new[]
 	{
-		"Lady Margaret, any final thoughts?",
-		"Only that truth finds its way, one way or another."
+		"Sarah, is there anything else you saw from your frame?",
+		"Only what I've told you, Inspector. Mr. Hartwell rushing past with blood on his sleeve—the image is burned into my painted memory."
 	};
 
 	public override void _Ready()
 	{
 		_dialogSystem = GetNode<DialogSystem>("/root/Main/DialogSystem");
-		_ladyMargaretPortrait = GD.Load<Texture2D>("res://Scenes/PhotoFrame/HouseKeeper/SarahMills.png");
+		_main = GetNode<Main>("/root/Main");
+		_sarahMillsPortrait = GD.Load<Texture2D>("res://Scenes/PhotoFrame/HouseKeeper/SarahMills.png");
 		_interactableObject.InteractableObjectClicked += OnInteractableObjectClicked;
 		_cameraStateMonitor.CameraActivated += OnCameraActivated;
 		_cameraStateMonitor.CameraDeactivated += OnCameraDeactivated;
+		_dialogSystem.DialogFinished += OnDialogFinished;
 	}
 
 	public override void _ExitTree()
@@ -54,6 +59,7 @@ public partial class HouseKeeper : Node3D
 		_interactableObject.InteractableObjectClicked -= OnInteractableObjectClicked;
 		_cameraStateMonitor.CameraActivated -= OnCameraActivated;
 		_cameraStateMonitor.CameraDeactivated -= OnCameraDeactivated;
+		_dialogSystem.DialogFinished -= OnDialogFinished;
 	}
 
 	private void OnInteractableObjectClicked()
@@ -84,7 +90,19 @@ public partial class HouseKeeper : Node3D
 		{
 			// Alternate speakers: Inspector Crawford (left) speaks first (even indices)
 			bool isLeftSpeaking = true;
-			_dialogSystem.StartDialog(dialogToShow, "Lady Margaret Blackwood", _ladyMargaretPortrait, isLeftSpeaking);
+			_dialogSystem.StartDialog(dialogToShow, "Sarah Mills", _sarahMillsPortrait, isLeftSpeaking);
+		}
+	}
+
+	private void OnDialogFinished()
+	{
+		// Add handkerchief clue after first visit
+		if (_visitCount == 1)
+		{
+			_main.AddClue(
+				"Handkerchief — 'T.H.' Monogram",
+				"An expensive silk handkerchief with blood stains and the monogram 'T.H.' in gold thread. Dropped near the potted plant in the escape route. 'T.H.' = Thomas Hartwell. Has blood on it (matches Sarah's testimony about blood on his sleeve). Expensive item he wouldn't normally leave behind (shows panic)."
+			);
 		}
 	}
 }
