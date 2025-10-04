@@ -22,6 +22,3 @@ script = ExtResource("1_main")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.3519724, 0.9360104, 0, -0.9360104, -0.3519724, 0, 3.0691495, -1.6806214)
-
-[connection signal="FrameClicked" from="Hallway/PhotoFrames/Frame1" to="." method="FrameClicked"]
-[connection signal="FrameClicked" from="Hallway/PhotoFrames/Frame2" to="." method="FrameClicked"]
