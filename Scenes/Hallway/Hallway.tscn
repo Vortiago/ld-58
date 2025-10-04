@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d5713qx52vb1"]
+[gd_scene load_steps=19 format=3 uid="uid://d5713qx52vb1"]
 
 [ext_resource type="PackedScene" uid="uid://egcjovpb1kfo" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
 [ext_resource type="PackedScene" uid="uid://btlm13sldjwnq" path="res://Scenes/PhotoFrame/HouseKeeper/HouseKeeper.tscn" id="3_cvgsa"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c2g6xco1rbfav" path="res://Scenes/PhotoFrame/DrHenryMorrison/DrHenryMorrison.tscn" id="5_ko40w"]
 [ext_resource type="PackedScene" uid="uid://d4kcn0ixh7umi" path="res://Scenes/PhotoFrame/YoungTimBlackwood/YoungTimBlackwood.tscn" id="6_83k6l"]
 [ext_resource type="PackedScene" uid="uid://diwkiu7viyhdu" path="res://assets/grandfatherclock.tscn" id="6_ko40w"]
+[ext_resource type="PackedScene" uid="uid://bdvrsv0d4o25a" path="res://Scenes/PhotoFrame/EleanorHartwell/EleanorHeartwell.tscn" id="7_yixj0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_table"]
 size = Vector3(1.5, 0.1, 0.8)
@@ -64,6 +65,9 @@ transform = Transform3D(0.98533654, -0.07583795, 0.15284161, -3.885757e-08, 0.89
 
 [node name="YoungTimBlackwood" parent="PhotoFrames" instance=ExtResource("6_83k6l")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 2.5, 3.5)
+
+[node name="EleanorHeartwell" parent="PhotoFrames" instance=ExtResource("7_yixj0")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.1, 2, 7)
 
 [node name="CrimeSceneObjects" type="Node3D" parent="."]
 
