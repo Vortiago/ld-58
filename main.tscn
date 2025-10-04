@@ -72,7 +72,7 @@ metadata/_edit_group_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.684342e-14, 0, -0.24798584)
 shape = SubResource("BoxShape3D_1bvp3")
 
-[node name="Camera3D" type="Camera3D" parent="PhotoFrames/Frame1"]
+[node name="Camera3D" type="Camera3D" parent="PhotoFrames/Frame1" groups=["FrameCameras"]]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="Frame2" type="MeshInstance3D" parent="PhotoFrames"]
@@ -88,7 +88,7 @@ metadata/_edit_group_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0769043)
 shape = SubResource("BoxShape3D_lquwl")
 
-[node name="Camera3D" type="Camera3D" parent="PhotoFrames/Frame2"]
+[node name="Camera3D" type="Camera3D" parent="PhotoFrames/Frame2" groups=["FrameCameras"]]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [connection signal="FrameClicked" from="PhotoFrames/Frame1" to="." method="FrameClicked"]
