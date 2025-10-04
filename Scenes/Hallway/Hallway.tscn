@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://d5713qx52vb1"]
 
 [ext_resource type="PackedScene" uid="uid://egcjovpb1kfo" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
-[ext_resource type="PackedScene" uid="uid://btlm13sldjwnq" path="res://Scenes/PhotoFrame/HouseKeeper.tscn" id="3_cvgsa"]
+[ext_resource type="PackedScene" uid="uid://btlm13sldjwnq" path="res://Scenes/PhotoFrame/HouseKeeper/HouseKeeper.tscn" id="3_cvgsa"]
 [ext_resource type="PackedScene" uid="uid://bv2d2i0odcgfk" path="res://Scenes/PhotoFrame/InspectorCrawford/InspectorCrawford.tscn" id="4_05vpa"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_table"]
