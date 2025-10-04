@@ -50,7 +50,7 @@ Quick links to detailed pages (one file per character / clue / suspect):
 - [**Sarah Mills**](./Sarah_Mills.md) - Simple Wooden Frame
 
 **Right Wall:**
-- [**Inspector Crawford**](./Inspector_Crawford.md) - Police Badge Frame
+- [**Inspector Crawford**](./Inspector_Crawford.md) - Police Badge Frame (PLAYER CHARACTER)
 
 ### Corner Turn (Crime Scene Center)
 - Lord Edgar's body on the floor
@@ -69,6 +69,13 @@ Quick links to detailed pages (one file per character / clue / suspect):
 
 ## Photo Frame Characters (Witnesses)
 
+### Player Character
+
+- [**Inspector Crawford**](./Inspector_Crawford.md) (YOU) - Main Corridor Right
+  - Retired Scotland Yard detective
+  - Can jump between portrait frames
+  - Must interview witnesses and solve the murder
+
 ### Helpful Witnesses
 
 - [**Lady Margaret Blackwood**](./Lady_Margaret_Blackwood.md) (Victim's Wife) - Main Corridor Left
@@ -80,11 +87,6 @@ Quick links to detailed pages (one file per character / clue / suspect):
   - **KEY WITNESS**: "Mr. Hartwell rushed past me, and there was... blood on his sleeve"
   - "I haven't had time to collect that handkerchief by the plant stand"
   - "The blood on the carpet will never come out, I fear"
-
-- [**Inspector Crawford**](./Inspector_Crawford.md) (Lead Investigator) - Main Corridor Right
-  - "Notice the defensive wounds on the victim's hands"
-  - "The angle of attack suggests a left-handed assailant"
-  - Provides forensic evidence and timeline
 
 - [**Dr. Henry Morrison**](./Dr_Henry_Morrison.md) (Family Doctor) - Side Corridor Left
   - "The wound trajectory is quite telling"

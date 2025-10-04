@@ -1,16 +1,17 @@
-# Inspector Crawford
+# Inspector Crawford (Player Character)
 
-Role: Lead Investigator — portrait in Main Corridor (Police Badge Frame)
+Role: YOU - Retired Scotland Yard Inspector — portrait in Main Corridor (Police Badge Frame)
 
 ## Summary
 
-Inspector Crawford is a methodical detective who points out forensic details players might miss. He's been on the force for 15 years and knows a crime of passion when he sees one.
+You are Inspector Reginald Crawford, retired after 20 years at Scotland Yard. Lord Blackwood had your portrait painted five years ago after you helped with a family matter. Now you must solve his murder.
 
-## Key quotes
+## Your Observations (Internal Monologue)
 
 - "The victim has defensive wounds - he fought back."
 - "Left-handed attacker, based on the wound angle."
 - "Time of death: between 11:20 and 11:40 PM."
+- "I need to interview the other portraits - they saw what happened."
 
 Clues he references
 

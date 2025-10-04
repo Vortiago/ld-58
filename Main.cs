@@ -20,14 +20,13 @@ public partial class Main : Node3D
 	private void StartOpeningCutscene()
 	{
 		string[] openingLines = {
-		"I am Detective Holmes, and I've been called to investigate a most peculiar murder.",
-		"The victim, Lord Ashworth, lies dead in this very hallway.",
-		"But something strange has happened... I seem to be trapped within a portrait!",
-		"Perhaps I can examine the scene by jumping between the other portraits...",
-		"Click on the colored photo frames to investigate from different perspectives."
+		"What's that smell... blood? And why is the morning light so harsh today?",
+		"Wait... Lord Blackwood's body! There, by the corner table!",
+		"The other portraits are waking. I wonder if any of them saw anything last night. Time to do what I do best—investigate.",
+		"Lady Margaret looks shaken. I should start there."
 	};
 
-		_dialogSystem.StartDialog(openingLines, "Sherlock", String.Empty, true);
+		_dialogSystem.StartDialog(openingLines, "Inspector Crawford", String.Empty, true);
 	}
 
 	private void OnDialogFinished()
