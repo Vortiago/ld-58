@@ -1,15 +1,19 @@
-using Godot;
 using System;
+using Godot;
 
 public partial class InteractableObject : Area3D
 {
     private StandardMaterial3D[] modelMaterials;
+
+    [Signal] public delegate void InteractableObjectClickedEventHandler();
 
     [Export]
     public MeshInstance3D Model { get; set; }
 
     [Export]
     public ShaderMaterial HighlightMaterial { get; set; }
+
+
 
     public override void _Ready()
     {
@@ -22,6 +26,22 @@ public partial class InteractableObject : Area3D
 
         this.MouseEntered += OnMouseEntered;
         this.MouseExited += OnMouseExited;
+        this.InputEvent += OnInputEvent;
+    }
+
+    public override void _ExitTree()
+    {
+        this.MouseEntered -= OnMouseEntered;
+        this.MouseExited -= OnMouseExited;
+        this.InputEvent -= OnInputEvent;
+    }
+
+    private void OnInputEvent(Node camera, InputEvent @event, Vector3 clickPosition, Vector3 clickNormal, long shapeIdx)
+    {
+        if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
+        {
+            EmitSignal(SignalName.InteractableObjectClicked);
+        }
     }
 
     private void OnMouseEntered()
