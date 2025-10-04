@@ -8,8 +8,8 @@ public partial class DialogSystem : CanvasLayer
 	// UI Nodes
 	[Export] private Control DialogBox;
 	[Export] private RichTextLabel DialogTextLabel;
-	[Export] private ColorRect leftPortrait;
-	[Export] private ColorRect rightPortrait;
+	[Export] private TextureRect leftPortrait;  // Inspector's portrait (hardcoded in scene)
+	[Export] private TextureRect rightPortrait;  // Witness portrait (set per-frame)
 	[Export] private Label leftNameLabel;
 	[Export] private Label rightNameLabel;
 	[Export] public Button ContinueButton;
@@ -38,13 +38,14 @@ public partial class DialogSystem : CanvasLayer
 	/// <param name="dialogLines">Lines to display</param>
 	/// <param name="leftName">Name for left speaker</param>
 	/// <param name="rightName">
-	/// Name for right speaker.  
+	/// Name for right speaker.
 	/// If empty or null, right portrait & label are hidden.
 	/// </param>
+	/// <param name="rightPortraitTexture">Texture to display for right speaker (witness)</param>
 	/// <param name="isLeftSpeaking">
 	/// True if left speaks; false if right.
 	/// </param>
-	public void StartDialog(string[] dialogLines, string leftName, string rightName, bool isLeftSpeaking)
+	public void StartDialog(string[] dialogLines, string leftName, string rightName, Texture2D rightPortraitTexture, bool isLeftSpeaking)
 	{
 		// Set names and visibility
 		leftNameLabel.Text = leftName;
@@ -54,20 +55,28 @@ public partial class DialogSystem : CanvasLayer
 		rightNameLabel.Visible = hasRight;
 		rightPortrait.Visible = hasRight;
 
+		// Set right portrait texture
+		if (rightPortraitTexture != null)
+		{
+			rightPortrait.Texture = rightPortraitTexture;
+		}
+
 		// Determine active side
 		_activeSide = isLeftSpeaking ? SpeakerSide.Left : SpeakerSide.Right;
 
-		// Portrait modulation
+		// Portrait modulation (use Modulate for TextureRect)
 		const float inactiveAlpha = 0.4f;
 		if (_activeSide == SpeakerSide.Left)
 		{
-			leftPortrait.Color = new Color(1,1,1,1);
-			rightPortrait.Color = new Color(1,1,1,inactiveAlpha);
+			if (leftPortrait != null)
+				leftPortrait.Modulate = new Color(1, 1, 1, 1);
+			rightPortrait.Modulate = new Color(1, 1, 1, inactiveAlpha);
 		}
 		else
 		{
-			rightPortrait.Color = new Color(1,1,1,1);
-			leftPortrait.Color = new Color(1,1,1,inactiveAlpha);
+			rightPortrait.Modulate = new Color(1, 1, 1, 1);
+			if (leftPortrait != null)
+				leftPortrait.Modulate = new Color(1, 1, 1, inactiveAlpha);
 		}
 
 		// Initialize dialog

@@ -7,6 +7,8 @@
 [sub_resource type="BoxMesh" id="BoxMesh_table"]
 size = Vector3(1.5, 0.1, 0.8)
 
+[sub_resource type="ImageTexture" id="ImageTexture_4xeht"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_table"]
 albedo_color = Color(0.545098, 0.270588, 0.0745098, 1)
 
@@ -45,6 +47,7 @@ size = Vector3(0.5, 0.1, 0.5)
 
 [node name="Frame1" parent="PhotoFrames" instance=ExtResource("2_photoframe")]
 transform = Transform3D(-3.4969112e-08, 0, 1, 0, 1.2, 0, -0.8, 0, -4.371139e-08, -5.9881907, 2, 0)
+FrameTexture = SubResource("ImageTexture_4xeht")
 FirstVisitDialog = PackedStringArray("What\'s that smell... blood? And why is the morning light so harsh today?", "Wait... Lord Blackwood\'s body! There, by the corner table!", "The other portraits are waking. I wonder if any of them saw anything last night. Time to do what I do best—investigate.", "Lady Margaret looks shaken. I should start there.")
 LeftSpeakerName = "Inspector Crawford"
 
