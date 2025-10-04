@@ -1,7 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://d8k3m5n7p9q2s"]
+[gd_scene load_steps=13 format=3 uid="uid://d5713qx52vb1"]
 
 [ext_resource type="PackedScene" uid="uid://egcjovpb1kfo" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
-[ext_resource type="PackedScene" uid="uid://c4h5k8m9p2q7r" path="res://Scenes/PhotoFrame/PhotoFrame.tscn" id="2_photoframe"]
+[ext_resource type="PackedScene" uid="uid://c4h5k8nap2q7r" path="res://Scenes/PhotoFrame/PhotoFrame.tscn" id="2_photoframe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_table"]
+albedo_color = Color(0.545098, 0.270588, 0.0745098, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_table"]
+size = Vector3(1.5, 0.1, 0.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tableleg"]
+size = Vector3(0.1, 0.7, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_body"]
+albedo_color = Color(0.607843, 0.34902, 0.713726, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_body"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blood"]
+albedo_color = Color(0.545098, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_blood"]
+size = Vector3(1.2, 0.02, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gold"]
+albedo_color = Color(1, 0.843137, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_item"]
+top_radius = 0.05
+bottom_radius = 0.08
+height = 0.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_chair"]
+size = Vector3(0.5, 0.1, 0.5)
 
 [node name="Hallway" type="Node3D"]
 
@@ -10,7 +43,82 @@
 [node name="PhotoFrames" type="Node3D" parent="."]
 
 [node name="Frame1" parent="PhotoFrames" instance=ExtResource("2_photoframe")]
-transform = Transform3D(-3.4969112e-08, 0, 1, 0, 1.2, 0, -0.8, 0, -4.371139e-08, -4.868047, 2, 0)
+transform = Transform3D(-3.4969112e-08, 0, 1, 0, 1.2, 0, -0.8, 0, -4.371139e-08, -5.9881907, 2, 0)
+FirstVisitDialog = PackedStringArray("What\'s that smell... blood? And why is the morning light so harsh today?", "Wait... Lord Blackwood\'s body! There, by the corner table!", "The other portraits are waking. I wonder if any of them saw anything last night. Time to do what I do best—investigate.", "Lady Margaret looks shaken. I should start there.")
+LeftSpeakerName = "Inspector Crawford"
 
 [node name="Frame2" parent="PhotoFrames" instance=ExtResource("2_photoframe")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 4.9, 2, 0)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 0, 12, 3, 0)
+
+[node name="CrimeSceneObjects" type="Node3D" parent="."]
+
+[node name="CornerTableGroup" type="Node3D" parent="CrimeSceneObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0.5)
+
+[node name="TableSurface" type="MeshInstance3D" parent="CrimeSceneObjects/CornerTableGroup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+mesh = SubResource("BoxMesh_table")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg1" type="MeshInstance3D" parent="CrimeSceneObjects/CornerTableGroup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 0.35, -0.35)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg2" type="MeshInstance3D" parent="CrimeSceneObjects/CornerTableGroup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0.35, -0.35)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg3" type="MeshInstance3D" parent="CrimeSceneObjects/CornerTableGroup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 0.35, 0.35)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg4" type="MeshInstance3D" parent="CrimeSceneObjects/CornerTableGroup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0.35, 0.35)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Candlestick" type="MeshInstance3D" parent="CrimeSceneObjects/CornerTableGroup"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.95, 0.1)
+mesh = SubResource("CylinderMesh_item")
+surface_material_override/0 = SubResource("StandardMaterial3D_gold")
+
+[node name="WineGlass" type="MeshInstance3D" parent="CrimeSceneObjects/CornerTableGroup"]
+transform = Transform3D(0.707107, 0, 0.707107, 0.707107, 0, -0.707107, 0, 1, 0, -0.3, 0.7, 0.2)
+mesh = SubResource("CylinderMesh_item")
+surface_material_override/0 = SubResource("StandardMaterial3D_blood")
+
+[node name="BodyAndEvidence" type="Node3D" parent="CrimeSceneObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="LordBlackwoodBody" type="MeshInstance3D" parent="CrimeSceneObjects/BodyAndEvidence"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.3, 0)
+mesh = SubResource("CapsuleMesh_body")
+surface_material_override/0 = SubResource("StandardMaterial3D_body")
+
+[node name="BloodPool" type="MeshInstance3D" parent="CrimeSceneObjects/BodyAndEvidence"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = SubResource("BoxMesh_blood")
+surface_material_override/0 = SubResource("StandardMaterial3D_blood")
+
+[node name="DroppedRing" type="MeshInstance3D" parent="CrimeSceneObjects/BodyAndEvidence"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.05, -0.3)
+mesh = SubResource("CylinderMesh_item")
+surface_material_override/0 = SubResource("StandardMaterial3D_gold")
+
+[node name="EnvironmentalDetails" type="Node3D" parent="CrimeSceneObjects"]
+
+[node name="KnockedChair" type="Node3D" parent="CrimeSceneObjects/EnvironmentalDetails"]
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 1, 0, -0.3)
+
+[node name="ChairSeat" type="MeshInstance3D" parent="CrimeSceneObjects/EnvironmentalDetails/KnockedChair"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("BoxMesh_chair")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="ChairBack" type="MeshInstance3D" parent="CrimeSceneObjects/EnvironmentalDetails/KnockedChair"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.2)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")

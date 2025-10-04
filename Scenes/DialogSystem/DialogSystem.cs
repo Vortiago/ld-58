@@ -20,6 +20,8 @@ public partial class DialogSystem : CanvasLayer
 	private bool _isTyping = false;
 	private float _typingSpeed = 0.01f; // Seconds per character
 
+	public bool IsDialogActive => DialogBox != null && DialogBox.Visible;
+
 	// Which side is speaking this sequence
 	private enum SpeakerSide { Left, Right }
 	private SpeakerSide _activeSide;

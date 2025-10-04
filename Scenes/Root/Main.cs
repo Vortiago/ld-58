@@ -4,6 +4,7 @@ using Godot;
 public partial class Main : Node3D
 {
 	private DialogSystem _dialogSystem;
+	private PhotoFrame _initialFrame;
 
 	public void FrameClicked(Camera3D associatedCamera)
 	{
@@ -14,25 +15,23 @@ public partial class Main : Node3D
 	{
 		_dialogSystem = GetNode<DialogSystem>("DialogSystem");
 		_dialogSystem.DialogFinished += OnDialogFinished;
-		CallDeferred(MethodName.StartOpeningCutscene);
+
+		// Find the initial frame (Frame1 - "us" frame) and activate it on game start
+		_initialFrame = GetNode<PhotoFrame>("Hallway/PhotoFrames/Frame1");
+		if (_initialFrame != null)
+		{
+			CallDeferred(MethodName.ActivateInitialFrame);
+		}
 	}
 
-	private void StartOpeningCutscene()
+	private void ActivateInitialFrame()
 	{
-		string[] openingLines = {
-		"What's that smell... blood? And why is the morning light so harsh today?",
-		"Wait... Lord Blackwood's body! There, by the corner table!",
-		"The other portraits are waking. I wonder if any of them saw anything last night. Time to do what I do best—investigate.",
-		"Lady Margaret looks shaken. I should start there."
-	};
-
-		_dialogSystem.StartDialog(openingLines, "Inspector Crawford", String.Empty, true);
+		_initialFrame.ActivateFrame();
 	}
 
 	private void OnDialogFinished()
 	{
 		GD.Print("Dialog finished - resuming game");
 		// Resume game logic here
-
 	}
 }

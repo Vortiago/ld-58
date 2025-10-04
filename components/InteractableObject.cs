@@ -11,6 +11,8 @@ public partial class InteractableObject : Area3D
     [Export]
     public ShaderMaterial HighlightMaterial { get; set; }
 
+    private DialogSystem _dialogSystem;
+
 
 
     public override void _Ready()
@@ -18,6 +20,9 @@ public partial class InteractableObject : Area3D
         this.MouseEntered += OnMouseEntered;
         this.MouseExited += OnMouseExited;
         this.InputEvent += OnInputEvent;
+
+        // Get DialogSystem reference (assuming it's in Main scene)
+        _dialogSystem = GetNode<DialogSystem>("/root/Main/DialogSystem");
     }
 
     public override void _ExitTree()
@@ -31,6 +36,13 @@ public partial class InteractableObject : Area3D
     {
         if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
         {
+            // Block clicks if dialog is active
+            if (_dialogSystem != null && _dialogSystem.IsDialogActive)
+            {
+                GD.Print($"Click blocked on {Name} - dialog is active");
+                return;
+            }
+
             EmitSignal(SignalName.InteractableObjectClicked);
         }
     }
