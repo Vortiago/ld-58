@@ -1,6 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=16 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://b24cp0q5u14rh" path="res://Main.cs" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://b3u146i3c02us" path="res://Frame1.cs" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://d2asqi3garq23" path="res://Frame2.cs" id="3_h2yge"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7dm0k"]
 
@@ -61,6 +63,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ig7tw")
 transform = Transform3D(-3.4969112e-08, 0, 1, 0, 1.2, 0, -0.8, 0, -4.371139e-08, -4.9, 2, 0)
 mesh = SubResource("QuadMesh_0xm2m")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
+script = ExtResource("2_0xm2m")
 metadata/_edit_group_ = true
 
 [node name="Area3D" type="Area3D" parent="PhotoFrames/Frame1"]
@@ -76,6 +79,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 4.9, 2, 0)
 mesh = SubResource("QuadMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_1bvp3")
+script = ExtResource("3_h2yge")
 metadata/_edit_group_ = true
 
 [node name="Area3D" type="Area3D" parent="PhotoFrames/Frame2"]
@@ -86,3 +90,8 @@ shape = SubResource("BoxShape3D_lquwl")
 
 [node name="Camera3D" type="Camera3D" parent="PhotoFrames/Frame2"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[connection signal="FrameClicked" from="PhotoFrames/Frame1" to="." method="FrameClicked"]
+[connection signal="input_event" from="PhotoFrames/Frame1/Area3D" to="PhotoFrames/Frame1" method="OnArea3DInputEvent"]
+[connection signal="FrameClicked" from="PhotoFrames/Frame2" to="." method="FrameClicked"]
+[connection signal="input_event" from="PhotoFrames/Frame2/Area3D" to="PhotoFrames/Frame2" method="OnArea3DInputEvent"]
