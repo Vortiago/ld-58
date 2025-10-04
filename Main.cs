@@ -27,7 +27,7 @@ public partial class Main : Node3D
 		"Click on the colored photo frames to investigate from different perspectives."
 	};
 
-		_dialogSystem.StartDialog("Detective Holmes", openingLines);
+		_dialogSystem.StartDialog(openingLines, "Sherlock", String.Empty, true);
 	}
 
 	private void OnDialogFinished()
