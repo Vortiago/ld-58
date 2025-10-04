@@ -8,9 +8,9 @@ script = ExtResource("1_dialog")
 DialogBox = NodePath("DialogBox")
 DialogTextLabel = NodePath("DialogBox/BottomBar/DialogPanel/VBoxContainer/DialogText")
 leftPortrait = NodePath("DialogBox/BottomBar/LeftPortraitContainer/MarginContainer/VBoxContainer/TextureRect")
-rightPortrait = NodePath("DialogBox/BottomBar/RightPortraitContainer/VBoxContainer/PortraitRight")
+rightPortrait = NodePath("DialogBox/BottomBar/RightPortraitContainer/MarginContainer/Control/PortraitRight")
 leftNameLabel = NodePath("DialogBox/BottomBar/LeftPortraitContainer/MarginContainer/VBoxContainer/NameLeft")
-rightNameLabel = NodePath("DialogBox/BottomBar/RightPortraitContainer/VBoxContainer/NameRight")
+rightNameLabel = NodePath("DialogBox/BottomBar/RightPortraitContainer/MarginContainer/Control/NameRight")
 ContinueButton = NodePath("DialogBox/BottomBar/DialogPanel/VBoxContainer/ContinueButton")
 
 [node name="DialogBox" type="Control" parent="."]
@@ -66,7 +66,9 @@ expand_mode = 5
 
 [node name="NameLeft" type="Label" parent="DialogBox/BottomBar/LeftPortraitContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DialogPanel" type="Panel" parent="DialogBox/BottomBar"]
 custom_minimum_size = Vector2(600, 200)
@@ -97,25 +99,36 @@ alignment = 2
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DialogBox/BottomBar/RightPortraitContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="DialogBox/BottomBar/RightPortraitContainer"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="PortraitRight" type="TextureRect" parent="DialogBox/BottomBar/RightPortraitContainer/VBoxContainer"]
-custom_minimum_size = Vector2(120, 160)
+[node name="Control" type="Control" parent="DialogBox/BottomBar/RightPortraitContainer/MarginContainer"]
 layout_mode = 2
+
+[node name="PortraitRight" type="TextureRect" parent="DialogBox/BottomBar/RightPortraitContainer/MarginContainer/Control"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
 expand_mode = 5
 
-[node name="NameRight" type="Label" parent="DialogBox/BottomBar/RightPortraitContainer/VBoxContainer"]
-layout_mode = 2
+[node name="NameRight" type="Label" parent="DialogBox/BottomBar/RightPortraitContainer/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
 horizontal_alignment = 1
+vertical_alignment = 1
