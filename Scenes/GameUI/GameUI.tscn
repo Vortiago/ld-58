@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://brwt4lhb7qlva"]
+
+[ext_resource type="Script" path="res://Scenes/GameUI/GameUI.cs" id="1_gameui"]
+
+[node name="GameUI" type="CanvasLayer" node_paths=PackedStringArray("CluesButton", "SolveButton")]
+script = ExtResource("1_gameui")
+CluesButton = NodePath("ButtonContainer/CluesButton")
+SolveButton = NodePath("ButtonContainer/SolveButton")
+
+[node name="ButtonContainer" type="HBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -220.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 50.0
+grow_horizontal = 0
+
+[node name="CluesButton" type="Button" parent="ButtonContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+text = "Clues"
+
+[node name="SolveButton" type="Button" parent="ButtonContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+text = "Solve Mystery"

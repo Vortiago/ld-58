@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=7 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://d3jb23sfv06xs" path="res://Scenes/Root/Main.cs" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://d5713qx52vb1" path="res://Scenes/Hallway/Hallway.tscn" id="2_hallway"]
 [ext_resource type="PackedScene" uid="uid://bj2qxv8y7n4k5" path="res://Scenes/DialogSystem/DialogSystem.tscn" id="3_dialogsystem"]
+[ext_resource type="PackedScene" uid="uid://brwt4lhb7qlva" path="res://Scenes/GameUI/GameUI.tscn" id="4_gameui"]
+[ext_resource type="PackedScene" uid="uid://cswenmb5k3agg" path="res://ClueContainer.tscn" id="5_cluecontainer"]
+[ext_resource type="PackedScene" uid="uid://c1xvq3y0bp8jh" path="res://Scenes/EndGameDialog/EndGameDialog.tscn" id="6_endgamedialog"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_main")
@@ -10,6 +13,12 @@ script = ExtResource("1_main")
 [node name="Hallway" parent="." instance=ExtResource("2_hallway")]
 
 [node name="DialogSystem" parent="." instance=ExtResource("3_dialogsystem")]
+
+[node name="GameUI" parent="." instance=ExtResource("4_gameui")]
+
+[node name="ClueContainer" parent="." instance=ExtResource("5_cluecontainer")]
+
+[node name="EndGameDialog" parent="." instance=ExtResource("6_endgamedialog")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.3519724, 0.9360104, 0, -0.9360104, -0.3519724, 0, 3.0691495, -1.6806214)
