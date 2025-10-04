@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://7piy1a6f04lb"]
+
+[ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="1_b506e"]
+[ext_resource type="Script" uid="uid://cqgs2ul4m0cyr" path="res://ClueItem.cs" id="2_mvbup"]
+
+[node name="ClueItem" type="TextureButton"]
+texture_normal = ExtResource("1_b506e")
+script = ExtResource("2_mvbup")
+
+[node name="ClueItemTextPanel" type="PanelContainer" parent="."]
+visible = false
+z_index = 10
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 550.0
+offset_bottom = 490.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ClueItemTextPanel"]
+layout_mode = 2
+
+[node name="ClueTextHeader" type="Label" parent="ClueItemTextPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Clue Name"
+
+[node name="ClueTextBody" type="Label" parent="ClueItemTextPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies mi ac orci volutpat, in molestie nunc vehicula. Sed vulputate semper augue nec aliquet. Etiam odio lectus, hendrerit eget ornare non, accumsan quis nisl. Nam auctor sed arcu a vestibulum. Maecenas iaculis arcu eget orci tristique, eu ornare orci porta. Morbi at dolor vulputate, vehicula nisl ac, iaculis nulla. Sed sollicitudin luctus egestas. Mauris viverra augue erat, sit amet suscipit risus ultricies vitae. Fusce in turpis sit amet odio tincidunt tincidunt. Vestibulum molestie nibh lacus, et iaculis orci congue at. Fusce ac blandit eros. Nam id nunc vitae lacus fringilla accumsan et vel eros. Donec consectetur sollicitudin nibh, faucibus rutrum lacus ornare non. Donec urna elit, maximus semper justo a, auctor suscipit lorem. Mauris tortor lorem, rutrum vitae purus eget, viverra blandit leo. Nulla lectus ante, ornare maximus auctor a, luctus vitae velit."
+autowrap_mode = 3
