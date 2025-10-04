@@ -1,37 +1,39 @@
-[gd_scene load_steps=13 format=3 uid="uid://d5713qx52vb1"]
+[gd_scene load_steps=14 format=3 uid="uid://d5713qx52vb1"]
 
 [ext_resource type="PackedScene" uid="uid://egcjovpb1kfo" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
 [ext_resource type="PackedScene" uid="uid://c4h5k8nap2q7r" path="res://Scenes/PhotoFrame/PhotoFrame.tscn" id="2_photoframe"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_table"]
-albedo_color = Color(0.545098, 0.270588, 0.0745098, 1)
+[sub_resource type="ImageTexture" id="ImageTexture_4xeht"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_table"]
 size = Vector3(1.5, 0.1, 0.8)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_table"]
+albedo_color = Color(0.545098, 0.270588, 0.0745098, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_tableleg"]
 size = Vector3(0.1, 0.7, 0.1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_body"]
-albedo_color = Color(0.607843, 0.34902, 0.713726, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_body"]
-radius = 0.3
-height = 1.8
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blood"]
-albedo_color = Color(0.545098, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_blood"]
-size = Vector3(1.2, 0.02, 0.8)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gold"]
-albedo_color = Color(1, 0.843137, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_item"]
 top_radius = 0.05
 bottom_radius = 0.08
 height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gold"]
+albedo_color = Color(1, 0.843137, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blood"]
+albedo_color = Color(0.545098, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_body"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_body"]
+albedo_color = Color(0.607843, 0.34902, 0.713726, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_blood"]
+size = Vector3(1.2, 0.02, 0.8)
 
 [sub_resource type="BoxMesh" id="BoxMesh_chair"]
 size = Vector3(0.5, 0.1, 0.5)
@@ -44,6 +46,7 @@ size = Vector3(0.5, 0.1, 0.5)
 
 [node name="Frame1" parent="PhotoFrames" instance=ExtResource("2_photoframe")]
 transform = Transform3D(-3.4969112e-08, 0, 1, 0, 1.2, 0, -0.8, 0, -4.371139e-08, -5.9881907, 2, 0)
+FrameTexture = SubResource("ImageTexture_4xeht")
 FirstVisitDialog = PackedStringArray("What\'s that smell... blood? And why is the morning light so harsh today?", "Wait... Lord Blackwood\'s body! There, by the corner table!", "The other portraits are waking. I wonder if any of them saw anything last night. Time to do what I do best—investigate.", "Lady Margaret looks shaken. I should start there.")
 LeftSpeakerName = "Inspector Crawford"
 
