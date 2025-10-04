@@ -22,7 +22,3 @@ GlobalNodeResolver="*res://utilities/NodeResolver/GlobalNodeResolver.cs"
 [dotnet]
 
 project/assembly_name="LD58"
-
-[global_group]
-
-FrameCameras=""

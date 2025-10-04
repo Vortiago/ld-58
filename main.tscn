@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=17 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://b24cp0q5u14rh" path="res://Main.cs" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://b3u146i3c02us" path="res://Frame1.cs" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://d2asqi3garq23" path="res://Frame2.cs" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cocghlr3negpx" path="res://components/InteractableObject.tscn" id="3_lquwl"]
 [ext_resource type="Material" uid="uid://b6bnhm22g7ip0" path="res://shaders/outer_highlight_material.tres" id="4_7mycd"]
+[ext_resource type="Script" uid="uid://d1ycktncbe3qd" path="res://DialogSystem.cs" id="4_1bvp3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7dm0k"]
 
@@ -113,11 +114,74 @@ metadata/_edit_group_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0769043)
 shape = SubResource("BoxShape3D_lquwl")
 
-[node name="Camera3D" type="Camera3D" parent="PhotoFrames/Frame2" groups=["FrameCameras"]]
+[node name="Camera3D" type="Camera3D" parent="PhotoFrames/Frame2"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.3519724, 0.9360104, 0, -0.9360104, -0.3519724, 0, 3.0691495, -1.6806214)
+
+[node name="DialogSystem" type="CanvasLayer" parent="." node_paths=PackedStringArray("DialogBox", "CharacterNameLabel", "DialogTextLabel", "ContinueButton")]
+script = ExtResource("4_1bvp3")
+DialogBox = NodePath("DialogBox")
+CharacterNameLabel = NodePath("DialogBox/CenterContainer/DialogPanel/MarginContainer/VBoxContainer/CharacterName")
+DialogTextLabel = NodePath("DialogBox/CenterContainer/DialogPanel/MarginContainer/VBoxContainer/DialogText")
+ContinueButton = NodePath("DialogBox/CenterContainer/DialogPanel/MarginContainer/VBoxContainer/ContinueButton")
+
+[node name="DialogBox" type="Control" parent="DialogSystem"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="DialogSystem/DialogBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.76862746)
+
+[node name="CenterContainer" type="CenterContainer" parent="DialogSystem/DialogBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogPanel" type="Panel" parent="DialogSystem/DialogBox/CenterContainer"]
+custom_minimum_size = Vector2(600, 250)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogSystem/DialogBox/CenterContainer/DialogPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogSystem/DialogBox/CenterContainer/DialogPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="CharacterName" type="Label" parent="DialogSystem/DialogBox/CenterContainer/DialogPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="DialogText" type="RichTextLabel" parent="DialogSystem/DialogBox/CenterContainer/DialogPanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+vertical_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="DialogSystem/DialogBox/CenterContainer/DialogPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
 
 [connection signal="FrameClicked" from="PhotoFrames/Frame1" to="." method="FrameClicked"]
 [connection signal="FrameClicked" from="PhotoFrames/Frame2" to="." method="FrameClicked"]
