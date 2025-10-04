@@ -1,0 +1,119 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj2qxv8y7n4k5"]
+
+[ext_resource type="Script" path="res://Scenes/DialogSystem/DialogSystem.cs" id="1_dialog"]
+
+[node name="DialogSystem" type="CanvasLayer" node_paths=PackedStringArray("DialogBox", "DialogTextLabel", "leftPortrait", "rightPortrait", "leftNameLabel", "rightNameLabel", "ContinueButton")]
+script = ExtResource("1_dialog")
+DialogBox = NodePath("DialogBox")
+DialogTextLabel = NodePath("DialogBox/BottomBar/DialogPanel/VBoxContainer/DialogText")
+leftPortrait = NodePath("DialogBox/BottomBar/LeftPortraitContainer/VBoxContainer/PortraitLeft")
+rightPortrait = NodePath("DialogBox/BottomBar/RightPortraitContainer/VBoxContainer/PortraitRight")
+leftNameLabel = NodePath("DialogBox/BottomBar/LeftPortraitContainer/VBoxContainer/NameLeft")
+rightNameLabel = NodePath("DialogBox/BottomBar/RightPortraitContainer/VBoxContainer/NameRight")
+ContinueButton = NodePath("DialogBox/BottomBar/DialogPanel/VBoxContainer/ContinueButton")
+
+[node name="DialogBox" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Background" type="ColorRect" parent="DialogBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.29411766)
+
+[node name="BottomBar" type="HBoxContainer" parent="DialogBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPortraitContainer" type="Control" parent="DialogBox/BottomBar"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogBox/BottomBar/LeftPortraitContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PortraitLeft" type="ColorRect" parent="DialogBox/BottomBar/LeftPortraitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+color = Color(0.29586652, 0.2958665, 0.2958665, 1)
+
+[node name="NameLeft" type="Label" parent="DialogBox/BottomBar/LeftPortraitContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="DialogPanel" type="Panel" parent="DialogBox/BottomBar"]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogBox/BottomBar/DialogPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogText" type="RichTextLabel" parent="DialogBox/BottomBar/DialogPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+scroll_active = false
+vertical_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="DialogBox/BottomBar/DialogPanel/VBoxContainer"]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+alignment = 2
+
+[node name="RightPortraitContainer" type="Control" parent="DialogBox/BottomBar"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogBox/BottomBar/RightPortraitContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PortraitRight" type="ColorRect" parent="DialogBox/BottomBar/RightPortraitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+color = Color(0.075265, 0.5215263, 0.42432404, 1)
+
+[node name="NameRight" type="Label" parent="DialogBox/BottomBar/RightPortraitContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
