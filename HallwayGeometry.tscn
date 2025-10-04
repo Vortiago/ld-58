@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://egcjovpb1kfo"]
 
-[ext_resource type="PackedScene" path="res://components/WallSection.tscn" id="2_477tv"]
+[ext_resource type="PackedScene" uid="uid://dnh3l337i2tlc" path="res://components/WallSection.tscn" id="2_477tv"]
 [ext_resource type="Texture2D" uid="uid://kemuwtcc5vex" path="res://assets/textures/fy_acc_lien.png" id="2_kmj1a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgsl3"]
@@ -10,10 +10,10 @@ uv1_world_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kmj1a"]
 material = SubResource("StandardMaterial3D_fgsl3")
-size = Vector2(12, 2.5)
+size = Vector2(12, 3.5)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tljqy"]
-size = Vector2(12, 2.5)
+size = Vector2(12, 3.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmj1a"]
 albedo_texture = ExtResource("2_kmj1a")
@@ -22,10 +22,10 @@ uv1_world_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fgsl3"]
 material = SubResource("StandardMaterial3D_kmj1a")
-size = Vector2(6, 10)
+size = Vector2(6, 10.5)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_477tv"]
-size = Vector2(6, 10)
+size = Vector2(6, 10.5)
 
 [node name="HallwayGeometry" type="Node3D"]
 
@@ -35,13 +35,13 @@ size = Vector2(6, 10)
 mesh = SubResource("PlaneMesh_kmj1a")
 
 [node name="Entrance" parent="LongCorridor" instance=ExtResource("2_477tv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.22, -6, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.75, -6, 0, 0)
 
 [node name="ShortWall" parent="LongCorridor" instance=ExtResource("2_477tv")]
-transform = Transform3D(-4.371139e-08, 0, 6, 0, 1, 0, -1, 0, -2.6226832e-07, 0, 0, 1.25)
+transform = Transform3D(-4.371139e-08, 0, 6, 0, 1, 0, -1, 0, -2.6226832e-07, 0, 0, 1.75)
 
 [node name="LongWall" parent="LongCorridor" instance=ExtResource("2_477tv")]
-transform = Transform3D(-4.371139e-08, 0, -9, 0, 1, 0, 1, 0, -3.934025e-07, 3, 0, -1.25)
+transform = Transform3D(-4.371139e-08, 0, -9, 0, 1, 0, 1, 0, -3.934025e-07, 3, 0, -1.75)
 
 [node name="Ceiling" type="MeshInstance3D" parent="LongCorridor"]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 4, 0)
@@ -51,18 +51,18 @@ mesh = SubResource("PlaneMesh_tljqy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.775, 0, 0)
 
 [node name="Floor" type="MeshInstance3D" parent="ShortCorridor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.225, 0, 3.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.225, 0, 3.5)
 mesh = SubResource("PlaneMesh_fgsl3")
 
 [node name="LongWall" parent="ShortCorridor" instance=ExtResource("2_477tv")]
-transform = Transform3D(-1, 0, -4.371139e-07, 0, 1, 0, 8.742278e-08, 0, -5, 4.25, 0, 3.8)
+transform = Transform3D(-1, 0, -7.92728e-07, 0, 1, 0, 1.509958e-07, 0, -5.25, 4.25, 0, 3.5)
 
 [node name="ShortWall" parent="ShortCorridor" instance=ExtResource("2_477tv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.75, -1.75, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.5, -1.75, 0, 5.25)
 
 [node name="EndWall" parent="ShortCorridor" instance=ExtResource("2_477tv")]
 transform = Transform3D(-4.371139e-08, 0, 3, 0, 1, 0, -1, 0, -1.3113416e-07, 1.2504363, 0, 8.75)
 
 [node name="Ceiling" type="MeshInstance3D" parent="ShortCorridor"]
-transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 1.225, 4, 3.75)
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 1.225, 4, 3.5)
 mesh = SubResource("PlaneMesh_477tv")
