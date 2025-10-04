@@ -14,7 +14,7 @@ public partial class Main : Node3D
 	{
 		_dialogSystem = GetNode<DialogSystem>("DialogSystem");
 		_dialogSystem.DialogFinished += OnDialogFinished;
-		StartOpeningCutscene();
+		CallDeferred(MethodName.StartOpeningCutscene);
 	}
 
 	private void StartOpeningCutscene()
