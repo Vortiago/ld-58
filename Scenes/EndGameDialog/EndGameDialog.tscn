@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1xvq3y0bp8jh"]
+[gd_scene load_steps=11 format=3 uid="uid://c1xvq3y0bp8jh"]
 
 [ext_resource type="Script" path="res://Scenes/EndGameDialog/EndGameDialog.cs" id="1_endgame"]
 
@@ -7,6 +7,60 @@
 [sub_resource type="ButtonGroup" id="ButtonGroup_what"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_why"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_background"]
+bg_color = Color(0.937, 0.89, 0.847, 1)
+bg_color_end = Color(0.902, 0.878, 0.784, 1)
+fill_from_top = true
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.478, 0.416, 0.353, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+bg_color = Color(0.761, 0.706, 0.545, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0.82, 0.765, 0.62, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+bg_color = Color(0.702, 0.655, 0.463, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_disabled"]
+bg_color = Color(0.6, 0.6, 0.6, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_submit_button"]
+bg_color = Color(0.702, 0.655, 0.463, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.478, 0.416, 0.353, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="EndGameDialog" type="PanelContainer" node_paths=PackedStringArray("CloseButton", "SubmitButton", "WhoOption1", "WhoOption2", "WhoOption3", "WhoOption4", "WhatOption1", "WhatOption2", "WhatOption3", "WhatOption4", "WhyOption1", "WhyOption2", "WhyOption3", "WhyOption4")]
 visible = false
@@ -21,6 +75,7 @@ offset_right = 450.0
 offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_background")
 script = ExtResource("1_endgame")
 CloseButton = NodePath("MarginContainer/VBoxContainer/Header/CloseButton")
 SubmitButton = NodePath("MarginContainer/VBoxContainer/SubmitButton")
@@ -39,28 +94,45 @@ WhyOption4 = NodePath("MarginContainer/VBoxContainer/WhyContainer/OptionsContain
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 10
 
 [node name="Header" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer/Header"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.25)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 32
 text = "Solve the Mystery"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CloseButton" type="Button" parent="MarginContainer/VBoxContainer/Header"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
 text = "X"
+
+[node name="Divider" type="ColorRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.478, 0.416, 0.353, 1)
 
 [node name="WhoContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -68,6 +140,8 @@ theme_override_constants/separation = 5
 
 [node name="Question" type="Label" parent="MarginContainer/VBoxContainer/WhoContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 22
 text = "Who committed the murder?"
 
 [node name="OptionsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WhoContainer"]
@@ -78,6 +152,13 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_disabled_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_who")
 text = "Option 1"
@@ -86,6 +167,13 @@ text = "Option 1"
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_disabled_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_who")
 text = "Option 2"
@@ -94,6 +182,13 @@ text = "Option 2"
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_disabled_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_who")
 text = "Option 3"
@@ -102,6 +197,13 @@ text = "Option 3"
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_disabled_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_who")
 text = "Option 4"
@@ -112,6 +214,8 @@ theme_override_constants/separation = 5
 
 [node name="Question" type="Label" parent="MarginContainer/VBoxContainer/WhatContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 22
 text = "What was the weapon?"
 
 [node name="OptionsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WhatContainer"]
@@ -122,6 +226,13 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_disabled_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_what")
 text = "Option 1"
@@ -130,6 +241,13 @@ text = "Option 1"
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_disabled_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_what")
 text = "Option 2"
@@ -138,6 +256,13 @@ text = "Option 2"
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_disabled_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_what")
 text = "Option 3"
@@ -146,6 +271,13 @@ text = "Option 3"
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_disabled_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_what")
 text = "Option 4"
@@ -156,6 +288,8 @@ theme_override_constants/separation = 5
 
 [node name="Question" type="Label" parent="MarginContainer/VBoxContainer/WhyContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 22
 text = "What was the motive?"
 
 [node name="OptionsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WhyContainer"]
@@ -166,6 +300,13 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_disabled_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_why")
 text = "Option 1"
@@ -174,6 +315,13 @@ text = "Option 1"
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_disabled_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_why")
 text = "Option 2"
@@ -182,6 +330,13 @@ text = "Option 2"
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_disabled_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_why")
 text = "Option 3"
@@ -190,6 +345,13 @@ text = "Option 3"
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_colors/font_disabled_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_button_disabled")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_why")
 text = "Option 4"
@@ -197,4 +359,9 @@ text = "Option 4"
 [node name="SubmitButton" type="Button" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_submit_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
 text = "Submit Answer"

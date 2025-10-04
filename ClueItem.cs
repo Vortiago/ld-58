@@ -1,15 +1,15 @@
 using System;
 using Godot;
 
-public partial class ClueItem : TextureButton
+public partial class ClueItem : Button
 {
     [Node("ClueItemTextPanel")]
     private Control ClueTextContainer;
 
-    [Node("%ClueTextHeader")]
+    [Node("ClueItemTextPanel/MarginContainer/VBoxContainer/ClueTextHeader")]
     private Label ClueTextHeader;
 
-    [Node("%ClueTextBody")]
+    [Node("ClueItemTextPanel/MarginContainer/VBoxContainer/ClueTextBody")]
     private Label ClueTextBody;
 
     [Export] public string ClueHeader { get; set; } = string.Empty;

@@ -51,7 +51,6 @@ public partial class HouseKeeper : Node3D
 		_interactableObject.InteractableObjectClicked += OnInteractableObjectClicked;
 		_cameraStateMonitor.CameraActivated += OnCameraActivated;
 		_cameraStateMonitor.CameraDeactivated += OnCameraDeactivated;
-		_dialogSystem.DialogFinished += OnDialogFinished;
 	}
 
 	public override void _ExitTree()
@@ -59,7 +58,6 @@ public partial class HouseKeeper : Node3D
 		_interactableObject.InteractableObjectClicked -= OnInteractableObjectClicked;
 		_cameraStateMonitor.CameraActivated -= OnCameraActivated;
 		_cameraStateMonitor.CameraDeactivated -= OnCameraDeactivated;
-		_dialogSystem.DialogFinished -= OnDialogFinished;
 	}
 
 	private void OnInteractableObjectClicked()
@@ -84,6 +82,15 @@ public partial class HouseKeeper : Node3D
 	{
 		_visitCount++;
 
+		// Add handkerchief clue on first visit
+		if (_visitCount == 1)
+		{
+			_main.AddClue(
+				"Handkerchief — 'T.H.' Monogram",
+				"An expensive silk handkerchief with blood stains and the monogram 'T.H.' in gold thread. Dropped near the potted plant in the escape route. 'T.H.' = Thomas Hartwell. Has blood on it (matches Sarah's testimony about blood on his sleeve). Expensive item he wouldn't normally leave behind (shows panic)."
+			);
+		}
+
 		string[] dialogToShow = _visitCount == 1 ? _firstVisitDialog : _subsequentVisitDialog;
 
 		if (dialogToShow != null && dialogToShow.Length > 0)
@@ -91,18 +98,6 @@ public partial class HouseKeeper : Node3D
 			// Alternate speakers: Inspector Crawford (left) speaks first (even indices)
 			bool isLeftSpeaking = true;
 			_dialogSystem.StartDialog(dialogToShow, "Sarah Mills", _sarahMillsPortrait, isLeftSpeaking);
-		}
-	}
-
-	private void OnDialogFinished()
-	{
-		// Add handkerchief clue after first visit
-		if (_visitCount == 1)
-		{
-			_main.AddClue(
-				"Handkerchief — 'T.H.' Monogram",
-				"An expensive silk handkerchief with blood stains and the monogram 'T.H.' in gold thread. Dropped near the potted plant in the escape route. 'T.H.' = Thomas Hartwell. Has blood on it (matches Sarah's testimony about blood on his sleeve). Expensive item he wouldn't normally leave behind (shows panic)."
-			);
 		}
 	}
 }
