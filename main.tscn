@@ -116,20 +116,25 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.3519724, 0.9360104, 0, -0.9360104, -0.3519724, 0, 3.0691495, -1.6806214)
 
-[node name="DialogSystem" type="CanvasLayer" parent="." node_paths=PackedStringArray("DialogBox", "CharacterNameLabel", "DialogTextLabel", "ContinueButton")]
+[node name="DialogSystem" type="CanvasLayer" parent="." node_paths=PackedStringArray("DialogBox", "DialogTextLabel", "leftPortrait", "rightPortrait", "leftNameLabel", "rightNameLabel", "ContinueButton")]
 script = ExtResource("4_1bvp3")
 DialogBox = NodePath("DialogBox")
-CharacterNameLabel = NodePath("DialogBox/CenterContainer/DialogPanel/MarginContainer/VBoxContainer/CharacterName")
-DialogTextLabel = NodePath("DialogBox/CenterContainer/DialogPanel/MarginContainer/VBoxContainer/DialogText")
-ContinueButton = NodePath("DialogBox/CenterContainer/DialogPanel/MarginContainer/VBoxContainer/ContinueButton")
+DialogTextLabel = NodePath("DialogBox/BottomBar/DialogPanel/VBoxContainer/DialogText")
+leftPortrait = NodePath("DialogBox/BottomBar/LeftPortraitContainer/VBoxContainer/PortraitLeft")
+rightPortrait = NodePath("DialogBox/BottomBar/RightPortraitContainer/VBoxContainer/PortraitRight")
+leftNameLabel = NodePath("DialogBox/BottomBar/LeftPortraitContainer/VBoxContainer/NameLeft")
+rightNameLabel = NodePath("DialogBox/BottomBar/RightPortraitContainer/VBoxContainer/NameRight")
+ContinueButton = NodePath("DialogBox/BottomBar/DialogPanel/VBoxContainer/ContinueButton")
 
 [node name="DialogBox" type="Control" parent="DialogSystem"]
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
 [node name="Background" type="ColorRect" parent="DialogSystem/DialogBox"]
 layout_mode = 1
@@ -138,9 +143,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.76862746)
+color = Color(0, 0, 0, 0.29411766)
 
-[node name="CenterContainer" type="CenterContainer" parent="DialogSystem/DialogBox"]
+[node name="BottomBar" type="HBoxContainer" parent="DialogSystem/DialogBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -148,36 +153,84 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DialogPanel" type="Panel" parent="DialogSystem/DialogBox/CenterContainer"]
-custom_minimum_size = Vector2(600, 250)
+[node name="LeftPortraitContainer" type="Control" parent="DialogSystem/DialogBox/BottomBar"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="DialogSystem/DialogBox/CenterContainer/DialogPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogSystem/DialogBox/BottomBar/LeftPortraitContainer"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DialogSystem/DialogBox/CenterContainer/DialogPanel/MarginContainer"]
+[node name="PortraitLeft" type="ColorRect" parent="DialogSystem/DialogBox/BottomBar/LeftPortraitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 160)
 layout_mode = 2
+color = Color(0.29586652, 0.2958665, 0.2958665, 1)
 
-[node name="CharacterName" type="Label" parent="DialogSystem/DialogBox/CenterContainer/DialogPanel/MarginContainer/VBoxContainer"]
+[node name="NameLeft" type="Label" parent="DialogSystem/DialogBox/BottomBar/LeftPortraitContainer/VBoxContainer"]
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="DialogText" type="RichTextLabel" parent="DialogSystem/DialogBox/CenterContainer/DialogPanel/MarginContainer/VBoxContainer"]
+[node name="DialogPanel" type="Panel" parent="DialogSystem/DialogBox/BottomBar"]
+custom_minimum_size = Vector2(600, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogSystem/DialogBox/BottomBar/DialogPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogText" type="RichTextLabel" parent="DialogSystem/DialogBox/BottomBar/DialogPanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
+size_flags_vertical = 3
+scroll_active = false
 vertical_alignment = 1
 
-[node name="ContinueButton" type="Button" parent="DialogSystem/DialogBox/CenterContainer/DialogPanel/MarginContainer/VBoxContainer"]
+[node name="ContinueButton" type="Button" parent="DialogSystem/DialogBox/BottomBar/DialogPanel/VBoxContainer"]
+custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
+alignment = 2
+
+[node name="RightPortraitContainer" type="Control" parent="DialogSystem/DialogBox/BottomBar"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogSystem/DialogBox/BottomBar/RightPortraitContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PortraitRight" type="ColorRect" parent="DialogSystem/DialogBox/BottomBar/RightPortraitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 160)
+layout_mode = 2
+color = Color(0.075265, 0.5215263, 0.42432404, 1)
+
+[node name="NameRight" type="Label" parent="DialogSystem/DialogBox/BottomBar/RightPortraitContainer/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
 
 [connection signal="FrameClicked" from="PhotoFrames/Frame1" to="." method="FrameClicked"]
 [connection signal="FrameClicked" from="PhotoFrames/Frame2" to="." method="FrameClicked"]
