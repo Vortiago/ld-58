@@ -36,7 +36,6 @@ public partial class DialogSystem : CanvasLayer
 	/// Starts a dialog sequence.
 	/// </summary>
 	/// <param name="dialogLines">Lines to display</param>
-	/// <param name="leftName">Name for left speaker</param>
 	/// <param name="rightName">
 	/// Name for right speaker.
 	/// If empty or null, right portrait & label are hidden.
@@ -45,11 +44,11 @@ public partial class DialogSystem : CanvasLayer
 	/// <param name="isLeftSpeaking">
 	/// True if left speaks; false if right.
 	/// </param>
-	public void StartDialog(string[] dialogLines, string leftName, string rightName, Texture2D rightPortraitTexture, bool isLeftSpeaking)
+	public void StartDialog(string[] dialogLines, string rightName, Texture2D rightPortraitTexture, bool isLeftSpeaking)
 	{
-		// Set names and visibility
-		leftNameLabel.Text = leftName;
-		leftNameLabel.Visible = !string.IsNullOrEmpty(leftName);
+		// Set names and visibility (left is always Inspector Crawford)
+		leftNameLabel.Text = "Inspector Crawford";
+		leftNameLabel.Visible = true;
 		rightNameLabel.Text = rightName;
 		bool hasRight = !string.IsNullOrEmpty(rightName);
 		rightNameLabel.Visible = hasRight;

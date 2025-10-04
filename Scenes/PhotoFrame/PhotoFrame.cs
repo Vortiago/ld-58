@@ -13,7 +13,6 @@ public partial class PhotoFrame : MeshInstance3D
 	[ExportGroup("Dialog")]
 	[Export] public string[] FirstVisitDialog { get; set; }
 	[Export] public string[] SubsequentVisitDialog { get; set; }
-	[Export] public string LeftSpeakerName { get; set; }
 	[Export] public string RightSpeakerName { get; set; }
 	[Export] public Texture2D WitnessPortrait { get; set; }
 	[Export] public bool IsLeftSpeaking { get; set; } = true;
@@ -76,7 +75,7 @@ public partial class PhotoFrame : MeshInstance3D
 		if (dialogToShow != null && dialogToShow.Length > 0)
 		{
 			GD.Print($"Starting dialog with {dialogToShow.Length} lines");
-			_dialogSystem.StartDialog(dialogToShow, LeftSpeakerName, RightSpeakerName, WitnessPortrait, IsLeftSpeaking);
+			_dialogSystem.StartDialog(dialogToShow, RightSpeakerName, WitnessPortrait, IsLeftSpeaking);
 		}
 		else
 		{

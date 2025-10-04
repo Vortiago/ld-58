@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bj2qxv8y7n4k5"]
 
 [ext_resource type="Script" uid="uid://b8ptpjqw1jk17" path="res://Scenes/DialogSystem/DialogSystem.cs" id="1_dialog"]
-[ext_resource type="Texture2D" uid="uid://cd4accaui6wx6" path="res://InspectorCrawford.png" id="2_fhvbr"]
+[ext_resource type="Texture2D" uid="uid://cd4accaui6wx6" path="res://Scenes/PhotoFrame/InspectorCrawford/InspectorCrawford.png" id="2_fhvbr"]
 
 [node name="DialogSystem" type="CanvasLayer" node_paths=PackedStringArray("DialogBox", "DialogTextLabel", "leftPortrait", "rightPortrait", "leftNameLabel", "rightNameLabel", "ContinueButton")]
 script = ExtResource("1_dialog")

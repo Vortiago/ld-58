@@ -49,13 +49,13 @@ public partial class InteractableObject : Area3D
 
     private void OnMouseEntered()
     {
-        GD.Print($"{Name} is hovered over.");
+        GD.Print($"{GetParent().Name}/{Name} is hovered over.");
         ToggleHighlight(true);
     }
 
     private void OnMouseExited()
     {
-        GD.Print($"{Name} is no longer hovered over.");
+        GD.Print($"{GetParent().Name}/{Name} is no longer hovered over.");
         ToggleHighlight(false);
     }
 
@@ -75,5 +75,15 @@ public partial class InteractableObject : Area3D
         {
             Model.MaterialOverlay = null;
         }
+    }
+
+    /// <summary>
+    /// Enables or disables input ray picking for this interactable object.
+    /// When disabled, the object cannot be clicked or hovered.
+    /// </summary>
+    public void SetCollisionEnabled(bool enabled)
+    {
+        InputRayPickable = enabled;
+        GD.Print($"{GetParent().Name}/{Name} InputRayPickable set to {enabled}");
     }
 }

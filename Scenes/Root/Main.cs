@@ -4,7 +4,7 @@ using Godot;
 public partial class Main : Node3D
 {
 	private DialogSystem _dialogSystem;
-	private PhotoFrame _initialFrame;
+	private InspectorCrawford _initialFrame;
 	private GameUI _gameUI;
 	private ClueContainer _clueContainer;
 	private EndGameDialog _endGameDialog;
@@ -33,8 +33,8 @@ public partial class Main : Node3D
 		_endGameDialog.AnswerSubmitted += OnAnswerSubmitted;
 		_startScreen.GameStarted += OnGameStarted;
 
-		// Find the initial frame (Frame1 - "us" frame)
-		_initialFrame = GetNode<PhotoFrame>("Hallway/PhotoFrames/Frame1");
+		// Find the initial frame (Inspector Crawford - "us" frame)
+		_initialFrame = GetNode<InspectorCrawford>("Hallway/PhotoFrames/InspectorCrawford");
 
 		// Start with the start screen visible
 		_startScreen.Show();
