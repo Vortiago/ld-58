@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5ybwctgh24qa"]
+
+[ext_resource type="Script" uid="uid://cwq1htvjcja82" path="res://components/CameraStateMonitor.cs" id="1_nbj4v"]
+
+[node name="CameraStateMonitor" type="Node"]
+script = ExtResource("1_nbj4v")

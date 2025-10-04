@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnh3l337i2tlc"]
+[gd_scene load_steps=8 format=3 uid="uid://dnh3l337i2tlc"]
 
 [ext_resource type="Texture2D" uid="uid://b7fgmldwchi6e" path="res://assets/textures/g_toit-tower.png" id="1_3dnd1"]
 
@@ -10,6 +10,9 @@ material = SubResource("StandardMaterial3D_mt8pv")
 size = Vector2(2, 4)
 center_offset = Vector3(0, 2, 0)
 orientation = 0
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3dnd1"]
+data = PackedVector3Array(0, 0, -1, 0, 0, 1, 0, 4, -1, 0, 0, 1, 0, 4, 1, 0, 4, -1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tljqy"]
 size = Vector3(0.02, 0.3, 2)
@@ -25,6 +28,11 @@ size = Vector3(0.03, 0.05, 2)
 
 [node name="WallPlane" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_fgsl3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WallPlane"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallPlane/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_3dnd1")
 
 [node name="Baseboard" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, 0.15, 0)

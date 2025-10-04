@@ -1,6 +1,7 @@
 using System;
 using Godot;
 
+[GlobalClass]
 public partial class InteractableObject : Area3D
 {
     [Signal] public delegate void InteractableObjectClickedEventHandler();

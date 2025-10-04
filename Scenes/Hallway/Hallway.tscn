@@ -1,8 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://d5713qx52vb1"]
+[gd_scene load_steps=18 format=3 uid="uid://d5713qx52vb1"]
 
 [ext_resource type="PackedScene" uid="uid://egcjovpb1kfo" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
 [ext_resource type="PackedScene" uid="uid://btlm13sldjwnq" path="res://Scenes/PhotoFrame/HouseKeeper/HouseKeeper.tscn" id="3_cvgsa"]
 [ext_resource type="PackedScene" uid="uid://bv2d2i0odcgfk" path="res://Scenes/PhotoFrame/InspectorCrawford/InspectorCrawford.tscn" id="4_05vpa"]
+[ext_resource type="PackedScene" uid="uid://cg22nmohjn64o" path="res://Scenes/PhotoFrame/LadyBlackwood/LadyBlackwood.tscn" id="4_hifnc"]
+[ext_resource type="PackedScene" uid="uid://c2g6xco1rbfav" path="res://Scenes/PhotoFrame/DrHenryMorrison/DrHenryMorrison.tscn" id="5_ko40w"]
+[ext_resource type="PackedScene" uid="uid://d4kcn0ixh7umi" path="res://Scenes/PhotoFrame/YoungTimBlackwood/YoungTimBlackwood.tscn" id="6_83k6l"]
+[ext_resource type="PackedScene" uid="uid://diwkiu7viyhdu" path="res://assets/grandfatherclock.tscn" id="6_ko40w"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_table"]
 size = Vector3(1.5, 0.1, 0.8)
@@ -48,6 +52,18 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 
 
 [node name="InspectorCrawford" parent="PhotoFrames" instance=ExtResource("4_05vpa")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.9564824, 2.3363762, -0.005804062)
+
+[node name="LadyBlackwood" parent="PhotoFrames" instance=ExtResource("4_hifnc")]
+transform = Transform3D(-0.003019372, 0, -0.99999547, 0, 1, 0, 0.99999547, 0, -0.003019372, 6.1, 2.25, 3.25)
+
+[node name="DrHenryMorrison" parent="PhotoFrames" instance=ExtResource("5_ko40w")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.8132255, 2.98376, -1.6)
+
+[node name="Camera3D" parent="PhotoFrames/DrHenryMorrison" index="0"]
+transform = Transform3D(0.98533654, -0.07583795, 0.15284161, -3.885757e-08, 0.89578944, 0.4444789, -0.17062226, -0.4379613, 0.8826541, 0, 0, 0)
+
+[node name="YoungTimBlackwood" parent="PhotoFrames" instance=ExtResource("6_83k6l")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 2.5, 3.5)
 
 [node name="CrimeSceneObjects" type="Node3D" parent="."]
 
@@ -121,3 +137,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_table")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.2)
 mesh = SubResource("BoxMesh_tableleg")
 surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="RandomObjects" type="Node3D" parent="."]
+
+[node name="grandfatherclock" parent="RandomObjects" instance=ExtResource("6_ko40w")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0.9538851, 0, -1.75)
+
+[editable path="PhotoFrames/DrHenryMorrison"]
+[editable path="PhotoFrames/DrHenryMorrison/victorian_5"]

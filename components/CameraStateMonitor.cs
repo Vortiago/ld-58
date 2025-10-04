@@ -1,6 +1,7 @@
-using Godot;
 using System;
+using Godot;
 
+[GlobalClass]
 public partial class CameraStateMonitor : Node
 {
 	[Signal] public delegate void CameraActivatedEventHandler();
@@ -20,6 +21,7 @@ public partial class CameraStateMonitor : Node
 		}
 
 		// Initialize state
+
 		_wasCurrentLastFrame = _camera.Current;
 	}
 
@@ -30,15 +32,18 @@ public partial class CameraStateMonitor : Node
 		bool isCurrentNow = _camera.Current;
 
 		// Detect state change
+
 		if (isCurrentNow && !_wasCurrentLastFrame)
 		{
 			// Camera just became active
+
 			GD.Print($"{_camera.GetParent().Name}/{_camera.Name} activated");
 			EmitSignal(SignalName.CameraActivated);
 		}
 		else if (!isCurrentNow && _wasCurrentLastFrame)
 		{
 			// Camera just became inactive
+
 			GD.Print($"{_camera.GetParent().Name}/{_camera.Name} deactivated");
 			EmitSignal(SignalName.CameraDeactivated);
 		}
