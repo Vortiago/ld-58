@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=22 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://b24cp0q5u14rh" path="res://Main.cs" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://b3u146i3c02us" path="res://Frame1.cs" id="2_0xm2m"]
@@ -20,6 +20,8 @@ albedo_color = Color(0.3180198, 0.31801978, 0.31801975, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
 albedo_color = Color(0.37036446, 0.3703645, 0.37036446, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lquwl"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_lquwl"]
 top_radius = 0.1
@@ -53,20 +55,70 @@ script = ExtResource("1_ig7tw")
 
 [node name="HallwayGeometry" type="Node3D" parent="."]
 
-[node name="Floor" type="MeshInstance3D" parent="HallwayGeometry"]
+[node name="MainHallwayRectangle" type="Node3D" parent="HallwayGeometry"]
+
+[node name="Floor" type="MeshInstance3D" parent="HallwayGeometry/MainHallwayRectangle"]
 transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("BoxMesh_7dm0k")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_7dm0k")
+
+[node name="LeftWall" type="MeshInstance3D" parent="HallwayGeometry/MainHallwayRectangle"]
+transform = Transform3D(0.1, 0, 0, 0, 3, 0, 0, 0, 2, -5, 1.5, 0)
+mesh = SubResource("BoxMesh_ig7tw")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
+
+[node name="RightWall" type="MeshInstance3D" parent="HallwayGeometry/MainHallwayRectangle"]
+transform = Transform3D(0.1, 0, 0, 0, 3, 0, 0, 0, 2, 5, 1.5, 0)
+mesh = SubResource("BoxMesh_0xm2m")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ig7tw")
+
+[node name="Ceiling" type="MeshInstance3D" parent="HallwayGeometry/MainHallwayRectangle"]
+transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, 3, 0)
+mesh = SubResource("BoxMesh_7dm0k")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_7dm0k")
+
+[node name="BackWall" type="MeshInstance3D" parent="HallwayGeometry/MainHallwayRectangle"]
+transform = Transform3D(10, 0, 0, 0, 3, 0, 0, 0, 0.1, 0, 1.5, -1)
+mesh = SubResource("BoxMesh_ig7tw")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
+
+[node name="FrontWall" type="MeshInstance3D" parent="HallwayGeometry/MainHallwayRectangle"]
+transform = Transform3D(5, 0, 0, 0, 3, 0, 0, 0, 0.1, -2.5, 1.5, 1)
+mesh = SubResource("BoxMesh_lquwl")
+skeleton = NodePath("../..")
+
+[node name="LShapeExtension" type="Node3D" parent="HallwayGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="ExtensionFloor" type="MeshInstance3D" parent="HallwayGeometry/LShapeExtension"]
+transform = Transform3D(5, 0, 0, 0, 0.1, 0, 0, 0, 4, 2.5, 0, 2)
 mesh = SubResource("BoxMesh_7dm0k")
 surface_material_override/0 = SubResource("StandardMaterial3D_7dm0k")
 
-[node name="LeftWall" type="MeshInstance3D" parent="HallwayGeometry"]
-transform = Transform3D(0.1, 0, 0, 0, 3, 0, 0, 0, 2, -5, 1.5, 0)
+[node name="ExtensionCeiling" type="MeshInstance3D" parent="HallwayGeometry/LShapeExtension"]
+transform = Transform3D(5, 0, 0, 0, 0.1, 0, 0, 0, 4, 2.5, 3, 2)
+mesh = SubResource("BoxMesh_7dm0k")
+surface_material_override/0 = SubResource("StandardMaterial3D_7dm0k")
+
+[node name="ExtensionRightWall" type="MeshInstance3D" parent="HallwayGeometry/LShapeExtension"]
+transform = Transform3D(0.1, 0, 0, 0, 3, 0, 0, 0, 4, 5, 1.5, 2)
 mesh = SubResource("BoxMesh_ig7tw")
 surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
 
-[node name="RightWall" type="MeshInstance3D" parent="HallwayGeometry"]
-transform = Transform3D(0.1, 0, 0, 0, 3, 0, 0, 0, 2, 5, 1.5, 0)
-mesh = SubResource("BoxMesh_0xm2m")
-surface_material_override/0 = SubResource("StandardMaterial3D_ig7tw")
+[node name="ExtensionLeftWall" type="MeshInstance3D" parent="HallwayGeometry/LShapeExtension"]
+transform = Transform3D(0.1, 0, 0, 0, 3, 0, 0, 0, 4, 0, 1.5, 2)
+mesh = SubResource("BoxMesh_ig7tw")
+surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
+
+[node name="ExtensionEndWall" type="MeshInstance3D" parent="HallwayGeometry/LShapeExtension"]
+transform = Transform3D(5, 0, 0, 0, 3, 0, 0, 0, 0.1, 2.5, 1.5, 4)
+mesh = SubResource("BoxMesh_ig7tw")
+surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
 
 [node name="HallwayClue" type="MeshInstance3D" parent="HallwayGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16008878, 0)
