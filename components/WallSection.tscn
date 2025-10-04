@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dnh3l337i2tlc"]
+
+[ext_resource type="Texture2D" uid="uid://b7fgmldwchi6e" path="res://assets/textures/g_toit-tower.png" id="1_3dnd1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mt8pv"]
+albedo_texture = ExtResource("1_3dnd1")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fgsl3"]
+material = SubResource("StandardMaterial3D_mt8pv")
+size = Vector2(2, 4)
+center_offset = Vector3(0, 2, 0)
+orientation = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_tljqy"]
+size = Vector3(0.02, 0.3, 2)
+
+[sub_resource type="PrismMesh" id="PrismMesh_lehkh"]
+left_to_right = 0.0
+size = Vector3(0.15, 0.25, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_56600"]
+size = Vector3(0.03, 0.05, 2)
+
+[node name="WallSection" type="Node3D"]
+
+[node name="WallPlane" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_fgsl3")
+
+[node name="Baseboard" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, 0.15, 0)
+mesh = SubResource("BoxMesh_tljqy")
+
+[node name="CrownMolding" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.125, 3.95, 0)
+mesh = SubResource("PrismMesh_lehkh")
+
+[node name="ChairRail" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015, 0.9, 0)
+mesh = SubResource("BoxMesh_56600")
