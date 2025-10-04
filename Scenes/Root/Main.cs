@@ -8,6 +8,7 @@ public partial class Main : Node3D
 	private GameUI _gameUI;
 	private ClueContainer _clueContainer;
 	private EndGameDialog _endGameDialog;
+	private StartScreen _startScreen;
 
 	public void FrameClicked(Camera3D associatedCamera)
 	{
@@ -23,30 +24,38 @@ public partial class Main : Node3D
 		_gameUI = GetNode<GameUI>("GameUI");
 		_clueContainer = GetNode<ClueContainer>("ClueContainer");
 		_endGameDialog = GetNode<EndGameDialog>("EndGameDialog");
+		_startScreen = GetNode<StartScreen>("StartScreen");
 
 		// Initialize GameUI with references to the dialog systems
 		_gameUI.Initialize(_clueContainer, _endGameDialog);
 
-		// Subscribe to EndGameDialog events
+		// Subscribe to events
 		_endGameDialog.AnswerSubmitted += OnAnswerSubmitted;
+		_startScreen.GameStarted += OnGameStarted;
 
-		// Find the initial frame (Frame1 - "us" frame) and activate it on game start
+		// Find the initial frame (Frame1 - "us" frame)
 		_initialFrame = GetNode<PhotoFrame>("Hallway/PhotoFrames/Frame1");
-		if (_initialFrame != null)
-		{
-			CallDeferred(MethodName.ActivateInitialFrame);
-		}
+
+		// Start with the start screen visible
+		_startScreen.Show();
 	}
 
 	public override void _ExitTree()
 	{
 		_dialogSystem.DialogFinished -= OnDialogFinished;
 		_endGameDialog.AnswerSubmitted -= OnAnswerSubmitted;
+		_startScreen.GameStarted -= OnGameStarted;
 	}
 
-	private void ActivateInitialFrame()
+	private void OnGameStarted()
 	{
-		_initialFrame.ActivateFrame();
+		if (_initialFrame != null)
+		{
+			// Switch to Frame1's camera and trigger dialog
+			Camera3D camera = _initialFrame.GetNode<Camera3D>("Camera3D");
+			camera.MakeCurrent();
+			_initialFrame.ActivateFrame();
+		}
 	}
 
 	private void OnDialogFinished()
@@ -59,6 +68,9 @@ public partial class Main : Node3D
 	{
 		GD.Print($"Answer submitted - Who: {whoAnswer}, What: {whatAnswer}, Why: {whyAnswer}");
 		// TODO: Check if the answer is correct and show appropriate feedback
+
+		// Return to start screen
+		_startScreen.Show();
 	}
 
 	/// <summary>

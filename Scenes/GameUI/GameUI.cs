@@ -40,7 +40,15 @@ public partial class GameUI : CanvasLayer
 	{
 		if (_clueContainer != null)
 		{
-			_clueContainer.Show();
+			if (_clueContainer.Visible)
+			{
+				_clueContainer.Hide();
+			}
+			else
+			{
+				_clueContainer.Show();
+				_endGameDialog?.Hide();
+			}
 		}
 	}
 
@@ -48,7 +56,15 @@ public partial class GameUI : CanvasLayer
 	{
 		if (_endGameDialog != null)
 		{
-			_endGameDialog.Show();
+			if (_endGameDialog.Visible)
+			{
+				_endGameDialog.Hide();
+			}
+			else
+			{
+				_endGameDialog.Show();
+				_clueContainer?.Hide();
+			}
 		}
 	}
 }
