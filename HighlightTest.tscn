@@ -1,11 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://baa4a3syroh8e"]
 
 [ext_resource type="PackedScene" uid="uid://cocghlr3negpx" path="res://components/InteractableObject.tscn" id="1_34oim"]
-[ext_resource type="Material" uid="uid://b6bnhm22g7ip0" path="res://shaders/outer_highlight_material.tres" id="2_34oim"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_34oim"]
+albedo_color = Color(0.6065804, 0.00027963967, 0.6092126, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_n8r6w"]
+material = SubResource("StandardMaterial3D_34oim")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_aimae"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lq7a8"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="HighlightTest" type="Node3D"]
 
@@ -19,10 +23,8 @@ transform = Transform3D(1, 0, 0, 0, -0.10232382, 0.99475116, 0, -0.99475116, -0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.0373878)
 mesh = SubResource("BoxMesh_n8r6w")
 
-[node name="InteractableObject" parent="MeshInstance3D" node_paths=PackedStringArray("Model", "CollisionShape") instance=ExtResource("1_34oim")]
+[node name="InteractableObject" parent="MeshInstance3D" node_paths=PackedStringArray("Model") instance=ExtResource("1_34oim")]
 Model = NodePath("..")
-CollisionShape = NodePath("CollisionShape3D")
-HighlightMaterial = ExtResource("2_34oim")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/InteractableObject"]
-shape = SubResource("BoxShape3D_aimae")
+shape = SubResource("ConcavePolygonShape3D_lq7a8")

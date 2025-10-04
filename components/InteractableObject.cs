@@ -3,8 +3,6 @@ using Godot;
 
 public partial class InteractableObject : Area3D
 {
-    private StandardMaterial3D[] modelMaterials;
-
     [Signal] public delegate void InteractableObjectClickedEventHandler();
 
     [Export]
@@ -17,13 +15,6 @@ public partial class InteractableObject : Area3D
 
     public override void _Ready()
     {
-        var materialCount = Model.GetSurfaceOverrideMaterialCount();
-        modelMaterials = new StandardMaterial3D[materialCount];
-        for (int i = 0; i < materialCount; i++)
-        {
-            modelMaterials[i] = (StandardMaterial3D)Model.GetSurfaceOverrideMaterial(i);
-        }
-
         this.MouseEntered += OnMouseEntered;
         this.MouseExited += OnMouseExited;
         this.InputEvent += OnInputEvent;
@@ -58,9 +49,19 @@ public partial class InteractableObject : Area3D
 
     private void ToggleHighlight(bool highlight)
     {
-        for (int i = 0; i < modelMaterials.Length; i++)
+        if (Model == null || HighlightMaterial == null)
         {
-            Model.SetSurfaceOverrideMaterial(i, highlight ? HighlightMaterial : modelMaterials[i]);
+            GD.PrintErr("Model or HighlightMaterial is not set.");
+            return;
+        }
+
+        if (highlight)
+        {
+            Model.MaterialOverlay = HighlightMaterial;
+        }
+        else
+        {
+            Model.MaterialOverlay = null;
         }
     }
 }
