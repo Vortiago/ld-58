@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://b6bnhm22g7ip0"]
+
+[ext_resource type="Shader" uid="uid://cfox3iy8in7xs" path="res://shaders/inner_highlight_material.gdshader" id="1_yavrg"]
+[ext_resource type="Shader" uid="uid://dywxh0m1372kh" path="res://shaders/outer_highlight_material.gdshader" id="2_ycxsi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xjuwf"]
+render_priority = 0
+shader = ExtResource("1_yavrg")
+shader_parameter/normal_threshold = 0.1
+shader_parameter/depth_threshold = 0.05
+shader_parameter/depth_artifact_correction_coef = 2.0
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+
+[resource]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xjuwf")
+shader = ExtResource("2_ycxsi")

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://baa4a3syroh8e"]
+
+[ext_resource type="PackedScene" uid="uid://cocghlr3negpx" path="res://components/InteractableObject.tscn" id="1_34oim"]
+[ext_resource type="Material" uid="uid://b6bnhm22g7ip0" path="res://shaders/outer_highlight_material.tres" id="2_34oim"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n8r6w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aimae"]
+
+[node name="HighlightTest" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.9221132, 0.11153483, -0.37049595, 0, 0.95755124, 0.2882631, 0.3869202, -0.2658112, 0.88297063, -0.96475923, 1.0482693, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.10232382, 0.99475116, 0, -0.99475116, -0.10232382, 0, 1.6583549, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.0373878)
+mesh = SubResource("BoxMesh_n8r6w")
+
+[node name="InteractableObject" parent="MeshInstance3D" node_paths=PackedStringArray("Model", "CollisionShape") instance=ExtResource("1_34oim")]
+Model = NodePath("..")
+CollisionShape = NodePath("CollisionShape3D")
+HighlightMaterial = ExtResource("2_34oim")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/InteractableObject"]
+shape = SubResource("BoxShape3D_aimae")
