@@ -1,12 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://d5713qx52vb1"]
 
-[ext_resource type="PackedScene" uid="uid://egcjovpb1kfo" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
+[ext_resource type="PackedScene" uid="uid://di6mqpjwm1eae" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
 [ext_resource type="PackedScene" uid="uid://c4h5k8nap2q7r" path="res://Scenes/PhotoFrame/PhotoFrame.tscn" id="2_photoframe"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_4xeht"]
+[ext_resource type="PackedScene" uid="uid://btlm13sldjwnq" path="res://Scenes/PhotoFrame/HouseKeeper.tscn" id="3_cvgsa"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_table"]
 size = Vector3(1.5, 0.1, 0.8)
+
+[sub_resource type="ImageTexture" id="ImageTexture_4xeht"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_table"]
 albedo_color = Color(0.545098, 0.270588, 0.0745098, 1)
@@ -50,8 +51,8 @@ FrameTexture = SubResource("ImageTexture_4xeht")
 FirstVisitDialog = PackedStringArray("What\'s that smell... blood? And why is the morning light so harsh today?", "Wait... Lord Blackwood\'s body! There, by the corner table!", "The other portraits are waking. I wonder if any of them saw anything last night. Time to do what I do best—investigate.", "Lady Margaret looks shaken. I should start there.")
 LeftSpeakerName = "Inspector Crawford"
 
-[node name="Frame2" parent="PhotoFrames" instance=ExtResource("2_photoframe")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 0, 12, 3, 0)
+[node name="HouseKeeper" parent="PhotoFrames" instance=ExtResource("3_cvgsa")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 2.5, 0)
 
 [node name="CrimeSceneObjects" type="Node3D" parent="."]
 
