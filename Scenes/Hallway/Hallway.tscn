@@ -1086,7 +1086,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_carpet_green")
 [node name="EntranceFurniture" type="Node3D" parent="ShortCorridorFurniture"]
 
 [node name="ShoeStorage" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0, 7.5)
+transform = Transform3D(0.99996436, 0, -0.008447293, 0, 1, 0, 0.008447293, 0, 0.99996436, 6.9621983, 0, 8.494082)
 
 [node name="CabinetBody" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
@@ -1165,7 +1165,7 @@ mesh = SubResource("CylinderMesh_umbrella_stand")
 surface_material_override/0 = SubResource("StandardMaterial3D_brass")
 
 [node name="EntrywayBench" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25, 0, 6.5)
+transform = Transform3D(-0.024310071, 0, 0.9997045, 0, 1, 0, -0.9997045, 0, -0.024310071, 6.2446356, 0, 7.135268)
 
 [node name="Seat" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/EntrywayBench"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
@@ -1198,14 +1198,14 @@ mesh = SubResource("BoxMesh_bench_leg")
 surface_material_override/0 = SubResource("StandardMaterial3D_table")
 
 [node name="WallMirror" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 6.15, 1.8, 6.5)
+transform = Transform3D(8.742278e-08, 0, 1, 0, 1, 0, -1, 0, 8.742278e-08, 11.980728, 1.5314279, 7.534152)
 
 [node name="Frame" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/WallMirror"]
 mesh = SubResource("BoxMesh_mirror_frame")
 surface_material_override/0 = SubResource("StandardMaterial3D_table")
 
 [node name="Glass" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/WallMirror"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.02)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.033947468)
 mesh = SubResource("BoxMesh_mirror_glass")
 surface_material_override/0 = SubResource("StandardMaterial3D_mirror")
 
