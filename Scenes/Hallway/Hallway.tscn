@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://d5713qx52vb1"]
+[gd_scene load_steps=77 format=3 uid="uid://d5713qx52vb1"]
 
 [ext_resource type="PackedScene" uid="uid://egcjovpb1kfo" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
 [ext_resource type="PackedScene" uid="uid://bw6xmw805w165" path="res://components/Door.tscn" id="2_dqxua"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://btlm13sldjwnq" path="res://Scenes/PhotoFrame/HouseKeeper/HouseKeeper.tscn" id="3_cvgsa"]
 [ext_resource type="PackedScene" uid="uid://bv2d2i0odcgfk" path="res://Scenes/PhotoFrame/InspectorCrawford/InspectorCrawford.tscn" id="4_05vpa"]
 [ext_resource type="PackedScene" uid="uid://cg22nmohjn64o" path="res://Scenes/PhotoFrame/LadyBlackwood/LadyBlackwood.tscn" id="4_hifnc"]
+[ext_resource type="PackedScene" uid="uid://b26afuxwuc6tp" path="res://components/EntranceDoor.tscn" id="4_o5p3j"]
 [ext_resource type="PackedScene" uid="uid://c2g6xco1rbfav" path="res://Scenes/PhotoFrame/DrHenryMorrison/DrHenryMorrison.tscn" id="5_ko40w"]
 [ext_resource type="PackedScene" uid="uid://d4kcn0ixh7umi" path="res://Scenes/PhotoFrame/YoungTimBlackwood/YoungTimBlackwood.tscn" id="6_83k6l"]
 [ext_resource type="PackedScene" uid="uid://diwkiu7viyhdu" path="res://assets/grandfatherclock.tscn" id="6_ko40w"]
@@ -241,6 +242,7 @@ roughness = 0.1
 
 [node name="Door" parent="HallwayGeometry" instance=ExtResource("2_dqxua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 8.7)
+visible = false
 
 [node name="roof_lamp" parent="HallwayGeometry" instance=ExtResource("3_as5ck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.803779, 4, 0)
@@ -262,6 +264,9 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6, 
 
 [node name="Door3" parent="HallwayGeometry" instance=ExtResource("2_dqxua")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.1, 0.045, 3.25)
+
+[node name="EntranceDoor" parent="HallwayGeometry" instance=ExtResource("4_o5p3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 8.7)
 
 [node name="PhotoFrames" type="Node3D" parent="."]
 
