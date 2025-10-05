@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://btlm13sldjwnq" path="res://Scenes/PhotoFrame/HouseKeeper/HouseKeeper.tscn" id="3_cvgsa"]
 [ext_resource type="PackedScene" uid="uid://bv2d2i0odcgfk" path="res://Scenes/PhotoFrame/InspectorCrawford/InspectorCrawford.tscn" id="4_05vpa"]
 [ext_resource type="PackedScene" uid="uid://cg22nmohjn64o" path="res://Scenes/PhotoFrame/LadyBlackwood/LadyBlackwood.tscn" id="4_hifnc"]
-[ext_resource type="PackedScene" path="res://components/EntranceDoor.tscn" id="4_o5p3j"]
+[ext_resource type="PackedScene" uid="uid://b26afuxwuc6tp" path="res://components/EntranceDoor.tscn" id="4_o5p3j"]
 [ext_resource type="PackedScene" uid="uid://c2g6xco1rbfav" path="res://Scenes/PhotoFrame/DrHenryMorrison/DrHenryMorrison.tscn" id="5_ko40w"]
 [ext_resource type="PackedScene" uid="uid://d4kcn0ixh7umi" path="res://Scenes/PhotoFrame/YoungTimBlackwood/YoungTimBlackwood.tscn" id="6_83k6l"]
 [ext_resource type="PackedScene" uid="uid://diwkiu7viyhdu" path="res://assets/grandfatherclock.tscn" id="6_ko40w"]
@@ -248,7 +248,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.803779, 4, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14916, 4, 0)
 
 [node name="roof_lamp5" parent="HallwayGeometry" instance=ExtResource("3_as5ck")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4, 5.594346)
 
 [node name="Door2" parent="HallwayGeometry" instance=ExtResource("2_dqxua")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6, 0, 0)
@@ -310,13 +310,13 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.4
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 11.996684, 2.5, 1.6339257)
 
 [node name="Flowers" parent="PhotoFrames" instance=ExtResource("12_flow01")]
-transform = Transform3D(0.9989997, 0, 0.04471777, 0.021612676, 0.87544763, -0.48282948, -0.039148066, 0.48331293, 0.8745719, 1.7117245, 1.203001, 1.496881)
+transform = Transform3D(0.99938184, 0.0015291474, -0.035129152, -0.0019912743, 0.99991196, -0.013123741, 0.035106003, 0.013185583, 0.99929667, 2.7166553, 2.0863602, 1.7342572)
 
 [node name="Books" parent="PhotoFrames" instance=ExtResource("13_book01")]
 transform = Transform3D(-0.9999998, 0, -0.00064586103, 0, 1, 0, 0.00064586103, 0, -0.9999998, -1.0481386, 1.9952164, -1.7381669)
 
 [node name="Clock" parent="PhotoFrames" instance=ExtResource("14_clck01")]
-transform = Transform3D(0.38479534, 0.2862098, 0.87750584, 0.042413935, 0.9442213, -0.32656884, -0.92202705, 0.16288067, 0.3511927, 11.796404, 0.45583522, 4.849784)
+transform = Transform3D(-0.5575261, 0.22966172, 0.7977594, -0.02022883, 0.9569276, -0.28962088, -0.8299128, -0.17760888, -0.5288661, 11.68101, 0.4439324, 3.0193183)
 
 [node name="CrimeSceneObjects" type="Node3D" parent="."]
 
@@ -699,6 +699,144 @@ spot_angle = 30.0
 
 [node name="Window6" type="Node3D" parent="CrimeSceneObjects/Windows"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9, 1.602, -1.87)
+
+[node name="FrontWindowLeft" type="Node3D" parent="CrimeSceneObjects/Windows"]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 2, 0, -1.7484555e-07, 0, 1, 10.046323, 1.9020202, 8.843189)
+
+[node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_window")
+surface_material_override/0 = SubResource("ShaderMaterial_window_glass")
+
+[node name="FrameTop" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5250001, -0.0942688)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameBottom" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, -0.0942688)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameLeft" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0, -0.0942688)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameRight" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0, -0.0942688)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="SunriseLight" type="SpotLight3D" parent="CrimeSceneObjects/Windows/FrontWindowLeft"]
+transform = Transform3D(0.91363806, -0.12398335, -0.38716108, 0.090333804, 0.4884877, 0.056741368, 0.3641769, -0.1736296, 0.91500163, -0.23935032, 0.071909666, 0.40067482)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
+
+[node name="WindowSillVase" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, 0.5)
+mesh = SubResource("CylinderMesh_small_vase")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="WindowSillVase2" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, 0.5)
+mesh = SubResource("CylinderMesh_small_vase")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="SunriseLight2" type="SpotLight3D" parent="CrimeSceneObjects/Windows/FrontWindowLeft"]
+transform = Transform3D(0.8857988, -0.4440568, 0.13481146, 0.2306462, 0.4053966, -0.18015528, 0.0506942, 0.38135022, 0.9230396, 0.09253979, 0.18425035, 0.47810364)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
+
+[node name="SunriseLight3" type="SpotLight3D" parent="CrimeSceneObjects/Windows/FrontWindowLeft"]
+transform = Transform3D(0.9308967, -0.24991365, -0.2664104, 0.17421839, 0.4132222, 0.221123, 0.1096501, -0.5045126, 0.85641336, -0.14853191, -0.15973413, 0.40067482)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
+
+[node name="FrontWindowRight" type="Node3D" parent="CrimeSceneObjects/Windows"]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 2, 0, -1.7484555e-07, 0, 1, 7.950159, 1.9020202, 8.843189)
+
+[node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_window")
+surface_material_override/0 = SubResource("ShaderMaterial_window_glass")
+
+[node name="FrameTop" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5250001, -0.0942688)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameBottom" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, -0.0942688)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameLeft" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0, -0.0942688)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameRight" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0, -0.0942688)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="SunriseLight" type="SpotLight3D" parent="CrimeSceneObjects/Windows/FrontWindowRight"]
+transform = Transform3D(0.9437082, -0.20469731, 0.2598345, 0.09033381, 0.4884877, 0.056741368, -0.27708152, -0.0601509, 0.95896184, 0.15492296, 0, 0.5)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
+
+[node name="WindowSillVase" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, 0.5)
+mesh = SubResource("CylinderMesh_small_vase")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="WindowSillVase2" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, 0.5)
+mesh = SubResource("CylinderMesh_small_vase")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="SunriseLight2" type="SpotLight3D" parent="CrimeSceneObjects/Windows/FrontWindowRight"]
+transform = Transform3D(0.96045184, -0.27823886, -0.010741752, 0.12935986, 0.43874153, 0.20192054, -0.102938555, -0.39064902, 0.91476613, -0.001613617, -0.15474355, 0.56412125)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
+
+[node name="SunriseLight3" type="SpotLight3D" parent="CrimeSceneObjects/Windows/FrontWindowRight"]
+transform = Transform3D(0.46392882, 0.88586843, 0.0026832952, -0.38234752, 0.20099793, -0.25181383, -0.44722655, 0.2315955, 0.8639166, 0.020168781, 0.14207852, 0.34466267)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
 
 [node name="RandomObjects" type="Node3D" parent="."]
 
@@ -1316,12 +1454,7 @@ mesh = SubResource("BoxMesh_coat_hook")
 surface_material_override/0 = SubResource("StandardMaterial3D_table")
 
 [node name="UmbrellaStand" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.091413, 0, 8.5)
-
-[node name="Body" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/UmbrellaStand"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
-mesh = SubResource("CylinderMesh_umbrella_stand")
-surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.091413, 0, 8.253898)
 
 [node name="Body2" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/UmbrellaStand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
