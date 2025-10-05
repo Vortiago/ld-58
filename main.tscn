@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6dd3yagmchk6"]
+[gd_scene load_steps=8 format=3 uid="uid://c6dd3yagmchk6"]
 
 [ext_resource type="Script" uid="uid://d3jb23sfv06xs" path="res://Scenes/Root/Main.cs" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://d5713qx52vb1" path="res://Scenes/Hallway/Hallway.tscn" id="2_hallway"]
-[ext_resource type="PackedScene" uid="uid://mjbenx6we15q" path="res://assets/roof_lamp.tscn" id="3_5vw27"]
 [ext_resource type="PackedScene" uid="uid://bj2qxv8y7n4k5" path="res://Scenes/DialogSystem/DialogSystem.tscn" id="3_dialogsystem"]
 [ext_resource type="PackedScene" uid="uid://brwt4lhb7qlva" path="res://Scenes/GameUI/GameUI.tscn" id="4_gameui"]
 [ext_resource type="PackedScene" uid="uid://cswenmb5k3agg" path="res://ClueContainer.tscn" id="5_cluecontainer"]
@@ -13,9 +12,6 @@
 script = ExtResource("1_main")
 
 [node name="Hallway" parent="." instance=ExtResource("2_hallway")]
-
-[node name="roof_lamp" parent="Hallway" instance=ExtResource("3_5vw27")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="DialogSystem" parent="." instance=ExtResource("3_dialogsystem")]
 

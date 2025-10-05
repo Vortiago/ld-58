@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://egcjovpb1kfo"]
+[gd_scene load_steps=14 format=3 uid="uid://egcjovpb1kfo"]
 
 [ext_resource type="PackedScene" uid="uid://dnh3l337i2tlc" path="res://components/WallSection.tscn" id="2_477tv"]
 [ext_resource type="Texture2D" uid="uid://kemuwtcc5vex" path="res://assets/textures/fy_acc_lien.png" id="2_kmj1a"]
-[ext_resource type="Texture2D" uid="uid://d3g5ss8md8j8p" path="res://assets/textures/fyaccwood.png" id="3_fgsl3"]
 [ext_resource type="PackedScene" uid="uid://tyxmuwse34y7" path="res://components/CornerColumn.tscn" id="3_kmj1a"]
+[ext_resource type="Texture2D" uid="uid://dg1a7d86kdjag" path="res://assets/textures/WhiteRaised_S.jpg" id="3_tljqy"]
+[ext_resource type="Texture2D" uid="uid://di1ju6xum75pe" path="res://assets/textures/WhiteRaised_N.jpg" id="4_lehkh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgsl3"]
 albedo_texture = ExtResource("2_kmj1a")
@@ -15,7 +16,10 @@ material = SubResource("StandardMaterial3D_fgsl3")
 size = Vector2(12, 3.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tljqy"]
-albedo_texture = ExtResource("3_fgsl3")
+albedo_texture = ExtResource("3_tljqy")
+normal_enabled = true
+normal_texture = ExtResource("4_lehkh")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 uv1_world_triplanar = true
 uv2_world_triplanar = true
@@ -34,7 +38,10 @@ material = SubResource("StandardMaterial3D_kmj1a")
 size = Vector2(6, 10.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lehkh"]
-albedo_texture = ExtResource("3_fgsl3")
+albedo_texture = ExtResource("3_tljqy")
+normal_enabled = true
+normal_texture = ExtResource("4_lehkh")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
