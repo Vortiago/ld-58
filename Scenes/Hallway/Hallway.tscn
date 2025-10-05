@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://egcjovpb1kfo" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
 [ext_resource type="PackedScene" uid="uid://bw6xmw805w165" path="res://components/Door.tscn" id="2_dqxua"]
-[ext_resource type="PackedScene" uid="uid://mjbenx6we15q" path="res://assets/roof_lamp.tscn" id="3_as5ck"]
+[ext_resource type="PackedScene" path="res://assets/roof_lamp.tscn" id="3_as5ck"]
 [ext_resource type="PackedScene" uid="uid://btlm13sldjwnq" path="res://Scenes/PhotoFrame/HouseKeeper/HouseKeeper.tscn" id="3_cvgsa"]
 [ext_resource type="PackedScene" uid="uid://bv2d2i0odcgfk" path="res://Scenes/PhotoFrame/InspectorCrawford/InspectorCrawford.tscn" id="4_05vpa"]
 [ext_resource type="PackedScene" uid="uid://cg22nmohjn64o" path="res://Scenes/PhotoFrame/LadyBlackwood/LadyBlackwood.tscn" id="4_hifnc"]
-[ext_resource type="PackedScene" uid="uid://b26afuxwuc6tp" path="res://components/EntranceDoor.tscn" id="4_o5p3j"]
+[ext_resource type="PackedScene" path="res://components/EntranceDoor.tscn" id="4_o5p3j"]
 [ext_resource type="PackedScene" uid="uid://c2g6xco1rbfav" path="res://Scenes/PhotoFrame/DrHenryMorrison/DrHenryMorrison.tscn" id="5_ko40w"]
 [ext_resource type="PackedScene" uid="uid://d4kcn0ixh7umi" path="res://Scenes/PhotoFrame/YoungTimBlackwood/YoungTimBlackwood.tscn" id="6_83k6l"]
 [ext_resource type="PackedScene" uid="uid://diwkiu7viyhdu" path="res://assets/grandfatherclock.tscn" id="6_ko40w"]
@@ -239,18 +239,13 @@ roughness = 0.1
 [node name="Hallway" type="Node3D"]
 
 [node name="HallwayGeometry" parent="." instance=ExtResource("1_hallwaygeom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0010881424, 0.0035161972, 0.0035357475)
 
 [node name="roof_lamp" parent="HallwayGeometry" instance=ExtResource("3_as5ck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.803779, 4, 0)
 
-[node name="roof_lamp2" parent="HallwayGeometry" instance=ExtResource("3_as5ck")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4, 4)
-
 [node name="roof_lamp3" parent="HallwayGeometry" instance=ExtResource("3_as5ck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14916, 4, 0)
-
-[node name="roof_lamp4" parent="HallwayGeometry" instance=ExtResource("3_as5ck")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6506758, 4, 0)
 
 [node name="roof_lamp5" parent="HallwayGeometry" instance=ExtResource("3_as5ck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4, 7)

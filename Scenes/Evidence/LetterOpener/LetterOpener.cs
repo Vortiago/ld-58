@@ -10,7 +10,7 @@ public partial class LetterOpener : Node3D
 
     private readonly DialogSystem.DialogLine[] _examinationDialog = new[]
     {
-        new DialogSystem.DialogLine("A decorative silver letter opener with an ivory handle. Still embedded in the victim's back.", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("A decorative silver letter opener with an ivory handle. Blood stains along the blade.", DialogSystem.SpeakerSide.Left),
         new DialogSystem.DialogLine("Curious... this was kept on Lord Edgar's desk. Not something a stranger would know about.", DialogSystem.SpeakerSide.Left),
         new DialogSystem.DialogLine("The killer grabbed it in the heat of the moment. This wasn't premeditated murder.", DialogSystem.SpeakerSide.Left)
     };
@@ -38,7 +38,7 @@ public partial class LetterOpener : Node3D
         {
             _main.AddClue(
                 "Possible Murder Weapon",
-                "A decorative silver letter opener with an ivory handle, still embedded in the victim's back. It was kept on Lord Edgar's desk - not something a stranger would know about. The killer grabbed it in the heat of the moment, suggesting this wasn't premeditated murder."
+                "A decorative silver letter opener with an ivory handle. Blood stains along the blade. It was kept on Lord Edgar's desk - not something a stranger would know about. The killer grabbed it in the heat of the moment, suggesting this wasn't premeditated murder."
             );
 
             // Unlock letter opener as weapon option
