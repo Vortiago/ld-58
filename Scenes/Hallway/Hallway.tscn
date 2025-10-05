@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://d5713qx52vb1"]
+[gd_scene load_steps=74 format=3 uid="uid://d5713qx52vb1"]
 
 [ext_resource type="PackedScene" uid="uid://egcjovpb1kfo" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
 [ext_resource type="PackedScene" uid="uid://bw6xmw805w165" path="res://components/Door.tscn" id="2_dqxua"]
@@ -107,16 +107,21 @@ albedo_color = Color(0.2, 0.1, 0.05, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_frame_vertical"]
 size = Vector3(0.05, 1, 0.1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_console_table"]
-size = Vector3(1.2, 0.8, 0.4)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_vase"]
-top_radius = 0.1
-bottom_radius = 0.15
-height = 0.4
+[sub_resource type="CylinderMesh" id="CylinderMesh_small_vase"]
+top_radius = 0.05
+bottom_radius = 0.06
+height = 0.15
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brass"]
 albedo_color = Color(0.803922, 0.521569, 0.247059, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_candle"]
+top_radius = 0.02
+bottom_radius = 0.025
+height = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_candle"]
+albedo_color = Color(0.95, 0.9, 0.75, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_plant"]
 top_radius = 0.0
@@ -125,6 +130,41 @@ height = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plant"]
 albedo_color = Color(0.156863, 0.392157, 0.156863, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sconce_plate"]
+size = Vector3(0.15, 0.25, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_painting_frame"]
+size = Vector3(0.05, 0.5, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_painting_canvas"]
+size = Vector3(0.02, 0.4, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_painting_landscape"]
+albedo_color = Color(0.3, 0.5, 0.3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_painting_portrait"]
+albedo_color = Color(0.5, 0.4, 0.35, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_console_table"]
+size = Vector3(1.2, 0.8, 0.4)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vase"]
+top_radius = 0.1
+bottom_radius = 0.15
+height = 0.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bust_pedestal"]
+top_radius = 0.08
+bottom_radius = 0.1
+height = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_marble"]
+albedo_color = Color(0.9, 0.9, 0.85, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bust_head"]
+radius = 0.12
+height = 0.24
 
 [sub_resource type="BoxMesh" id="BoxMesh_carpet_runner"]
 size = Vector3(6, 0.02, 1.2)
@@ -158,6 +198,50 @@ size = Vector3(3, 0.02, 4)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_carpet_green"]
 albedo_color = Color(0.196078, 0.392157, 0.196078, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_shoe_cabinet"]
+size = Vector3(1.2, 0.6, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_shoe_leg"]
+size = Vector3(0.08, 0.3, 0.08)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_coat_base"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.05
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_coat_post"]
+top_radius = 0.08
+bottom_radius = 0.08
+height = 1.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_coat_hook"]
+size = Vector3(0.15, 0.08, 0.08)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_umbrella_stand"]
+top_radius = 0.12
+bottom_radius = 0.15
+height = 0.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_bench_seat"]
+size = Vector3(0.8, 0.08, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bench_back"]
+size = Vector3(0.8, 0.5, 0.08)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bench_leg"]
+size = Vector3(0.08, 0.4, 0.08)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mirror_frame"]
+size = Vector3(0.8, 1, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mirror_glass"]
+size = Vector3(0.65, 0.85, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mirror"]
+albedo_color = Color(0.8, 0.85, 0.9, 1)
+metallic = 0.8
+roughness = 0.1
 
 [node name="Hallway" type="Node3D"]
 
@@ -375,6 +459,16 @@ spot_range = 13.0
 spot_attenuation = 1.5
 spot_angle = 30.0
 
+[node name="WindowSillVase" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.525, 0.5)
+mesh = SubResource("CylinderMesh_small_vase")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="WindowSillCandle" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.525, 0.5)
+mesh = SubResource("CylinderMesh_candle")
+surface_material_override/0 = SubResource("StandardMaterial3D_candle")
+
 [node name="WestOuterWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2, 1.602, -1.87)
 
@@ -413,6 +507,18 @@ shadow_enabled = true
 spot_range = 13.0
 spot_attenuation = 1.5
 spot_angle = 30.0
+
+[node name="WindowSillPlant" type="Node3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, 0.5)
+
+[node name="Pot" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestOuterWindow/WindowSillPlant"]
+mesh = SubResource("CylinderMesh_small_vase")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Plant" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestOuterWindow/WindowSillPlant"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0)
+mesh = SubResource("CylinderMesh_plant")
+surface_material_override/0 = SubResource("StandardMaterial3D_plant")
 
 [node name="EastInnerWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 1.602, 0.5)
@@ -453,6 +559,11 @@ spot_range = 13.0
 spot_attenuation = 1.5
 spot_angle = 30.0
 
+[node name="WindowSillCandle" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastInnerWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, 0.5)
+mesh = SubResource("CylinderMesh_candle")
+surface_material_override/0 = SubResource("StandardMaterial3D_candle")
+
 [node name="EastOuterWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 1.6, 5.8)
 
@@ -491,6 +602,16 @@ shadow_enabled = true
 spot_range = 13.0
 spot_attenuation = 1.5
 spot_angle = 30.0
+
+[node name="WindowSillVase" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastOuterWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, 0.5)
+mesh = SubResource("CylinderMesh_small_vase")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="WindowSillVase2" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastOuterWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, 0.5)
+mesh = SubResource("CylinderMesh_small_vase")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
 
 [node name="Window5" type="Node3D" parent="CrimeSceneObjects/Windows"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9, 1.602, -1.87)
@@ -531,10 +652,233 @@ spot_range = 13.0
 spot_attenuation = 1.5
 spot_angle = 30.0
 
+[node name="GlassPane2" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/Window5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_window")
+surface_material_override/0 = SubResource("ShaderMaterial_window_glass")
+
+[node name="FrameTop2" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/Window5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5250001, -0.111694336)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameBottom2" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/Window5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, -0.111694336)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameLeft2" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/Window5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0, -0.111694336)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameRight2" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/Window5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37499952, 0, -0.111694336)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="SunriseLight2" type="SpotLight3D" parent="CrimeSceneObjects/Windows/Window5"]
+transform = Transform3D(1, 1.4551917e-11, 0.0002616962, -6.802751e-05, 0.96562254, 0.25994837, -0.00025269974, -0.25994837, 0.9656225, -0.041039467, 0.2186532, 0.5053148)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
+
+[node name="Window6" type="Node3D" parent="CrimeSceneObjects/Windows"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9, 1.602, -1.87)
+
 [node name="RandomObjects" type="Node3D" parent="."]
 
 [node name="grandfatherclock" parent="RandomObjects" instance=ExtResource("6_ko40w")]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 6.508112, 0, -1.625)
+
+[node name="WallSconces" type="Node3D" parent="."]
+
+[node name="LongCorridorNorthSconce1" type="Node3D" parent="WallSconces"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 1.72)
+
+[node name="Backplate" type="MeshInstance3D" parent="WallSconces/LongCorridorNorthSconce1"]
+mesh = SubResource("BoxMesh_sconce_plate")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="Candle" type="MeshInstance3D" parent="WallSconces/LongCorridorNorthSconce1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
+mesh = SubResource("CylinderMesh_candle")
+surface_material_override/0 = SubResource("StandardMaterial3D_candle")
+
+[node name="LongCorridorNorthSconce2" type="Node3D" parent="WallSconces"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1.72)
+
+[node name="Backplate" type="MeshInstance3D" parent="WallSconces/LongCorridorNorthSconce2"]
+mesh = SubResource("BoxMesh_sconce_plate")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="Candle" type="MeshInstance3D" parent="WallSconces/LongCorridorNorthSconce2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
+mesh = SubResource("CylinderMesh_candle")
+surface_material_override/0 = SubResource("StandardMaterial3D_candle")
+
+[node name="LongCorridorNorthSconce3" type="Node3D" parent="WallSconces"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 1.72)
+
+[node name="Backplate" type="MeshInstance3D" parent="WallSconces/LongCorridorNorthSconce3"]
+mesh = SubResource("BoxMesh_sconce_plate")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="Candle" type="MeshInstance3D" parent="WallSconces/LongCorridorNorthSconce3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
+mesh = SubResource("CylinderMesh_candle")
+surface_material_override/0 = SubResource("StandardMaterial3D_candle")
+
+[node name="LongCorridorSouthSconce1" type="Node3D" parent="WallSconces"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -4, 2, -1.72)
+
+[node name="Backplate" type="MeshInstance3D" parent="WallSconces/LongCorridorSouthSconce1"]
+mesh = SubResource("BoxMesh_sconce_plate")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="Candle" type="MeshInstance3D" parent="WallSconces/LongCorridorSouthSconce1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
+mesh = SubResource("CylinderMesh_candle")
+surface_material_override/0 = SubResource("StandardMaterial3D_candle")
+
+[node name="LongCorridorSouthSconce2" type="Node3D" parent="WallSconces"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 4, 2, -1.72)
+
+[node name="Backplate" type="MeshInstance3D" parent="WallSconces/LongCorridorSouthSconce2"]
+mesh = SubResource("BoxMesh_sconce_plate")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="Candle" type="MeshInstance3D" parent="WallSconces/LongCorridorSouthSconce2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
+mesh = SubResource("CylinderMesh_candle")
+surface_material_override/0 = SubResource("StandardMaterial3D_candle")
+
+[node name="ShortCorridorWestSconce1" type="Node3D" parent="WallSconces"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.12, 2, 2)
+
+[node name="Backplate" type="MeshInstance3D" parent="WallSconces/ShortCorridorWestSconce1"]
+mesh = SubResource("BoxMesh_sconce_plate")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="Candle" type="MeshInstance3D" parent="WallSconces/ShortCorridorWestSconce1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
+mesh = SubResource("CylinderMesh_candle")
+surface_material_override/0 = SubResource("StandardMaterial3D_candle")
+
+[node name="ShortCorridorWestSconce2" type="Node3D" parent="WallSconces"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.12, 2, 4)
+
+[node name="Backplate" type="MeshInstance3D" parent="WallSconces/ShortCorridorWestSconce2"]
+mesh = SubResource("BoxMesh_sconce_plate")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="Candle" type="MeshInstance3D" parent="WallSconces/ShortCorridorWestSconce2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
+mesh = SubResource("CylinderMesh_candle")
+surface_material_override/0 = SubResource("StandardMaterial3D_candle")
+
+[node name="ShortCorridorEastSconce1" type="Node3D" parent="WallSconces"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.88, 2, 2)
+
+[node name="Backplate" type="MeshInstance3D" parent="WallSconces/ShortCorridorEastSconce1"]
+mesh = SubResource("BoxMesh_sconce_plate")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="Candle" type="MeshInstance3D" parent="WallSconces/ShortCorridorEastSconce1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
+mesh = SubResource("CylinderMesh_candle")
+surface_material_override/0 = SubResource("StandardMaterial3D_candle")
+
+[node name="ShortCorridorEastSconce2" type="Node3D" parent="WallSconces"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.88, 2, 4)
+
+[node name="Backplate" type="MeshInstance3D" parent="WallSconces/ShortCorridorEastSconce2"]
+mesh = SubResource("BoxMesh_sconce_plate")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="Candle" type="MeshInstance3D" parent="WallSconces/ShortCorridorEastSconce2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
+mesh = SubResource("CylinderMesh_candle")
+surface_material_override/0 = SubResource("StandardMaterial3D_candle")
+
+[node name="WallPaintings" type="Node3D" parent="."]
+
+[node name="LongCorridorNorthPainting1" type="Node3D" parent="WallPaintings"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -2, 2.2, 1.7)
+
+[node name="Frame" type="MeshInstance3D" parent="WallPaintings/LongCorridorNorthPainting1"]
+mesh = SubResource("BoxMesh_painting_frame")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Canvas" type="MeshInstance3D" parent="WallPaintings/LongCorridorNorthPainting1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04)
+mesh = SubResource("BoxMesh_painting_canvas")
+surface_material_override/0 = SubResource("StandardMaterial3D_painting_landscape")
+
+[node name="LongCorridorNorthPainting2" type="Node3D" parent="WallPaintings"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 2, 2.2, 1.7)
+
+[node name="Frame" type="MeshInstance3D" parent="WallPaintings/LongCorridorNorthPainting2"]
+mesh = SubResource("BoxMesh_painting_frame")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Canvas" type="MeshInstance3D" parent="WallPaintings/LongCorridorNorthPainting2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04)
+mesh = SubResource("BoxMesh_painting_canvas")
+surface_material_override/0 = SubResource("StandardMaterial3D_painting_portrait")
+
+[node name="LongCorridorSouthPainting1" type="Node3D" parent="WallPaintings"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -2, 2.2, -1.7)
+
+[node name="Frame" type="MeshInstance3D" parent="WallPaintings/LongCorridorSouthPainting1"]
+mesh = SubResource("BoxMesh_painting_frame")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Canvas" type="MeshInstance3D" parent="WallPaintings/LongCorridorSouthPainting1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04)
+mesh = SubResource("BoxMesh_painting_canvas")
+surface_material_override/0 = SubResource("StandardMaterial3D_painting_portrait")
+
+[node name="LongCorridorSouthPainting2" type="Node3D" parent="WallPaintings"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 4, 2.2, -1.7)
+
+[node name="Frame" type="MeshInstance3D" parent="WallPaintings/LongCorridorSouthPainting2"]
+mesh = SubResource("BoxMesh_painting_frame")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Canvas" type="MeshInstance3D" parent="WallPaintings/LongCorridorSouthPainting2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04)
+mesh = SubResource("BoxMesh_painting_canvas")
+surface_material_override/0 = SubResource("StandardMaterial3D_painting_landscape")
+
+[node name="ShortCorridorWestPainting" type="Node3D" parent="WallPaintings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.13, 2.3, 1)
+
+[node name="Frame" type="MeshInstance3D" parent="WallPaintings/ShortCorridorWestPainting"]
+mesh = SubResource("BoxMesh_painting_frame")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Canvas" type="MeshInstance3D" parent="WallPaintings/ShortCorridorWestPainting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04)
+mesh = SubResource("BoxMesh_painting_canvas")
+surface_material_override/0 = SubResource("StandardMaterial3D_painting_landscape")
+
+[node name="ShortCorridorEastPainting" type="Node3D" parent="WallPaintings"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 11.87, 2.3, 5)
+
+[node name="Frame" type="MeshInstance3D" parent="WallPaintings/ShortCorridorEastPainting"]
+mesh = SubResource("BoxMesh_painting_frame")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Canvas" type="MeshInstance3D" parent="WallPaintings/ShortCorridorEastPainting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04)
+mesh = SubResource("BoxMesh_painting_canvas")
+surface_material_override/0 = SubResource("StandardMaterial3D_painting_portrait")
 
 [node name="LongCorridorFurniture" type="Node3D" parent="."]
 
@@ -570,6 +914,19 @@ surface_material_override/0 = SubResource("StandardMaterial3D_table")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CylinderMesh_vase")
 surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="DecorativeBust" type="Node3D" parent="LongCorridorFurniture/EastConsoleTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.8, 0)
+
+[node name="Pedestal" type="MeshInstance3D" parent="LongCorridorFurniture/EastConsoleTable/DecorativeBust"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+mesh = SubResource("CylinderMesh_bust_pedestal")
+surface_material_override/0 = SubResource("StandardMaterial3D_marble")
+
+[node name="Head" type="MeshInstance3D" parent="LongCorridorFurniture/EastConsoleTable/DecorativeBust"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+mesh = SubResource("SphereMesh_bust_head")
+surface_material_override/0 = SubResource("StandardMaterial3D_marble")
 
 [node name="WestSideTable" type="Node3D" parent="LongCorridorFurniture"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -1.4)
@@ -610,6 +967,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_table")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 mesh = SubResource("CylinderMesh_plant")
 surface_material_override/0 = SubResource("StandardMaterial3D_plant")
+
+[node name="Candlestick" type="MeshInstance3D" parent="LongCorridorFurniture/WestSideTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.95, 0)
+mesh = SubResource("CylinderMesh_item")
+surface_material_override/0 = SubResource("StandardMaterial3D_gold")
 
 [node name="RunnerCarpet" type="MeshInstance3D" parent="LongCorridorFurniture"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
@@ -972,10 +1334,275 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1, 0)
 mesh = SubResource("CylinderMesh_vase")
 surface_material_override/0 = SubResource("StandardMaterial3D_brass")
 
+[node name="DecorativeBust" type="Node3D" parent="ShortCorridorFurniture/EastSideTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.8, 0)
+
+[node name="Pedestal" type="MeshInstance3D" parent="ShortCorridorFurniture/EastSideTable/DecorativeBust"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0)
+mesh = SubResource("CylinderMesh_bust_pedestal")
+surface_material_override/0 = SubResource("StandardMaterial3D_marble")
+
+[node name="Head" type="MeshInstance3D" parent="ShortCorridorFurniture/EastSideTable/DecorativeBust"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+mesh = SubResource("SphereMesh_bust_head")
+surface_material_override/0 = SubResource("StandardMaterial3D_marble")
+
 [node name="AreaRug" type="MeshInstance3D" parent="ShortCorridorFurniture"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.01, 4.5)
 mesh = SubResource("BoxMesh_area_rug")
 surface_material_override/0 = SubResource("StandardMaterial3D_carpet_green")
+
+[node name="EntranceFurniture" type="Node3D" parent="ShortCorridorFurniture"]
+
+[node name="ShoeStorage" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0, 7.5)
+
+[node name="CabinetBody" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("BoxMesh_shoe_cabinet")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg1" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56, 0.15, -0.16)
+mesh = SubResource("BoxMesh_shoe_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg2" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.56, 0.15, -0.16)
+mesh = SubResource("BoxMesh_shoe_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg3" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56, 0.15, 0.16)
+mesh = SubResource("BoxMesh_shoe_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg4" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.56, 0.15, 0.16)
+mesh = SubResource("BoxMesh_shoe_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="CabinetBody2" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("BoxMesh_shoe_cabinet")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg5" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56, 0.15, -0.16)
+mesh = SubResource("BoxMesh_shoe_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg6" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.56, 0.15, -0.16)
+mesh = SubResource("BoxMesh_shoe_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg7" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56, 0.15, 0.16)
+mesh = SubResource("BoxMesh_shoe_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg8" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.56, 0.15, 0.16)
+mesh = SubResource("BoxMesh_shoe_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="CoatRack" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 7.5)
+
+[node name="Base" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+mesh = SubResource("CylinderMesh_coat_base")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Post" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CylinderMesh_coat_post")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook1" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155, 1.2, 0)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook2" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(-0.5, 0, 0.866, 0, 1, 0, -0.866, 0, -0.5, -0.0775, 1.2, 0.134)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook3" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(-0.5, 0, -0.866, 0, 1, 0, 0.866, 0, -0.5, -0.0775, 1.2, -0.134)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook4" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(0.5, 0, 0.866, 0, 1, 0, -0.866, 0, 0.5, 0.0775, 1.5, 0.134)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook5" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.155, 1.5, 0)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook6" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(0.5, 0, -0.866, 0, 1, 0, 0.866, 0, 0.5, 0.0775, 1.5, -0.134)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Base2" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+mesh = SubResource("CylinderMesh_coat_base")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Post2" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CylinderMesh_coat_post")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook7" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155, 1.2, 0)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook8" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(-0.5, 0, 0.866, 0, 1, 0, -0.866, 0, -0.5, -0.0775, 1.2, 0.134)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook9" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(-0.5, 0, -0.866, 0, 1, 0, 0.866, 0, -0.5, -0.0775, 1.2, -0.134)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook10" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(0.5, 0, 0.866, 0, 1, 0, -0.866, 0, 0.5, 0.0775, 1.5, 0.134)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook11" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.155, 1.5, 0)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook12" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(0.5, 0, -0.866, 0, 1, 0, 0.866, 0, 0.5, 0.0775, 1.5, -0.134)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="UmbrellaStand" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3, 0, 8.5)
+
+[node name="Body" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/UmbrellaStand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("CylinderMesh_umbrella_stand")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="Body2" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/UmbrellaStand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("CylinderMesh_umbrella_stand")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="EntrywayBench" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25, 0, 6.5)
+
+[node name="Seat" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/EntrywayBench"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("BoxMesh_bench_seat")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Back" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/EntrywayBench"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, -0.16)
+mesh = SubResource("BoxMesh_bench_back")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg1" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/EntrywayBench"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0.2, -0.14)
+mesh = SubResource("BoxMesh_bench_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg2" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/EntrywayBench"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0.2, -0.14)
+mesh = SubResource("BoxMesh_bench_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg3" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/EntrywayBench"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0.2, 0.14)
+mesh = SubResource("BoxMesh_bench_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg4" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/EntrywayBench"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0.2, 0.14)
+mesh = SubResource("BoxMesh_bench_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Seat2" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/EntrywayBench"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("BoxMesh_bench_seat")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Back2" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/EntrywayBench"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, -0.16)
+mesh = SubResource("BoxMesh_bench_back")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg5" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/EntrywayBench"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0.2, -0.14)
+mesh = SubResource("BoxMesh_bench_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg6" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/EntrywayBench"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0.2, -0.14)
+mesh = SubResource("BoxMesh_bench_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg7" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/EntrywayBench"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32, 0.2, 0.14)
+mesh = SubResource("BoxMesh_bench_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg8" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/EntrywayBench"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32, 0.2, 0.14)
+mesh = SubResource("BoxMesh_bench_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="WallMirror" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 6.15, 1.8, 6.5)
+
+[node name="Frame" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/WallMirror"]
+mesh = SubResource("BoxMesh_mirror_frame")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Glass" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/WallMirror"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.02)
+mesh = SubResource("BoxMesh_mirror_glass")
+surface_material_override/0 = SubResource("StandardMaterial3D_mirror")
+
+[node name="Frame2" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/WallMirror"]
+mesh = SubResource("BoxMesh_mirror_frame")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Glass2" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/WallMirror"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.02)
+mesh = SubResource("BoxMesh_mirror_glass")
+surface_material_override/0 = SubResource("StandardMaterial3D_mirror")
+
+[node name="ShoeStorage2" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0, 7.5)
+
+[node name="CoatRack2" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 7.5)
+
+[node name="UmbrellaStand2" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3, 0, 8.5)
+
+[node name="EntrywayBench2" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25, 0, 6.5)
+
+[node name="WallMirror2" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 6.15, 1.8, 6.5)
+
+[node name="EntranceFurniture2" type="Node3D" parent="ShortCorridorFurniture"]
 
 [editable path="PhotoFrames/HouseKeeper"]
 [editable path="PhotoFrames/HouseKeeper/PortraitFrame2"]
