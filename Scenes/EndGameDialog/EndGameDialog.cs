@@ -41,6 +41,14 @@ public partial class EndGameDialog : PanelContainer
 		CloseButton.Pressed += OnCloseButtonPressed;
 		SubmitButton.Pressed += OnSubmitButtonPressed;
 
+		// Hide all options by default - they will be revealed as clues are discovered
+		foreach (var button in _whoButtons)
+			button.Visible = false;
+		foreach (var button in _whatButtons)
+			button.Visible = false;
+		foreach (var button in _whyButtons)
+			button.Visible = false;
+
 		// Initialize visibility
 		Visible = false;
 	}
@@ -52,7 +60,34 @@ public partial class EndGameDialog : PanelContainer
 	}
 
 	/// <summary>
+	/// Sets whether an option is visible and available.
+	/// </summary>
+	/// <param name="question">0 = Who, 1 = What, 2 = Why</param>
+	/// <param name="option">Option index (0-3)</param>
+	/// <param name="visible">True to show, false to hide</param>
+	public void SetOptionVisibility(int question, int option, bool visible)
+	{
+		Button[] buttons = question switch
+		{
+			0 => _whoButtons,
+			1 => _whatButtons,
+			2 => _whyButtons,
+			_ => null
+		};
+
+		if (buttons != null && option >= 0 && option < buttons.Length)
+		{
+			buttons[option].Visible = visible;
+			if (visible)
+			{
+				buttons[option].Disabled = false; // Enable when made visible
+			}
+		}
+	}
+
+	/// <summary>
 	/// Sets whether an option is available (enabled) or locked (disabled).
+	/// Only affects visible options.
 	/// </summary>
 	/// <param name="question">0 = Who, 1 = What, 2 = Why</param>
 	/// <param name="option">Option index (0-3)</param>

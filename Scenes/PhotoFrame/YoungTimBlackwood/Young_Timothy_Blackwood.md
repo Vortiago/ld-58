@@ -4,20 +4,20 @@ Role: Victim's 10-year-old son — portrait in Side Corridor (School Photo Frame
 
 ## Summary
 
-Timothy is scared but trying to be brave. He was supposed to be in bed but snuck downstairs and saw his "Uncle Thomas" (father's business partner) running away. His innocent observations are crucial.
+Timothy is scared but trying to be brave. He was supposed to be in bed but heard shouting. He saw someone running past but couldn't identify them in the darkness. His observations about Miss Catherine's nervous behavior and his father's distress are important clues.
 
 ## Key quotes
 
-- "I wasn't supposed to be up, but I heard shouting..."
-- "Uncle Thomas ran past me. He looked scared."
-- "Miss Catherine was reading me stories earlier, but I snuck out."
+- "I heard shouting... Papa's voice and someone else. They sounded really angry."
+- "Someone ran past my portrait—I saw them from my frame, but it was too dark to see their face clearly."
+- "Miss Catherine was reading me stories earlier, then she left to check on something downstairs. She seemed nervous, kept looking at the clock."
+- "Papa kept saying 'How could they do this?' over and over. 'They', not 'he' or 'she'."
 
 Clues he references
 
-- [Financial Papers](./Financial_Papers.md)
+- [Financial Papers](../../Story/Financial_Papers.md)
 
 Related
 
-- Back to [Overarching Story](./OverarchingStory.md)
-- Mentions suspect: [Thomas Hartwell](./Thomas_Hartwell.md)
-- Mentions red herring: [Miss Catherine Ashworth](./Miss_Catherine_Ashworth.md)
+- Back to [Overarching Story](../../Story/OverarchingStory.md)
+- Red Herring: [Miss Catherine Ashworth](../../Story/Miss_Catherine_Ashworth.md)

@@ -76,58 +76,68 @@ Quick links to detailed pages (one file per character / clue / suspect):
   - Can jump between portrait frames
   - Must interview witnesses and solve the murder
 
-### Helpful Witnesses
+### Strategic Witnesses (Mix of Real Clues and Red Herrings)
 
 - [**Lady Margaret Blackwood**](./Lady_Margaret_Blackwood.md) (Victim's Wife) - Main Corridor Left
-  - "Such a terrible mess by the corner table... that letter opener was Edgar's favorite"
-  - "Someone tracked mud through here - the gardener will be furious"
-  - Knows about business disputes and saw someone fleeing
+  - Reveals multiple suspects with motives
+  - "Miss Catherine Ashworth—Edgar discovered her gambling debts. £5,000 owed to dangerous people."
+  - "James Whitmore handles all the company finances. Edgar had been questioning some of his recent transactions."
+  - Provides financial papers clue + gambling debt notice
 
-- [**Sarah Mills**](./Sarah_Mills.md) (Head Housekeeper) - Main Corridor Left  
-  - **KEY WITNESS**: "Mr. Hartwell rushed past me, and there was... blood on his sleeve"
-  - "I haven't had time to collect that handkerchief by the plant stand"
-  - "The blood on the carpet will never come out, I fear"
+- [**Sarah Mills**](./Sarah_Mills.md) (Head Housekeeper) - Main Corridor Left
+  - Saw someone fleeing but lighting was poor
+  - "Someone came rushing past... could have been any of them, I suppose"
+  - Found handkerchief with "T.H." monogram (ambiguous - could be Thomas or Timothy Hartwell)
+  - Deliberately vague about identification
 
 - [**Dr. Henry Morrison**](./Dr_Henry_Morrison.md) (Family Doctor) - Side Corridor Left
-  - "The wound trajectory is quite telling"
-  - "Thomas's violent episodes worry me greatly"
-  - Provides medical analysis and suspect history
+  - Provides medical evidence (defensive wounds)
+  - Introduces Dr. Pemberton red herring
+  - "Edgar threatened to report Pemberton to the medical board for botched surgery"
+  - "Surgical instruments near the body... the wound is precise, almost surgical"
 
-### Unreliable Witnesses
+### Ambiguous/Unreliable Witnesses
 
 - [**Mrs. Eleanor Hartwell**](./Mrs_Eleanor_Hartwell.md) (Suspect's Wife) - Side Corridor Right
   - "My husband was... definitely not here" (nervous)
   - "Those muddy footprints? Must be the gardener's"
-  - Her obvious lies actually point to Thomas's guilt
+  - Her obvious lies actually point to Thomas's guilt (indirect evidence)
 
 - [**Young Timothy Blackwood**](./Young_Timothy_Blackwood.md) (Victim's Son) - Side Corridor Left
-  - "Father's papers are all over the floor"
-  - "I saw Uncle Thomas running that way"
-  - "Miss Catherine was reading to me upstairs"
+  - Saw "someone" running but too dark to identify face
+  - "Miss Catherine seemed nervous, kept looking at the clock, then she left to check on something downstairs"
+  - Father said "How could they do this?" (plural - multiple suspects?)
+  - Provides alibi for Miss Catherine (was reading with her)
 
 ## Environmental Clues (Viewpoint-Dependent)
 
-### From Entry (Frames 1-3 view):
-- [Muddy Footprints](./Muddy_Footprints.md) leading to corner
-- General view of disturbance ahead
-- [Wall Sconce (Knocked Askew)](./Wall_Sconce.md)
+### Real Evidence (Points to Thomas Hartwell)
+- [Handkerchief "T.H."](./Handkerchief_TH.md) near potted plant (but ambiguous - could be Thomas OR Timothy Hartwell)
+- [Financial Papers](./Financial_Papers.md) showing £50,000 embezzlement (multiple signatures - partner, lawyer, accountant all had access)
+- [Defensive Wounds](./Defensive_Wounds.md) on victim's hands (knew and faced attacker)
+- [Ornate Letter Opener](./Ornate_Letter_Opener.md) murder weapon (from Edgar's desk, not premeditated)
 
-### From Corner (Frames 2-4 view):
+### Red Herring Evidence (Misleading Clues)
+- [Surgical Instruments](./Surgical_Instruments.md) near body (suggests Dr. Pemberton, but he has alibi)
+- [Gambling Debt Notice](./Gambling_Debt_Notice.md) for Miss Catherine (£5,000 motive, but she has alibi)
+- Multiple muddy footprints (could be from gardener, various guests)
+- James Whitmore mentioned as having access to finances (but left before murder)
+
+### Viewpoint Distribution
+**From Entry (Frames 1-3 view):**
+- General crime scene overview
+- [Muddy Footprints](./Muddy_Footprints.md) leading to corner
+
+**From Corner (Frames 2-4 view):**
 - Full crime scene with body
 - [Ornate Letter Opener](./Ornate_Letter_Opener.md) in victim's back
-- [Financial Papers](./Financial_Papers.md) scattered showing embezzlement
-- [Blood Splatter Pattern](./Blood_Splatter_Pattern.md)
+- [Financial Papers](./Financial_Papers.md) scattered
+- [Surgical Instruments](./Surgical_Instruments.md) near body (red herring)
 
-### From Side Corridor (Frames 4-6 view):
+**From Side Corridor (Frames 4-6 view):**
 - [Handkerchief "T.H."](./Handkerchief_TH.md) near potted plant
-- [Escape Route (Window)](./Escape_Route_Window.md)
-- More muddy prints leading to window
-- [Dropped Ledger](./Dropped_Ledger.md)
-
-### Hidden Until Multiple Angles:
-- [Financial documents under overturned table](./Documents_Under_Table.md) (visible from Frame 5)
-- [Defensive Wounds](./Defensive_Wounds.md) on victim's hands (best from Frame 3)
-- [Handkerchief "T.H."](./Handkerchief_TH.md) monogram (clearly visible from Frame 6)
+- [Gambling Debt Notice](./Gambling_Debt_Notice.md) under table (red herring)
+- [Defensive Wounds](./Defensive_Wounds.md) on victim's hands (medical evidence)
 
 ## The Four Murder Suspects (Not Interviewable)
 
@@ -182,33 +192,42 @@ Quick links to detailed pages (one file per character / clue / suspect):
 
 **Thomas Hartwell** murdered Lord Edgar Blackwood with the **ornate letter opener** because **Lord Blackwood discovered Thomas had embezzled £50,000** from their trading company. When confronted at 11:30 PM, Thomas grabbed Edgar's letter opener in a panic and stabbed him to avoid ruin and prison.
 
-## Key Clue Progression
+## Key Clue Progression & Mystery Balance
 
-### Early Clues (Initial Corridor Views)
-- Muddy footprints leading through hallway
-- General disturbance visible ahead
-- Witnesses mention "something terrible"
+### Early Clues (Initial Frames 1-3)
+- General crime scene with muddy footprints
+- Lady Margaret introduces multiple suspects (Miss Catherine's debts, Whitmore's access)
+- Sarah finds "T.H." handkerchief but can't identify who fled
+- Players learn about financial theft but multiple people had access
 
-### Mid-Game Clues (Multiple Angles)
-- Full crime scene visibility from corner
-- Sarah saw Thomas with blood on sleeve
-- Financial papers scattered in struggle
-- Mrs. Eleanor's nervous lies about husband
+### Mid-Game Clues (Frames 3-4)
+- Dr. Morrison introduces Dr. Pemberton red herring (surgical instruments, motive)
+- Financial papers visible but multiple signatures present
+- Timothy provides ambiguous witness account ("someone" running, Miss Catherine nervous)
+- Defensive wounds show victim knew attacker (doesn't narrow suspects)
 
-### Final Evidence (All Perspectives Combined)
-- "T.H." handkerchief discovered near plant (Frame 6 view)
-- Escape route through window visible
-- Multiple witnesses confirm Thomas's presence
-- Financial documents prove embezzlement motive
+### Late-Game Evidence (Frames 4-5)
+- Eleanor's nervous lies indirectly point to Thomas (only she acts protective)
+- Gambling debt notice found (strengthens Miss Catherine as suspect)
+- Cross-referencing alibis becomes critical:
+  - Dr. Pemberton: Smoking room alibi (must verify)
+  - Miss Catherine: With Timothy (Timothy confirms)
+  - James Whitmore: Left at 10:45 PM (before murder)
+
+### Final Deduction (All Frames Combined)
+- Process of elimination narrows to Thomas Hartwell
+- "T.H." handkerchief most likely Thomas (Timothy wasn't there)
+- Financial papers + embezzlement motive fits Thomas
+- Eleanor's protective lying confirms guilt
+- No alibi for Thomas during critical time
 
 ## Information Flow Strategy
 
-The hallway itself tells the story through environmental details visible from different portrait viewpoints. Witnesses provide context and direct players' attention to specific clues:
+**Balanced Mystery Design:**
+1. **Multiple viable suspects**: Each witness introduces plausible alternatives
+2. **Red herring evidence**: Physical clues point to false suspects
+3. **Alibi cross-referencing**: Players must verify each suspect's whereabouts
+4. **Process of elimination**: True culprit emerges after ruling out alternatives
+5. **Indirect confirmation**: Eleanor's behavior provides final proof
 
-1. **Initial confusion**: Players see disturbance but need to reach corner for full view
-2. **Witness hints**: Portraits mention specific objects to look for
-3. **Perspective puzzle**: Some clues only visible from certain frames
-4. **Cross-reference**: Combine witness testimony with environmental evidence
-5. **Solution**: Multiple evidence sources point to Thomas Hartwell
-
-The guilty party is revealed through accumulated environmental evidence and corroborating witness accounts rather than direct confession.
+**Key Principle**: No single witness directly accuses Thomas. Players must analyze all evidence, eliminate red herrings through alibi verification, and deduce the truth through careful investigation.

@@ -19,36 +19,36 @@ public partial class EleanorHeartwell : Node3D
     private Texture2D _eleanorHeartwellPortrait;
 
     // Dialog configuration - First Visit (nervous, contradictory, trying to protect Thomas)
-    private readonly string[] _firstVisitDialog = new[]
+    private readonly DialogSystem.DialogLine[] _firstVisitDialog = new[]
     {
-        "Mrs. Hartwell, I need to ask you about your husband's whereabouts last night.",
-        "Oh! Inspector, yes, of course. Thomas was... he was in the library all evening. Reading. Yes, reading by the fire.",
-        "The library? Are you certain?",
-        "Well, no, wait—I meant the smoking room! Yes, the smoking room. He often retires there after dinner. My mistake, I'm simply... I'm so flustered by all this.",
-        "I understand this is distressing. From your portrait's position, what can you see of the crime scene?",
-        "Those muddy footprints? Oh, um... the gardener often comes through here. Yes, the gardener! He tracks mud in all the time. We've spoken to him about it repeatedly.",
-        "At this hour of night? And during a murder?",
-        "Well, I... perhaps it was from earlier in the day? Mud can stay wet for quite some time, can't it?",
-        "Mrs. Hartwell, why are you protecting your husband?",
-        "I'm not—! Thomas would never... Inspector, you must understand, he's not even left-handed! Everyone knows the killer must have been left-handed from the wound angle.",
-        "Your husband IS left-handed, Mrs. Hartwell. I've seen him sign documents.",
-        "Oh. I... I meant to say... What I meant was... From my portrait, I can't see everything clearly. The angle, you see. It's all very confusing from up here."
+        new DialogSystem.DialogLine("Mrs. Hartwell, I need to ask about your husband's movements last night.", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Oh! Inspector, yes. Thomas was in the library all evening. Reading by the fire, as he often does after dinner.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("The library? Did you observe him there yourself?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Well... no, not directly. He mentioned he'd be in the smoking room, actually. That's where he usually retires. I must have confused the two—being frozen in this portrait, one loses track of such details.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("I see. From your portrait's vantage point, what can you observe of the scene below?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Those muddy footprints near the body? The gardener often tracks mud through here. He's quite dedicated, works at all hours. It must be from his evening rounds.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("The gardener makes rounds during a dinner party?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Perhaps the tracks are from earlier in the day? Mud can remain wet for hours in this damp weather. Days even.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("The letter opener appears to have been wielded by a left-handed person. What can you tell me about that?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Then surely that clears Thomas! My husband favors his right hand. I've watched him write hundreds of letters from this very frame.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Mrs. Hartwell, I observed your husband signing the guest register this evening. With his left hand.", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("I... the view from my portrait... everything appears reversed, you understand. Mirror images. It's quite disorienting, existing as paint on canvas. I may have been mistaken about which hand...", DialogSystem.SpeakerSide.Right)
     };
 
     // Dialog configuration - Subsequent Visits (still nervous, but resigned)
-    private readonly string[] _subsequentVisitDialog = new[]
+    private readonly DialogSystem.DialogLine[] _subsequentVisitDialog = new[]
     {
-        "Mrs. Hartwell, is there anything else you'd like to tell me?",
-        "I... I've told you everything I can, Inspector. Thomas is a good man. He must be.",
-        "The truth will come out eventually.",
-        "I know. From my portrait, I watch him pace at night, unable to sleep. I just... I hoped it wasn't true."
+        new DialogSystem.DialogLine("Mrs. Hartwell, is there anything else you can tell me?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("I've shared what I know, Inspector. From my vantage point in this frame, the details are... limited.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Sometimes the smallest details matter most.", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Yes... I suppose they do. From my portrait, I watch the hallway at night. So many restless footsteps. So many secrets painted on these walls.", DialogSystem.SpeakerSide.Right)
     };
 
     public override void _Ready()
     {
         _dialogSystem = GetNode<DialogSystem>("/root/Main/DialogSystem");
         _main = GetNode<Main>("/root/Main");
-        _eleanorHeartwellPortrait = GD.Load<Texture2D>("res://Scenes/PhotoFrame/EleanorHartwell/EleanorHeartwell.png");
+        _eleanorHeartwellPortrait = GD.Load<Texture2D>("res://Scenes/PhotoFrame/EleanorHartwell/Mrs. Eleanor Hartwell.png");
         _interactableObject.InteractableObjectClicked += OnInteractableObjectClicked;
         _cameraStateMonitor.CameraActivated += OnCameraActivated;
         _cameraStateMonitor.CameraDeactivated += OnCameraDeactivated;
@@ -83,17 +83,39 @@ public partial class EleanorHeartwell : Node3D
     {
         _visitCount++;
 
-        // Eleanor's nervous lying actually helps the player realize Thomas is guilty
-        // She doesn't add new clues but her behavior is evidence itself
-        // Her contradictions and obvious attempts to misdirect confirm suspicions
+        // Add clues on first visit - Eleanor's contradictions are themselves evidence
+        if (_visitCount == 1)
+        {
+            // Add clue about Eleanor's contradictory statements
+            _main.AddClue(
+                "Eleanor's Contradictory Statements",
+                "Mrs. Eleanor Hartwell provides conflicting accounts of Thomas's location: first the library, then corrects herself to the smoking room. She attributes her confusion to the disorienting nature of existing within a portrait. Her uncertainty about her own husband's whereabouts during the murder is notable.",
+                _eleanorHeartwellPortrait
+            );
 
-        string[] dialogToShow = _visitCount == 1 ? _firstVisitDialog : _subsequentVisitDialog;
+            // Add clue about the muddy footprints explanation
+            _main.AddClue(
+                "Muddy Footprints Near Body",
+                "Eleanor quickly offers an explanation for muddy tracks near the victim: 'the gardener often tracks mud through here.' When questioned about a gardener's presence during the dinner party, she suggests the mud could be from earlier in the day. Her immediate readiness to provide alternate explanations is striking.",
+                _eleanorHeartwellPortrait
+            );
+
+            // Add clue about the left-handed detail
+            _main.AddClue(
+                "Left-Handed Discrepancy",
+                "Eleanor claims Thomas 'favors his right hand,' having watched him write 'hundreds of letters' from her portrait. The Inspector observed Thomas signing the guest register with his left hand. The wound angle suggests a left-handed attacker. Eleanor's confusion about her husband's dominant hand raises questions.",
+                _eleanorHeartwellPortrait
+            );
+
+            // Reinforce Thomas Hartwell as prime suspect (already unlocked by HouseKeeper)
+            // Her contradictions point toward something being concealed
+        }
+
+        DialogSystem.DialogLine[] dialogToShow = _visitCount == 1 ? _firstVisitDialog : _subsequentVisitDialog;
 
         if (dialogToShow != null && dialogToShow.Length > 0)
         {
-            // Alternate speakers: Inspector Crawford (left) speaks first (even indices)
-            bool isLeftSpeaking = true;
-            _dialogSystem.StartDialog(dialogToShow, "Eleanor Hartwell", _eleanorHeartwellPortrait, isLeftSpeaking);
+            _dialogSystem.StartDialog(dialogToShow, "Eleanor Hartwell", _eleanorHeartwellPortrait);
         }
     }
 }

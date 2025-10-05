@@ -18,36 +18,34 @@ public partial class LadyBlackwood : Node3D
     private Texture2D _ladyMargaretPortrait;
 
     // Dialog configuration - First Visit
-    private readonly string[] _firstVisitDialog = new[]
+    private readonly DialogSystem.DialogLine[] _firstVisitDialog = new[]
     {
-        "Lady Margaret, I'm deeply sorry for your loss. I know this is difficult, but I must ask what you witnessed.",
-        "Inspector... from my portrait, I watched my husband die. That letter opener—Edgar's favorite, the one I gave him—used against him like that...",
-        "The murder weapon was his own letter opener?",
-        "Yes. It sits on his desk in the study. Only someone familiar with this house would know it was there. This wasn't some random intruder.",
-        "From your frame's position, can you see any other evidence?",
-        "The muddy footprints, Inspector. They're everywhere—leading from the garden entrance, through the scene, to the window. Fresh mud, still wet when it happened.",
-        "Muddy footprints? That suggests someone who came in from outside.",
-        "Edgar discovered something terrible about the accounts yesterday. He was reviewing the ledgers with such fury. Those financial papers—from where I hang, I can see them scattered by the corner table.",
-        "Financial papers? What was in them?",
-        "I don't know the details, but Edgar's face... he was devastated. Betrayed. He said someone had been stealing from the company for over a year.",
-        "Did he mention who?",
-        "He didn't say the name aloud, but I saw him staring at Thomas's signature on those documents. From my portrait's view, I watched his trust shatter. And now... now he's gone."
+        new DialogSystem.DialogLine("Lady Margaret, I'm deeply sorry for your loss. I know this is difficult, but I must ask what you witnessed.", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Inspector... from my portrait, I watched my husband die. So many people had reasons to want him dead. Our dinner party guests... any of them could have...", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("What do you mean? Who specifically had grievances with your husband?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("That governess, Miss Catherine Ashworth—Edgar discovered her gambling debts. £5,000 owed to dangerous people. He was planning to dismiss her without a reference.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("That's a serious financial motive. What else did you observe?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Edgar discovered something terrible about the accounts yesterday. He was reviewing ledgers with such fury. Those financial papers—from where I hang, I can see them scattered by the corner table.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Financial papers? What was in them?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Someone had been stealing from the company for over a year. Edgar was devastated—betrayed by someone he trusted. But he didn't tell me who before... before this happened.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Did anyone have access to those documents?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Our lawyer, James Whitmore, was here for dinner. He handles all the company finances. Edgar had been questioning some of his recent transactions... Oh Inspector, there were so many secrets in this house.", DialogSystem.SpeakerSide.Right)
     };
 
     // Dialog configuration - Subsequent Visits
-    private readonly string[] _subsequentVisitDialog = new[]
+    private readonly DialogSystem.DialogLine[] _subsequentVisitDialog = new[]
     {
-        "Lady Margaret, is there anything else you remember?",
-        "Only the pain of watching, Inspector. The muddy footprints, the letter opener, those damning financial papers... it all points to betrayal.",
-        "You've been very brave. Thank you.",
-        "Find who did this, Inspector. For Edgar."
+        new DialogSystem.DialogLine("Lady Margaret, is there anything else you remember?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Only the pain of watching, Inspector. Those financial papers scattered everywhere... someone Edgar trusted betrayed him terribly.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("You've been very brave. Thank you.", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Find who did this, Inspector. For Edgar.", DialogSystem.SpeakerSide.Right)
     };
 
     public override void _Ready()
     {
         _dialogSystem = GetNode<DialogSystem>("/root/Main/DialogSystem");
         _main = GetNode<Main>("/root/Main");
-        _ladyMargaretPortrait = GD.Load<Texture2D>("res://Scenes/PhotoFrame/LadyBlackwood/LadyMargaretBlackwood.png");
+        _ladyMargaretPortrait = GD.Load<Texture2D>("res://Scenes/PhotoFrame/LadyBlackwood/Lady Margaret Blackwood.png");
         _interactableObject.InteractableObjectClicked += OnInteractableObjectClicked;
         _cameraStateMonitor.CameraActivated += OnCameraActivated;
         _cameraStateMonitor.CameraDeactivated += OnCameraDeactivated;
@@ -82,32 +80,48 @@ public partial class LadyBlackwood : Node3D
     {
         _visitCount++;
 
-        // Add clues on first visit
+        // Add clues and unlock options on first visit
         if (_visitCount == 1)
         {
-            _main.AddClue(
-                "Ornate Letter Opener (Murder Weapon)",
-                "A decorative silver letter opener with an ivory handle, still embedded in the victim's back. It was kept on Lord Edgar's desk - not something a stranger would know about. The murder weapon. Taken from Edgar's own desk (killer knew the house). Not premeditated - grabbed in the heat of an argument."
-            );
-
-            _main.AddClue(
-                "Muddy Footprints",
-                "Muddy boot prints leading from the garden entrance, through the crime scene, to the escape window. Fresh mud - still wet. Killer entered from outside (not a dinner guest). Thomas often used the garden entrance for 'private meetings'. Tracks show someone running (wide stride)."
-            );
-
+            // Add financial embezzlement clue (real evidence pointing to Thomas)
             _main.AddClue(
                 "Financial Papers (Embezzlement Evidence)",
-                "Accountancy ledgers and bank statements scattered during the struggle. Red ink corrections show £50,000 missing from the company accounts over the past year. Shows the motive: Thomas stole £50,000. Edgar discovered the theft that evening. Confrontation led to murder."
+                "Accountancy ledgers and bank statements scattered during the struggle. Red ink corrections show £50,000 missing from the company accounts over the past year. Multiple signatures on the documents - business partner, lawyer, and accountant all had access. Edgar discovered the theft that evening. Confrontation led to murder.",
+                _ladyMargaretPortrait
             );
+
+            // Add red herring clue about Miss Catherine's gambling debts
+            _main.AddClue(
+                "Gambling Debt Notice (Miss Catherine)",
+                "A crumpled letter partially hidden under the overturned table, addressed to Miss Catherine Ashworth. Demands immediate payment of £5,000 to 'The Golden Lion Club'. Threatens 'severe consequences' if not paid by month's end. Edgar was planning to dismiss her without a reference. Shows desperate financial motive.",
+                _ladyMargaretPortrait
+            );
+
+            // Add red herring clue about James Whitmore
+            _main.AddClue(
+                "Lawyer's Financial Access (Whitmore)",
+                "James Whitmore, the family lawyer, handles all company finances. Edgar had been questioning some of his recent transactions. Whitmore was at the dinner party and had access to the financial documents. However, multiple witnesses confirm he left at 10:45 PM before the murder.",
+                _ladyMargaretPortrait
+            );
+
+            // Unlock Miss Catherine as red herring suspect
+            _main.SetOptionText(0, 3, "Miss Catherine Ashworth"); // Who option 4
+            _main.UnlockOption(0, 3);
+
+            // Unlock embezzlement motive (correct answer)
+            _main.SetOptionText(2, 1, "Business Fraud/Embezzlement"); // Why option 2
+            _main.UnlockOption(2, 1);
+
+            // Unlock blackmail motive (red herring based on Miss Catherine)
+            _main.SetOptionText(2, 2, "Blackmail Secret"); // Why option 3
+            _main.UnlockOption(2, 2);
         }
 
-        string[] dialogToShow = _visitCount == 1 ? _firstVisitDialog : _subsequentVisitDialog;
+        DialogSystem.DialogLine[] dialogToShow = _visitCount == 1 ? _firstVisitDialog : _subsequentVisitDialog;
 
         if (dialogToShow != null && dialogToShow.Length > 0)
         {
-            // Alternate speakers: Inspector Crawford (left) speaks first (even indices)
-            bool isLeftSpeaking = true;
-            _dialogSystem.StartDialog(dialogToShow, "Lady Margaret Blackwood", _ladyMargaretPortrait, isLeftSpeaking);
+            _dialogSystem.StartDialog(dialogToShow, "Lady Margaret Blackwood", _ladyMargaretPortrait);
         }
     }
 }

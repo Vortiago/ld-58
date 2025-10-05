@@ -7,17 +7,23 @@ Lord Edgar Blackwood discovered his business partner Thomas Hartwell stole £50,
 **Inspector Crawford** (YOU) - Retired Scotland Yard detective portrait who can jump between frames
 
 ## Photo Frame Witnesses (5 total)
-1. **Lady Margaret** (wife) - "Edgar found something terrible in the accounts"
-2. **Sarah Mills** (housekeeper) - SAW THOMAS FLEEING WITH BLOOD
-3. **Dr. Morrison** (doctor) - "Thomas has a violent temper"
-4. **Timothy** (10yo son) - "Uncle Thomas ran past me"
-5. **Mrs. Eleanor** (Thomas's wife) - OBVIOUSLY LYING TO PROTECT HIM
+1. **Lady Margaret** (wife) - Mentions multiple suspects (Miss Catherine's debts, Whitmore's access to finances)
+2. **Sarah Mills** (housekeeper) - Found "T.H." handkerchief, saw shadows (ambiguous identification)
+3. **Dr. Morrison** (doctor) - Introduces Dr. Pemberton red herring (surgical instruments, motive)
+4. **Timothy** (10yo son) - Saw "someone" running (too dark to identify), mentions Miss Catherine acting nervous
+5. **Mrs. Eleanor** (Thomas's wife) - OBVIOUSLY LYING TO PROTECT HIM (indirect evidence)
 
 ## Key Physical Evidence
-- **"T.H." handkerchief** with blood (Frame 6)
-- **Financial papers** showing £50,000 theft
-- **Muddy footprints** from garden to window
-- **Blood on walls** leading to escape route
+
+**Real Evidence (Points to Thomas):**
+- **"T.H." handkerchief** with blood (but could be Thomas OR Timothy Hartwell)
+- **Financial papers** showing £50,000 theft (multiple signatures - partner, lawyer, accountant)
+- **Defensive wounds** (victim knew attacker, faced them)
+
+**Red Herring Evidence:**
+- **Surgical instruments** near body (suggests Dr. Pemberton)
+- **Gambling debt notice** for Miss Catherine (£5,000 owed, desperate motive)
+- **Multiple suspect mentions** (Whitmore, Pemberton, Catherine all have motives)
 
 ## The Solution
 - **WHO**: Thomas Hartwell (business partner)
@@ -25,13 +31,13 @@ Lord Edgar Blackwood discovered his business partner Thomas Hartwell stole £50,
 - **WHY**: Edgar discovered the £50,000 embezzlement
 
 ## Red Herrings (3 false suspects)
-1. **Dr. Pemberton** - Alibi: in smoking room
-2. **Miss Catherine** (governess) - Alibi: reading to Timothy
-3. **Mr. Whitmore** (lawyer) - Alibi: left at 10:45 PM
+1. **Dr. Pemberton** - Surgical instruments, motive (malpractice), but alibi: in smoking room
+2. **Miss Catherine** (governess) - Gambling debts (£5,000), nervous behavior, but alibi: with Timothy
+3. **Mr. Whitmore** (lawyer) - Access to finances, but alibi: left at 10:45 PM
 
 ## Game Flow
 1. Players start at hallway entrance
 2. Jump between portrait frames for testimony + different views
-3. Some clues only visible from specific angles
-4. Combine witness testimony with physical evidence
-5. Answer three final questions to solve
+3. Each frame provides ONE piece of real evidence + red herrings
+4. Must cross-reference alibis and analyze all clues
+5. Answer three final questions to solve (requires eliminating false suspects)

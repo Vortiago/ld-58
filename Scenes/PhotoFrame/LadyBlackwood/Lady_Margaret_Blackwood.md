@@ -4,21 +4,22 @@ Role: Victim's wife — portrait in Main Corridor (Ornate Gold Frame)
 
 ## Summary
 
-Lady Margaret is in shock but trying to help. As Edgar's wife, she knows about the business troubles with Thomas Hartwell. She directs players to examine the crime scene carefully.
+Lady Margaret is in shock but trying to help. She reveals multiple suspects with motives, including Miss Catherine Ashworth's gambling debts and James Whitmore's access to financial documents. Provides key financial evidence.
 
 ## Key quotes
 
-- "Edgar's favorite letter opener... who would use it against him?"
-- "There are muddy footprints everywhere - this wasn't a guest."
-- "Edgar discovered something terrible about the accounts yesterday."
+- "So many people had reasons to want him dead. Our dinner party guests... any of them could have..."
+- "Miss Catherine Ashworth—Edgar discovered her gambling debts. £5,000 owed to dangerous people."
+- "Someone had been stealing from the company for over a year. Edgar was devastated."
+- "James Whitmore handles all the company finances. Edgar had been questioning some of his recent transactions."
 
-Clues she references
+Clues she provides
 
-- [Ornate Letter Opener](./Ornate_Letter_Opener.md)
-- [Muddy Footprints](./Muddy_Footprints.md)
-- [Financial Papers](./Financial_Papers.md)
+- [Financial Papers](../../Story/Financial_Papers.md) (embezzlement evidence)
+- [Gambling Debt Notice](../../Story/Gambling_Debt_Notice.md) (red herring)
 
 Related
 
-- Back to [Overarching Story](./OverarchingStory.md)
-- See suspect: [Thomas Hartwell](./Thomas_Hartwell.md)
+- Back to [Overarching Story](../../Story/OverarchingStory.md)
+- Red Herring: [Miss Catherine Ashworth](../../Story/Miss_Catherine_Ashworth.md)
+- Red Herring: [James Whitmore](../../Story/James_Whitmore.md)

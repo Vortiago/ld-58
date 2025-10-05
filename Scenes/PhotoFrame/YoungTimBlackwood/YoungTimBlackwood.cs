@@ -18,35 +18,35 @@ public partial class YoungTimBlackwood : Node3D
     private Texture2D _youngTimothyPortrait;
 
     // Dialog configuration - First Visit
-    private readonly string[] _firstVisitDialog = new[]
+    private readonly DialogSystem.DialogLine[] _firstVisitDialog = new[]
     {
-        "Hello there, young man. You're Timothy, aren't you? Lord Blackwood's son?",
-        "Yes, sir. I'm... I'm not supposed to be up this late. Am I in trouble?",
-        "No, no trouble at all. But from your portrait here, you might have seen something important. Can you tell me what happened?",
-        "I wasn't supposed to be up, but I heard shouting... Papa's voice and Uncle Thomas. They sounded really angry.",
-        "Uncle Thomas? You mean Thomas Hartwell?",
-        "He's not really my uncle, but Papa always told me to call him that. He's Papa's business partner. Was Papa's business partner...",
-        "I'm sorry, Timothy. What did you see from your frame?",
-        "Uncle Thomas ran past me, right below where my portrait hangs. He looked scared, Inspector. His eyes were all wide and he was breathing hard.",
-        "That must have been frightening. Did you notice anything else about him?",
-        "His hands... I remember his hands were shaking. And earlier that evening, before bed, I saw Papa looking at those papers on his desk. The ones with all the numbers.",
-        "The financial papers? Did your father say anything about them?",
-        "He looked sad. Really, really sad. Like when our dog died last year. He kept saying 'How could he do this?' over and over."
+        new DialogSystem.DialogLine("Hello there, young man. You're Timothy, aren't you? Lord Blackwood's son?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Yes, sir. I'm... I'm not supposed to be up this late. Am I in trouble?", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("No, no trouble at all. But from your portrait here, you might have seen something important. Can you tell me what happened?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("I wasn't supposed to be up, but I heard shouting... Papa's voice and someone else. They sounded really angry. I got scared and hid in my portrait.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Someone else? Could you tell who it was from the voice?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("It... it sounded like a man. But I'm not sure who. Miss Catherine was reading me stories earlier, then she left to check on something downstairs.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Miss Catherine, your governess? She was with you before this happened?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Yes, until about... I don't know the time exactly. She seemed nervous, kept looking at the clock. Then someone ran past my portrait—I saw them from my frame, but it was too dark to see their face clearly.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("What did you notice about the person who ran past?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("They were breathing really hard and moving fast. Earlier that evening, I saw Papa looking at papers on his desk. The ones with all the numbers. He looked so sad, like when our dog died.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("The financial papers? Did your father say anything about them?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("He kept saying 'How could they do this?' over and over. 'They', not 'he' or 'she'. I remember because it confused me—who was he talking about?", DialogSystem.SpeakerSide.Right)
     };
 
     // Dialog configuration - Subsequent Visits
-    private readonly string[] _subsequentVisitDialog = new[]
+    private readonly DialogSystem.DialogLine[] _subsequentVisitDialog = new[]
     {
-        "Timothy, is there anything else you remember from that night?",
-        "Just Uncle Thomas running away. He looked so scared, Inspector. I've never seen a grown-up look that scared before.",
-        "You're very brave for telling me. Thank you."
+        new DialogSystem.DialogLine("Timothy, is there anything else you remember from that night?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Just someone running away in the dark. I wish I could have seen their face, Inspector. And Miss Catherine acting so nervous before she left me...", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("You're very brave for telling me. Thank you.", DialogSystem.SpeakerSide.Left)
     };
 
     public override void _Ready()
     {
         _dialogSystem = GetNode<DialogSystem>("/root/Main/DialogSystem");
         _main = GetNode<Main>("/root/Main");
-        _youngTimothyPortrait = GD.Load<Texture2D>("res://Scenes/PhotoFrame/YoungTimBlackwood/YoungTimothyBlackwood.png");
+        _youngTimothyPortrait = GD.Load<Texture2D>("res://Scenes/PhotoFrame/YoungTimBlackwood/Young Timothy Blackwood.png");
         _interactableObject.InteractableObjectClicked += OnInteractableObjectClicked;
         _cameraStateMonitor.CameraActivated += OnCameraActivated;
         _cameraStateMonitor.CameraDeactivated += OnCameraDeactivated;
@@ -81,16 +81,39 @@ public partial class YoungTimBlackwood : Node3D
     {
         _visitCount++;
 
-        // Timothy's testimony corroborates the financial motive but doesn't add new physical clues
-        // His innocent observation reinforces existing evidence rather than introducing new items
+        // Add clues on first visit
+        if (_visitCount == 1)
+        {
+            // Add clue about Miss Catherine's nervous behavior (red herring reinforcement)
+            _main.AddClue(
+                "Miss Catherine's Nervous Behavior",
+                "Timothy reports Miss Catherine seemed nervous while reading stories, kept looking at the clock. She left him suddenly to 'check on something downstairs' shortly before the murder. Her unusual behavior and timing make her a suspect. However, Timothy confirms she was with him reading during the critical time window.",
+                _youngTimothyPortrait
+            );
 
-        string[] dialogToShow = _visitCount == 1 ? _firstVisitDialog : _subsequentVisitDialog;
+            // Add clue about Edgar's "they" statement (ambiguous evidence)
+            _main.AddClue(
+                "Edgar's 'They' Statement",
+                "Timothy heard his father say 'How could they do this?' while looking at financial papers. Edgar used 'they' (plural) not 'he' or 'she'. Could indicate multiple people involved in the embezzlement, or Edgar was speaking generally about betrayal. Creates ambiguity about number of suspects.",
+                _youngTimothyPortrait
+            );
+
+            // Add clue about unidentified runner (ambiguous witness account)
+            _main.AddClue(
+                "Unidentified Runner",
+                "Timothy saw someone running past his portrait frame after the murder, breathing hard and moving fast. Too dark to identify face or distinguishing features. Could have been any of the dinner guests fleeing the scene. Confirms someone fled but doesn't narrow suspects.",
+                _youngTimothyPortrait
+            );
+
+            // Reinforce Miss Catherine as suspect (she's already unlocked by Lady Blackwood, but this provides her alibi)
+            // The clue itself mentions she was WITH Timothy, which actually gives her an alibi
+        }
+
+        DialogSystem.DialogLine[] dialogToShow = _visitCount == 1 ? _firstVisitDialog : _subsequentVisitDialog;
 
         if (dialogToShow != null && dialogToShow.Length > 0)
         {
-            // Alternate speakers: Inspector Crawford (left) speaks first (even indices)
-            bool isLeftSpeaking = true;
-            _dialogSystem.StartDialog(dialogToShow, "Young Timothy Blackwood", _youngTimothyPortrait, isLeftSpeaking);
+            _dialogSystem.StartDialog(dialogToShow, "Young Timothy Blackwood", _youngTimothyPortrait);
         }
     }
 }

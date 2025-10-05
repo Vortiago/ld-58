@@ -13,25 +13,27 @@ public partial class InspectorCrawford : Node3D
 	private CameraStateMonitor _cameraStateMonitor;
 
 	private DialogSystem _dialogSystem;
+	private Main _main;
 	private int _visitCount = 0;
 
 	// Dialog configuration
-	private readonly string[] _firstVisitDialog = new[]
+	private readonly DialogSystem.DialogLine[] _firstVisitDialog = new[]
 	{
-		"What's that smell... blood? And why is the morning light so harsh today?",
-		"Wait... Lord Blackwood's body! There, by the corner table!",
-		"The other portraits are waking. I wonder if any of them saw anything last night. Time to do what I do best—investigate.",
-		"Lady Margaret looks shaken. I should start there."
+		new DialogSystem.DialogLine("What's that smell... blood? And why is the morning light so harsh today?", DialogSystem.SpeakerSide.Left),
+		new DialogSystem.DialogLine("Wait... Lord Blackwood's body! There, by the corner table!", DialogSystem.SpeakerSide.Left),
+		new DialogSystem.DialogLine("The other portraits are waking. I wonder if any of them saw anything last night. Time to do what I do best—investigate.", DialogSystem.SpeakerSide.Left),
+		new DialogSystem.DialogLine("Lady Margaret looks shaken. I should start there.", DialogSystem.SpeakerSide.Left)
 	};
 
-	private readonly string[] _subsequentVisitDialog = new[]
+	private readonly DialogSystem.DialogLine[] _subsequentVisitDialog = new[]
 	{
-		"I do hope I can solve this case..."
+		new DialogSystem.DialogLine("I do hope I can solve this case...", DialogSystem.SpeakerSide.Left)
 	};
 
 	public override void _Ready()
 	{
 		_dialogSystem = GetNode<DialogSystem>("/root/Main/DialogSystem");
+		_main = GetNode<Main>("/root/Main");
 		_interactableObject.InteractableObjectClicked += OnInteractableObjectClicked;
 		_cameraStateMonitor.CameraActivated += OnCameraActivated;
 		_cameraStateMonitor.CameraDeactivated += OnCameraDeactivated;
@@ -66,11 +68,39 @@ public partial class InspectorCrawford : Node3D
 	{
 		_visitCount++;
 
-		string[] dialogToShow = _visitCount == 1 ? _firstVisitDialog : _subsequentVisitDialog;
+		// Set up initial mystery options on first visit
+		if (_visitCount == 1)
+		{
+			// Initialize Who options text (all hidden by default)
+			_main.SetOptionText(0, 0, "Lady Margaret Blackwood");
+			_main.SetOptionText(0, 1, "Dr. Victor Pemberton");
+			_main.SetOptionText(0, 2, "Thomas Hartwell");
+			_main.SetOptionText(0, 3, "Miss Catherine Ashworth");
+
+			// Initialize What (weapon) options text
+			_main.SetOptionText(1, 0, "Ornate Letter Opener");
+			_main.SetOptionText(1, 1, "Poison (Digitalis)");
+			_main.SetOptionText(1, 2, "Heavy Candlestick");
+			_main.SetOptionText(1, 3, "Silk Scarf (Strangulation)");
+
+			// Initialize Why (motive) options text
+			_main.SetOptionText(2, 0, "Inheritance Money");
+			_main.SetOptionText(2, 1, "Business Fraud/Embezzlement");
+			_main.SetOptionText(2, 2, "Blackmail Secret");
+			_main.SetOptionText(2, 3, "Medical Cover-up");
+
+			// Unlock Lady Margaret as initial suspect option (she's the wife, always a suspect)
+			_main.UnlockOption(0, 0);
+
+			// Unlock Inheritance as initial motive (common motive in murders)
+			_main.UnlockOption(2, 0);
+		}
+
+		DialogSystem.DialogLine[] dialogToShow = _visitCount == 1 ? _firstVisitDialog : _subsequentVisitDialog;
 
 		if (dialogToShow != null && dialogToShow.Length > 0)
 		{
-			_dialogSystem.StartDialog(dialogToShow, null, null, true);
+			_dialogSystem.StartDialog(dialogToShow, null, null);
 		}
 	}
 }

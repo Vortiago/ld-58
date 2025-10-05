@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 
 public partial class ClueContainer : PanelContainer
@@ -9,6 +10,8 @@ public partial class ClueContainer : PanelContainer
 
     [Node("%ClueGrid")]
     private GridContainer ClueItemsGrid;
+
+    private List<ClueItem> _clueItems = new List<ClueItem>();
 
     public override void _Ready()
     {
@@ -21,12 +24,27 @@ public partial class ClueContainer : PanelContainer
         CloseButton.Pressed -= OnCloseButtonPressed;
     }
 
-    public void CreateClueItem(string header, string body)
+    public void CreateClueItem(string header, string body, Texture2D portrait = null)
     {
         ClueItem clueItem = (ClueItem)ClueItemScene.Instantiate();
         clueItem.ClueHeader = header;
         clueItem.ClueBody = body;
+        clueItem.PortraitTexture = portrait;
+        clueItem.ClueOpened += OnClueItemOpened;
         ClueItemsGrid.AddChild(clueItem);
+        _clueItems.Add(clueItem);
+    }
+
+    private void OnClueItemOpened(ClueItem openedClue)
+    {
+        // Close all other clues when one is opened
+        foreach (ClueItem clue in _clueItems)
+        {
+            if (clue != openedClue)
+            {
+                clue.Close();
+            }
+        }
     }
 
     public new void Show()

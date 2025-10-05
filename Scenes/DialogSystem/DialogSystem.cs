@@ -5,6 +5,22 @@ public partial class DialogSystem : CanvasLayer
 {
 	[Signal] public delegate void DialogFinishedEventHandler();
 
+	// Dialog line structure with explicit speaker indicator
+	public struct DialogLine
+	{
+		public string Text { get; set; }
+		public SpeakerSide Speaker { get; set; }
+
+		public DialogLine(string text, SpeakerSide speaker)
+		{
+			Text = text;
+			Speaker = speaker;
+		}
+	}
+
+	// Which side is speaking
+	public enum SpeakerSide { Left, Right }
+
 	// UI Nodes
 	[Export] private Control DialogBox;
 	[Export] private RichTextLabel DialogTextLabel;
@@ -15,16 +31,14 @@ public partial class DialogSystem : CanvasLayer
 	[Export] public Button ContinueButton;
 
 	// Dialog data
-	private string[] _currentDialogLines;
+	private DialogLine[] _currentDialogLines;
 	private int _currentLineIndex = 0;
 	private bool _isTyping = false;
 	private float _typingSpeed = 0.01f; // Seconds per character
 
 	public bool IsDialogActive => DialogBox != null && DialogBox.Visible;
 
-	// Which side is speaking this sequence
-	private enum SpeakerSide { Left, Right }
-	private SpeakerSide _activeSide;
+	// Speaker names
 	private string _leftSpeakerName;
 	private string _rightSpeakerName;
 
@@ -37,16 +51,13 @@ public partial class DialogSystem : CanvasLayer
 	/// <summary>
 	/// Starts a dialog sequence.
 	/// </summary>
-	/// <param name="dialogLines">Lines to display</param>
+	/// <param name="dialogLines">Lines to display with explicit speaker indicators</param>
 	/// <param name="rightName">
 	/// Name for right speaker.
 	/// If empty or null, right portrait & label are hidden.
 	/// </param>
 	/// <param name="rightPortraitTexture">Texture to display for right speaker (witness)</param>
-	/// <param name="isLeftSpeaking">
-	/// True if left speaks; false if right.
-	/// </param>
-	public void StartDialog(string[] dialogLines, string rightName, Texture2D rightPortraitTexture, bool isLeftSpeaking)
+	public void StartDialog(DialogLine[] dialogLines, string rightName, Texture2D rightPortraitTexture)
 	{
 		// Set names and visibility (left is always Inspector Crawford)
 		_leftSpeakerName = "Inspector Crawford";
@@ -64,24 +75,6 @@ public partial class DialogSystem : CanvasLayer
 			rightPortrait.Texture = rightPortraitTexture;
 		}
 
-		// Determine active side
-		_activeSide = isLeftSpeaking ? SpeakerSide.Left : SpeakerSide.Right;
-
-		// Portrait modulation (use Modulate for TextureRect)
-		const float inactiveAlpha = 0.4f;
-		if (_activeSide == SpeakerSide.Left)
-		{
-			if (leftPortrait != null)
-				leftPortrait.Modulate = new Color(1, 1, 1, 1);
-			rightPortrait.Modulate = new Color(1, 1, 1, inactiveAlpha);
-		}
-		else
-		{
-			rightPortrait.Modulate = new Color(1, 1, 1, 1);
-			if (leftPortrait != null)
-				leftPortrait.Modulate = new Color(1, 1, 1, inactiveAlpha);
-		}
-
 		// Initialize dialog
 		_currentDialogLines = dialogLines;
 		_currentLineIndex = 0;
@@ -97,12 +90,12 @@ public partial class DialogSystem : CanvasLayer
 			return;
 		}
 
-		// Toggle speaker for alternating dialog
-		_activeSide = (_currentLineIndex % 2 == 0) ? SpeakerSide.Left : SpeakerSide.Right;
+		// Get current dialog line
+		DialogLine currentLine = _currentDialogLines[_currentLineIndex++];
 
 		// Update portrait modulation to show active speaker
 		const float inactiveAlpha = 0.4f;
-		if (_activeSide == SpeakerSide.Left)
+		if (currentLine.Speaker == SpeakerSide.Left)
 		{
 			if (leftPortrait != null)
 				leftPortrait.Modulate = new Color(1, 1, 1, 1);
@@ -117,10 +110,7 @@ public partial class DialogSystem : CanvasLayer
 				leftPortrait.Modulate = new Color(1, 1, 1, inactiveAlpha);
 		}
 
-		// Get dialog line without speaker prefix (portrait highlighting shows who's speaking)
-		string dialogLine = _currentDialogLines[_currentLineIndex++];
-
-		StartTypewriter(dialogLine);
+		StartTypewriter(currentLine.Text);
 	}
 
 	private void StartTypewriter(string text)

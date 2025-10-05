@@ -76,19 +76,33 @@ public partial class Main : Node3D
 	/// <summary>
 	/// Adds a clue to the clue container.
 	/// </summary>
-	public void AddClue(string header, string body)
+	/// <param name="header">Clue header/title</param>
+	/// <param name="body">Clue description</param>
+	/// <param name="portrait">Optional portrait texture of the character providing the clue</param>
+	public void AddClue(string header, string body, Texture2D portrait = null)
 	{
-		_clueContainer.CreateClueItem(header, body);
+		_clueContainer.CreateClueItem(header, body, portrait);
 	}
 
 	/// <summary>
-	/// Unlocks an option in the end game dialog.
+	/// Shows and unlocks an option in the end game dialog.
 	/// </summary>
 	/// <param name="question">0 = Who, 1 = What, 2 = Why</param>
 	/// <param name="option">Option index (0-3)</param>
 	public void UnlockOption(int question, int option)
 	{
-		_endGameDialog.SetOptionAvailability(question, option, true);
+		_endGameDialog.SetOptionVisibility(question, option, true);
+	}
+
+	/// <summary>
+	/// Sets the visibility of an option in the end game dialog.
+	/// </summary>
+	/// <param name="question">0 = Who, 1 = What, 2 = Why</param>
+	/// <param name="option">Option index (0-3)</param>
+	/// <param name="visible">True to show, false to hide</param>
+	public void SetOptionVisibility(int question, int option, bool visible)
+	{
+		_endGameDialog.SetOptionVisibility(question, option, visible);
 	}
 
 	/// <summary>
