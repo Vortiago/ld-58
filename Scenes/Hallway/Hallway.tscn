@@ -240,10 +240,6 @@ roughness = 0.1
 
 [node name="HallwayGeometry" parent="." instance=ExtResource("1_hallwaygeom")]
 
-[node name="Door" parent="HallwayGeometry" instance=ExtResource("2_dqxua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 8.7)
-visible = false
-
 [node name="roof_lamp" parent="HallwayGeometry" instance=ExtResource("3_as5ck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.803779, 4, 0)
 
