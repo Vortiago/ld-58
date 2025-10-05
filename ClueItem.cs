@@ -6,16 +6,12 @@ public partial class ClueItem : Button
     [Signal]
     public delegate void ClueOpenedEventHandler(ClueItem clueItem);
 
-    [Node("ClueItemTextPanel")]
     private Control ClueTextContainer;
 
-    [Node("ClueItemTextPanel/MarginContainer/VBoxContainer/ClueTextHeader")]
     private Label ClueTextHeader;
 
-    [Node("ClueItemTextPanel/MarginContainer/VBoxContainer/ClueTextBody")]
     private Label ClueTextBody;
 
-    [Node("PortraitIcon")]
     private TextureRect PortraitIcon;
 
     [Export] public string ClueHeader { get; set; } = string.Empty;
@@ -24,6 +20,11 @@ public partial class ClueItem : Button
 
     public override void _Ready()
     {
+        ClueTextContainer = GetNode<Control>("ClueItemTextPanel");
+        ClueTextHeader = GetNode<Label>("ClueItemTextPanel/MarginContainer/VBoxContainer/ClueTextHeader");
+        ClueTextBody = GetNode<Label>("ClueItemTextPanel/MarginContainer/VBoxContainer/ClueTextBody");
+        PortraitIcon = GetNode<TextureRect>("PortraitIcon");
+
         ClueTextContainer.Visible = false;
         // Make the text panel top-level so it positions relative to viewport, not parent button
         ClueTextContainer.TopLevel = true;

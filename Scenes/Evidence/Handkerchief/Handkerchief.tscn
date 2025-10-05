@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1at2ighj8ag6"]
+[gd_scene load_steps=6 format=3 uid="uid://c1at2ighj8ag6"]
 
 [ext_resource type="Script" uid="uid://d3r4qxofp1pj3" path="res://components/InteractableObject.cs" id="1_7pcnj"]
+[ext_resource type="Script" uid="uid://bed25hqnxo7gf" path="res://Scenes/Evidence/Handkerchief/Handkerchief.cs" id="1_ojufp"]
 [ext_resource type="Material" uid="uid://dskbvfhxan1mf" path="res://shaders/pixel_perfect_ouline.tres" id="2_0615d"]
 [ext_resource type="PackedScene" uid="uid://u72sr77pe2hy" path="res://Scenes/Evidence/Handkerchief/HandkerchiefModel.tscn" id="3_0615d"]
 
@@ -8,6 +9,7 @@
 size = Vector3(0.5185547, 0.50634766, 0.07098389)
 
 [node name="Handkerchief" type="Node3D"]
+script = ExtResource("1_ojufp")
 
 [node name="InteractableObject" type="Area3D" parent="." node_paths=PackedStringArray("Model")]
 script = ExtResource("1_7pcnj")

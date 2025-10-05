@@ -3,13 +3,10 @@ using Godot;
 
 public partial class YoungTimBlackwood : Node3D
 {
-    [Node("Camera3D")]
     private Camera3D _camera;
 
-    [Node("InteractableObject")]
     private InteractableObject _interactableObject;
 
-    [Node("Camera3D/CameraStateMonitor")]
     private CameraStateMonitor _cameraStateMonitor;
 
     private DialogSystem _dialogSystem;
@@ -47,6 +44,10 @@ public partial class YoungTimBlackwood : Node3D
 
     public override void _Ready()
     {
+        _camera = GetNode<Camera3D>("Camera3D");
+        _interactableObject = GetNode<InteractableObject>("InteractableObject");
+        _cameraStateMonitor = GetNode<CameraStateMonitor>("Camera3D/CameraStateMonitor");
+
         _dialogSystem = GetNode<DialogSystem>("/root/Main/DialogSystem");
         _main = GetNode<Main>("/root/Main");
         _youngTimothyPortrait = GD.Load<Texture2D>("res://Scenes/PhotoFrame/YoungTimBlackwood/Young Timothy Blackwood.png");

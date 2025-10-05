@@ -8,13 +8,13 @@ public partial class ClueContainer : PanelContainer
 
     [Export] private Button CloseButton;
 
-    [Node("%ClueGrid")]
     private GridContainer ClueItemsGrid;
 
     private List<ClueItem> _clueItems = new List<ClueItem>();
 
     public override void _Ready()
     {
+        ClueItemsGrid = GetNode<GridContainer>("%ClueGrid");
         CloseButton.Pressed += OnCloseButtonPressed;
         Visible = false;
     }
