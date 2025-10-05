@@ -18,15 +18,11 @@ public partial class HouseKeeper : Node3D
 	private readonly DialogSystem.DialogLine[] _firstVisitDialog = new[]
 	{
 		new DialogSystem.DialogLine("Sarah, you've watched over this hallway for many years. What did you observe last night?", DialogSystem.SpeakerSide.Left),
-		new DialogSystem.DialogLine("Inspector, from my position here, I have a perfect view of the lower hallway. I heard shouting—Lord Edgar's voice, angry and desperate. We portraits share what we see, you know.", DialogSystem.SpeakerSide.Right),
-		new DialogSystem.DialogLine("What time did this happen? Can you be certain?", DialogSystem.SpeakerSide.Left),
-		new DialogSystem.DialogLine("Around eleven-thirty, I believe—though we portraits don't always pay close attention to time. I've watched over this house since 1888, three generations now. Last night, shadows moved near the corner table... multiple figures.", DialogSystem.SpeakerSide.Right),
+		new DialogSystem.DialogLine("From my position here, I have a perfect view of the lower hallway. Around eleven-thirty, I heard shouting—Lord Edgar's voice, angry and desperate. Shadows moved near the corner table... multiple figures. We portraits share what we see, you know.", DialogSystem.SpeakerSide.Right),
 		new DialogSystem.DialogLine("Multiple people? Could you identify any of them from your vantage point?", DialogSystem.SpeakerSide.Left),
-		new DialogSystem.DialogLine("Someone rushed past, right beneath my frame. Moving fast, breathing hard. From my angle, I mostly see feet and shadows. The other portraits might have seen their face—we often discuss what we observe.", DialogSystem.SpeakerSide.Right),
-		new DialogSystem.DialogLine("Did you notice any distinguishing features?", DialogSystem.SpeakerSide.Left),
-		new DialogSystem.DialogLine("My position gives me an excellent view of the plant stand. There's a handkerchief there—monogrammed, expensive silk. The portrait of the late Lord Blackwood mentioned seeing it dropped during the commotion.", DialogSystem.SpeakerSide.Right),
-		new DialogSystem.DialogLine("A handkerchief? What were the initials?", DialogSystem.SpeakerSide.Left),
-		new DialogSystem.DialogLine("'T.H.', gold thread embroidery. Beautiful work. Dark stains on it too—blood perhaps. Though young Timothy's governess mentioned he'd had a nosebleed earlier that evening. Strange coincidence.", DialogSystem.SpeakerSide.Right),
+		new DialogSystem.DialogLine("Someone rushed past, right beneath my frame. Moving fast, breathing hard. From my angle, I mostly see feet and shadows. But I did notice a handkerchief dropped by the plant stand—monogrammed, expensive silk with dark stains.", DialogSystem.SpeakerSide.Right),
+		new DialogSystem.DialogLine("What were the initials?", DialogSystem.SpeakerSide.Left),
+		new DialogSystem.DialogLine("'T.H.', gold thread embroidery. Blood perhaps, though young Timothy's governess mentioned he'd had a nosebleed earlier that evening. Strange coincidence.", DialogSystem.SpeakerSide.Right),
 		new DialogSystem.DialogLine("'T.H.'... Thomas Hartwell, or perhaps...?", DialogSystem.SpeakerSide.Left),
 		new DialogSystem.DialogLine("Could be Thomas, could be young Timothy Hartwell—he's Edgar's nephew visiting from London. Both were here last night. We portraits know all the family connections, Inspector. So many secrets painted on these walls.", DialogSystem.SpeakerSide.Right)
 	};
