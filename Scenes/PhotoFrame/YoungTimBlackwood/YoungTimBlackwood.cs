@@ -20,26 +20,29 @@ public partial class YoungTimBlackwood : Node3D
     // Dialog configuration - First Visit
     private readonly DialogSystem.DialogLine[] _firstVisitDialog = new[]
     {
-        new DialogSystem.DialogLine("Hello there, young man. You're Timothy, aren't you? Lord Blackwood's son?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Yes, sir. I'm... I'm not supposed to be up this late. Am I in trouble?", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("No, no trouble at all. But from your portrait here, you might have seen something important. Can you tell me what happened?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("I wasn't supposed to be up, but I heard shouting... Papa's voice and someone else. They sounded really angry. I got scared and hid in my portrait.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("Someone else? Could you tell who it was from the voice?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("It... it sounded like a man. But I'm not sure who. Miss Catherine was reading me stories earlier, then she left to check on something downstairs.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("Miss Catherine, your governess? She was with you before this happened?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Yes, until about... I don't know the time exactly. She seemed nervous, kept looking at the clock. Then someone ran past my portrait—I saw them from my frame, but it was too dark to see their face clearly.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("What did you notice about the person who ran past?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("They were breathing really hard and moving fast. Earlier that evening, I saw Papa looking at papers on his desk. The ones with all the numbers. He looked so sad, like when our dog died.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("The financial papers? Did your father say anything about them?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("He kept saying 'How could they do this?' over and over. 'They', not 'he' or 'she'. I remember because it confused me—who was he talking about?", DialogSystem.SpeakerSide.Right)
+        new DialogSystem.DialogLine("Hello there, young Timothy. Your portrait is quite new, isn't it?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Yes sir, my painting still smells of fresh oils. The older portraits tell me I'll get used to living in a frame. The portrait children in the nursery wing are teaching me how to visit other frames.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("You can visit other frames? Where were you when this happened to your father?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("I was in my own frame, I promise! Though earlier I did sneak to the library portraits—they tell the best stories about the house. Papa was looking at papers there, the ones with numbers. He looked so upset.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("What did you observe from your frame position during the incident?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("I heard shouting—Papa and someone else. The older portraits say I'm too young to understand, but I know angry voices. Then someone ran past my frame, breathing hard. My position let me see their shadow but not their face.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Tell me about Miss Catherine. Where was she?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("She was reading to me earlier—portrait etiquette, she calls it. She visits my frame every night. But she seemed different, kept checking something. She said she had to 'take care of something' and left. The other portraits whisper that she protects me, but from what?", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Protects you? What do you mean?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("I don't know exactly. Sometimes when I practice moving between frames, I end up places I shouldn't. Last week I was in Papa's study frame and saw... things. Miss Catherine found me and brought me back. She said some frames aren't safe for young portraits.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("What did you see in your father's study frame?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Papers about me, I think. And about Uncle Timothy Hartwell—that's who I'm named after. He died before I was born, but his portrait used to hang here. Papa had it removed last month. The older portraits won't tell me why. They just say 'family secrets are painted in layers.'", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Your father said 'How could THEY do this?' Who do you think 'they' were?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("I don't know, sir. But before dinner, I heard Papa arguing with Lady Margaret's portrait. Can portraits argue with living people? The older paintings say we can influence things, but they won't teach me how yet. They say I'm too young, that I might do something... wrong.", DialogSystem.SpeakerSide.Right)
     };
 
     // Dialog configuration - Subsequent Visits
     private readonly DialogSystem.DialogLine[] _subsequentVisitDialog = new[]
     {
-        new DialogSystem.DialogLine("Timothy, is there anything else you remember from that night?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Just someone running away in the dark. I wish I could have seen their face, Inspector. And Miss Catherine acting so nervous before she left me...", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("You're very brave for telling me. Thank you.", DialogSystem.SpeakerSide.Left)
+        new DialogSystem.DialogLine("Timothy, is there anything else you remember?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("The portrait children keep asking if I saw who did it. I tell them about the shadow, but... Inspector, what if the shadow looked familiar? What if it was someone I know? Even portraits can have nightmares.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Who do you think it might have been?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("I... I shouldn't guess. Miss Catherine says guessing can hurt people. But the handkerchief everyone talks about—'T.H.'—those are my initials too. Timothy Hartwell. Just like my dead uncle.", DialogSystem.SpeakerSide.Right)
     };
 
     public override void _Ready()
@@ -84,29 +87,42 @@ public partial class YoungTimBlackwood : Node3D
         // Add clues on first visit
         if (_visitCount == 1)
         {
-            // Add clue about Miss Catherine's nervous behavior (red herring reinforcement)
+            // Add clue about Timothy's frame abilities
             _main.AddClue(
-                "Miss Catherine's Nervous Behavior",
-                "Timothy reports Miss Catherine seemed nervous while reading stories, kept looking at the clock. She left him suddenly to 'check on something downstairs' shortly before the murder. Her unusual behavior and timing make her a suspect. However, Timothy confirms she was with him reading during the critical time window.",
+                "Young Portrait's Abilities",
+                "Timothy can move between frames—unusual for such a new portrait. He was found in his father's study frame last week seeing 'things' before Miss Catherine brought him back. The older portraits say he might 'do something wrong' if taught too much. Portrait children are teaching him frame travel. Where was he really during the murder?",
                 _youngTimothyPortrait
             );
 
-            // Add clue about Edgar's "they" statement (ambiguous evidence)
+            // Add clue about the removed portrait and family secret
             _main.AddClue(
-                "Edgar's 'They' Statement",
-                "Timothy heard his father say 'How could they do this?' while looking at financial papers. Edgar used 'they' (plural) not 'he' or 'she'. Could indicate multiple people involved in the embezzlement, or Edgar was speaking generally about betrayal. Creates ambiguity about number of suspects.",
+                "Uncle Timothy Hartwell's Portrait",
+                "Young Timothy is named after his uncle Timothy Hartwell who 'died before he was born.' Uncle's portrait was removed last month by Edgar. The handkerchief's 'T.H.' monogram matches both Timothys. Older portraits say 'family secrets are painted in layers.' What happened to the first Timothy Hartwell?",
                 _youngTimothyPortrait
             );
 
-            // Add clue about unidentified runner (ambiguous witness account)
+            // Add clue about Miss Catherine's protection
             _main.AddClue(
-                "Unidentified Runner",
-                "Timothy saw someone running past his portrait frame after the murder, breathing hard and moving fast. Too dark to identify face or distinguishing features. Could have been any of the dinner guests fleeing the scene. Confirms someone fled but doesn't narrow suspects.",
+                "Catherine's Mysterious Protection",
+                "Miss Catherine visits Timothy's frame nightly for 'portrait etiquette.' Other portraits whisper she 'protects' him but won't say from what. She prevents him from visiting certain frames calling them 'unsafe for young portraits.' She left to 'take care of something' before the murder. Is she protecting Timothy or covering for him?",
                 _youngTimothyPortrait
             );
 
-            // Reinforce Miss Catherine as suspect (she's already unlocked by Lady Blackwood, but this provides her alibi)
-            // The clue itself mentions she was WITH Timothy, which actually gives her an alibi
+            // Add clue about portrait influence
+            _main.AddClue(
+                "Portrait-Human Interaction",
+                "Timothy heard Edgar arguing with Lady Margaret's portrait before dinner. Can portraits influence living people? Older paintings say they can but won't teach Timothy yet—he's 'too young' and might do something 'wrong.' This suggests portraits may have more agency than mere observers.",
+                _youngTimothyPortrait
+            );
+
+            // Add clue about the familiar shadow
+            _main.AddClue(
+                "The Familiar Shadow",
+                "Timothy saw a shadow running past but claims he couldn't identify it. On repeat visits, he admits: 'What if the shadow looked familiar?' He knows 'T.H.' are his initials too. His reluctance to identify the runner combined with Miss Catherine's protection suggests he recognized someone—or was involved himself.",
+                _youngTimothyPortrait
+            );
+
+            // Note: Additional motive options removed (limited to 4 options per question)
         }
 
         DialogSystem.DialogLine[] dialogToShow = _visitCount == 1 ? _firstVisitDialog : _subsequentVisitDialog;
@@ -115,5 +131,10 @@ public partial class YoungTimBlackwood : Node3D
         {
             _dialogSystem.StartDialog(dialogToShow, "Young Timothy Blackwood", _youngTimothyPortrait);
         }
+    }
+
+    public void ResetState()
+    {
+        _visitCount = 0;
     }
 }

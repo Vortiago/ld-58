@@ -59,6 +59,8 @@ public partial class DialogSystem : CanvasLayer
 	/// <param name="rightPortraitTexture">Texture to display for right speaker (witness)</param>
 	public void StartDialog(DialogLine[] dialogLines, string rightName, Texture2D rightPortraitTexture)
 	{
+		GD.Print($"[DEBUG] DialogSystem.StartDialog called with {dialogLines.Length} lines, rightName={rightName ?? "null"}");
+
 		// Set names and visibility (left is always Inspector Crawford)
 		_leftSpeakerName = "Inspector Crawford";
 		_rightSpeakerName = rightName;
@@ -84,8 +86,10 @@ public partial class DialogSystem : CanvasLayer
 
 	private void ShowNextLine()
 	{
+		GD.Print($"[DEBUG] ShowNextLine called. Index: {_currentLineIndex}/{_currentDialogLines.Length}");
 		if (_currentLineIndex >= _currentDialogLines.Length)
 		{
+			GD.Print("[DEBUG] No more lines - calling EndDialog");
 			EndDialog();
 			return;
 		}
@@ -150,8 +154,10 @@ public partial class DialogSystem : CanvasLayer
 
 	private void EndDialog()
 	{
+		GD.Print("[DEBUG] DialogSystem.EndDialog called - hiding DialogBox and emitting DialogFinished signal");
 		DialogBox.Visible = false;
 		EmitSignal(SignalName.DialogFinished);
+		GD.Print("[DEBUG] DialogFinished signal emitted");
 	}
 
 	public override void _Input(InputEvent @event)

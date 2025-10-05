@@ -20,23 +20,23 @@ public partial class DrHenryMorrison : Node3D
     // Dialog configuration - First Visit
     private readonly DialogSystem.DialogLine[] _firstVisitDialog = new[]
     {
-        new DialogSystem.DialogLine("Dr. Morrison, your medical expertise would be invaluable. From your portrait, what can you observe about Lord Blackwood's death?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Inspector, I've been watching the scene unfold from my frame. Single stab wound, angled upward. The attacker was shorter than Edgar, or struck from below. Living within this portrait gives one an excellent vantage point for observation.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("From your perspective in the painting, can you determine anything else?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("The defensive wounds on his hands—he tried to grab the blade. We portrait dwellers witness everything from our frames, Inspector. He faced his attacker directly. It's quite remarkable what one notices when observing from painted canvas.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("Speaking of medical matters, weren't you and Dr. Pemberton both dinner guests tonight?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Indeed, Victor Pemberton attended the dinner. I overheard Edgar earlier—he was furious about a botched surgery Victor performed. Threatened to report him to the medical board. We portraits overhear everything that happens in these halls.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("That's a strong motive. Where was Dr. Pemberton when the murder occurred?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("The smoking room, I believe. From where I reside in my frame, I cannot see around corners, unfortunately. What I can observe: surgical instruments near the body. Quite unusual to find in a study.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("Surgical instruments? At a murder scene?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Victor always carries his medical bag—professional habit. If he was desperate enough... The wound is precise, Inspector. Almost surgical in nature. Living here in this frame, I've had ample time to study every detail of the scene.", DialogSystem.SpeakerSide.Right)
+        new DialogSystem.DialogLine("Dr. Morrison, your medical expertise serves you well even in painted form. What can you observe from your frame's position?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Inspector, my frame's angle gives me an excellent diagnostic view. Single puncture wound, angled upward. My medical training, preserved in oils and canvas, tells me the attacker was either shorter or crouching. We portrait doctors often consult on such matters.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Can your position reveal anything about the attacker's identity?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("The defensive wounds suggest Edgar knew his attacker—he faced them directly, no surprise. From this vantage point, I can see every detail clearly. The other medical portraits and I have been discussing the wound pattern all morning.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Other medical portraits? You mean Dr. Pemberton?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("No, Victor doesn't have a portrait here yet. But the late Dr. Blackwood—Edgar's father—his portrait hangs in the library. We often compare observations. Victor was at dinner tonight, actually. Edgar threatened him over that surgery mishap.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("A serious accusation. Where was Dr. Pemberton during the murder?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("The smoking room, according to the portrait of Admiral Henderson who hangs there. Though he admits he was dozing. From my position, I see surgical instruments near the body—unusual for a study.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Could those instruments be the murder weapon?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("The wound suggests something thin and sharp—letter opener, scalpel, even young Timothy's fencing foil could match. Victor always carries his medical bag, true. But then, Lady Margaret mentioned Edgar kept his father's old surgical kit in the study. Multiple possibilities, Inspector.", DialogSystem.SpeakerSide.Right)
     };
 
     // Dialog configuration - Subsequent Visits
     private readonly DialogSystem.DialogLine[] _subsequentVisitDialog = new[]
     {
-        new DialogSystem.DialogLine("Doctor, anything else you've observed from your portrait?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Only what I've already shared, Inspector. The defensive wounds, the surgical instruments. Living in this frame, I can see the scene quite clearly, but the evidence speaks for itself.", DialogSystem.SpeakerSide.Right)
+        new DialogSystem.DialogLine("Doctor, anything else from your medical perspective?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("My position gives me perfect view of the wounds, Inspector. The other portraits keep asking my opinion—was it a blade, was it surgical? Even we paintings have our debates. The truth remains elusive.", DialogSystem.SpeakerSide.Right)
     };
 
     public override void _Ready()
@@ -81,34 +81,43 @@ public partial class DrHenryMorrison : Node3D
         // Add clues and unlock options on first visit
         if (_visitCount == 1)
         {
-            // Add defensive wounds clue (real evidence)
+            // Add defensive wounds clue (evidence but less conclusive)
             _main.AddClue(
-                "Defensive Wounds",
-                "Cuts on Lord Edgar's hands and forearms show he tried to grab the blade. More wounds on the right hand - he was facing his attacker. Edgar saw his killer (not attacked from behind initially). Knew his attacker (no signs of surprise). Brief struggle before fatal blow.",
+                "Defensive Wounds Analysis",
+                "Dr. Morrison's medical expertise reveals cuts on Edgar's hands suggesting he grabbed at the weapon. The pattern indicates Edgar faced his attacker—someone he knew. However, the portrait doctors debate whether these are defensive or offensive wounds. Could Edgar have been the initial aggressor? The wound angle suggests either a shorter attacker or someone crouching—possibly a child?",
                 _drMorrisonPortrait
             );
 
-            // Add red herring clue about Dr. Pemberton
+            // Add multiple weapon possibilities clue
             _main.AddClue(
-                "Surgical Instruments (Dr. Pemberton)",
-                "A leather medical bag with surgical scalpels visible near the body. Dr. Pemberton always carries his instruments - professional habit. Unusual placement suggests bag was set down hastily. One scalpel is missing from the set. Could indicate medical knowledge in the killer. However, multiple witnesses placed Dr. Pemberton in the smoking room during the murder.",
+                "Weapon Possibilities",
+                "Multiple sharp objects present: Dr. Pemberton's surgical scalpels (one missing), Edgar's ornate letter opener, Edgar's late father's surgical kit in the study, and young Timothy's fencing foil mentioned by portraits. The wound could match any thin, sharp blade. Morrison notes the precision suggests either medical knowledge or lucky strike.",
                 _drMorrisonPortrait
             );
 
-            // Add red herring clue about Dr. Pemberton's motive
+            // Add portrait testimony conflict
             _main.AddClue(
-                "Dr. Pemberton's Motive",
-                "Edgar threatened to report Dr. Pemberton to the medical board for a botched surgery last month. Dr. Morrison mentions Victor was 'desperate enough' and the wound is 'almost surgical in execution.' Strong motive for medical cover-up murder.",
+                "Conflicting Medical Opinions",
+                "Dr. Morrison consults with other medical portraits including Edgar's late father. They disagree on the wound's nature—surgical precision or amateur's luck? Admiral Henderson's portrait claims Pemberton was in the smoking room but admits he was 'dozing.' Portrait testimony is only as reliable as the portrait's attention span.",
                 _drMorrisonPortrait
             );
 
-            // Unlock Dr. Pemberton as red herring suspect
+            // Add conspiracy hint
+            _main.AddClue(
+                "Attacker's Height Analysis",
+                "The upward wound angle indicates someone shorter than Edgar or attacking from below. Could be: a woman (Lady Margaret), a younger person (Timothy), someone crouching (anyone), or someone who fell during struggle. Dr. Morrison's portrait colleagues suggest multiple interpretations.",
+                _drMorrisonPortrait
+            );
+
+            // Unlock Dr. Pemberton as suspect
             _main.SetOptionText(0, 1, "Dr. Victor Pemberton"); // Who option 2
             _main.UnlockOption(0, 1);
 
-            // Unlock letter opener as weapon (mentioned in dialog as precise wound)
+            // Unlock multiple weapon options
             _main.SetOptionText(1, 0, "Ornate Letter Opener"); // What option 1
             _main.UnlockOption(1, 0);
+
+            // Note: Medical Scalpel option removed (limited to 4 options per question)
 
             // Unlock medical cover-up motive
             _main.SetOptionText(2, 3, "Medical Cover-up"); // Why option 4
@@ -121,5 +130,10 @@ public partial class DrHenryMorrison : Node3D
         {
             _dialogSystem.StartDialog(dialogToShow, "Dr. Henry Morrison", _drMorrisonPortrait);
         }
+    }
+
+    public void ResetState()
+    {
+        _visitCount = 0;
     }
 }

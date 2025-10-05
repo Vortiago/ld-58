@@ -61,4 +61,17 @@ public partial class ClueContainer : PanelContainer
     {
         Hide();
     }
+
+    public void ClearAllClues()
+    {
+        // Unsubscribe from all clue events
+        foreach (ClueItem clue in _clueItems)
+        {
+            clue.ClueOpened -= OnClueItemOpened;
+            clue.QueueFree();
+        }
+
+        // Clear the list
+        _clueItems.Clear();
+    }
 }
