@@ -1,8 +1,8 @@
-[gd_scene load_steps=51 format=3 uid="uid://d5713qx52vb1"]
+[gd_scene load_steps=76 format=3 uid="uid://d5713qx52vb1"]
 
 [ext_resource type="PackedScene" uid="uid://egcjovpb1kfo" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
 [ext_resource type="PackedScene" uid="uid://bw6xmw805w165" path="res://components/Door.tscn" id="2_dqxua"]
-[ext_resource type="PackedScene" uid="uid://mjbenx6we15q" path="res://assets/roof_lamp.tscn" id="3_as5ck"]
+[ext_resource type="PackedScene" path="res://assets/roof_lamp.tscn" id="3_as5ck"]
 [ext_resource type="PackedScene" uid="uid://btlm13sldjwnq" path="res://Scenes/PhotoFrame/HouseKeeper/HouseKeeper.tscn" id="3_cvgsa"]
 [ext_resource type="PackedScene" uid="uid://bv2d2i0odcgfk" path="res://Scenes/PhotoFrame/InspectorCrawford/InspectorCrawford.tscn" id="4_05vpa"]
 [ext_resource type="PackedScene" uid="uid://cg22nmohjn64o" path="res://Scenes/PhotoFrame/LadyBlackwood/LadyBlackwood.tscn" id="4_hifnc"]
@@ -10,9 +10,16 @@
 [ext_resource type="PackedScene" uid="uid://d4kcn0ixh7umi" path="res://Scenes/PhotoFrame/YoungTimBlackwood/YoungTimBlackwood.tscn" id="6_83k6l"]
 [ext_resource type="PackedScene" uid="uid://diwkiu7viyhdu" path="res://assets/grandfatherclock.tscn" id="6_ko40w"]
 [ext_resource type="PackedScene" uid="uid://bdvrsv0d4o25a" path="res://Scenes/PhotoFrame/EleanorHartwell/EleanorHeartwell.tscn" id="7_yixj0"]
+[ext_resource type="PackedScene" path="res://Scenes/PhotoFrame/Dog/Dog.tscn" id="8_dog01"]
+[ext_resource type="PackedScene" path="res://Scenes/PhotoFrame/Cat/Cat.tscn" id="9_cat01"]
 [ext_resource type="PackedScene" uid="uid://dte0kjkhp7rr5" path="res://Scenes/Evidence/LetterOpener/LetterOpener.tscn" id="10_5tr82"]
+[ext_resource type="PackedScene" path="res://Scenes/PhotoFrame/Car/Car.tscn" id="10_car01"]
+[ext_resource type="PackedScene" path="res://Scenes/PhotoFrame/Boat/Boat.tscn" id="11_boat01"]
 [ext_resource type="PackedScene" uid="uid://bt12yfrmvyp0" path="res://Scenes/Evidence/DroppedLedger/DroppedLedger.tscn" id="11_jbjv5"]
 [ext_resource type="PackedScene" uid="uid://c1at2ighj8ag6" path="res://Scenes/Evidence/Handkerchief/Handkerchief.tscn" id="12_dfkrl"]
+[ext_resource type="PackedScene" path="res://Scenes/PhotoFrame/Flowers/Flowers.tscn" id="12_flow01"]
+[ext_resource type="PackedScene" path="res://Scenes/PhotoFrame/Books/Books.tscn" id="13_book01"]
+[ext_resource type="PackedScene" path="res://Scenes/PhotoFrame/Clock/Clock.tscn" id="14_clck01"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_table"]
 size = Vector3(1.5, 0.1, 0.8)
@@ -107,16 +114,21 @@ albedo_color = Color(0.2, 0.1, 0.05, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_frame_vertical"]
 size = Vector3(0.05, 1, 0.1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_console_table"]
-size = Vector3(1.2, 0.8, 0.4)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_vase"]
-top_radius = 0.1
-bottom_radius = 0.15
-height = 0.4
+[sub_resource type="CylinderMesh" id="CylinderMesh_small_vase"]
+top_radius = 0.05
+bottom_radius = 0.06
+height = 0.15
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brass"]
 albedo_color = Color(0.803922, 0.521569, 0.247059, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_candle"]
+top_radius = 0.02
+bottom_radius = 0.025
+height = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_candle"]
+albedo_color = Color(0.95, 0.9, 0.75, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_plant"]
 top_radius = 0.0
@@ -125,6 +137,26 @@ height = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plant"]
 albedo_color = Color(0.156863, 0.392157, 0.156863, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_console_table"]
+size = Vector3(1.2, 0.8, 0.4)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vase"]
+top_radius = 0.1
+bottom_radius = 0.15
+height = 0.4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bust_pedestal"]
+top_radius = 0.08
+bottom_radius = 0.1
+height = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_marble"]
+albedo_color = Color(0.9, 0.9, 0.85, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bust_head"]
+radius = 0.12
+height = 0.24
 
 [sub_resource type="BoxMesh" id="BoxMesh_carpet_runner"]
 size = Vector3(6, 0.02, 1.2)
@@ -165,15 +197,15 @@ size = Vector3(1.2, 0.6, 0.4)
 [sub_resource type="BoxMesh" id="BoxMesh_shoe_leg"]
 size = Vector3(0.08, 0.3, 0.08)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_coat_post"]
-top_radius = 0.08
-bottom_radius = 0.08
-height = 1.8
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_coat_base"]
 top_radius = 0.25
 bottom_radius = 0.25
 height = 0.05
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_coat_post"]
+top_radius = 0.08
+bottom_radius = 0.08
+height = 1.8
 
 [sub_resource type="BoxMesh" id="BoxMesh_coat_hook"]
 size = Vector3(0.15, 0.08, 0.08)
@@ -202,46 +234,6 @@ size = Vector3(0.65, 0.85, 0.02)
 albedo_color = Color(0.8, 0.85, 0.9, 1)
 metallic = 0.8
 roughness = 0.1
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_small_vase"]
-top_radius = 0.05
-bottom_radius = 0.06
-height = 0.15
-
-[sub_resource type="BoxMesh" id="BoxMesh_sconce_plate"]
-size = Vector3(0.15, 0.25, 0.05)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_candle"]
-top_radius = 0.02
-bottom_radius = 0.025
-height = 0.15
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_candle"]
-albedo_color = Color(0.95, 0.9, 0.75, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_bust_pedestal"]
-top_radius = 0.08
-bottom_radius = 0.1
-height = 0.25
-
-[sub_resource type="SphereMesh" id="SphereMesh_bust_head"]
-radius = 0.12
-height = 0.24
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_marble"]
-albedo_color = Color(0.9, 0.9, 0.85, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_painting_frame"]
-size = Vector3(0.05, 0.5, 0.4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_painting_canvas"]
-size = Vector3(0.02, 0.4, 0.3)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_painting_landscape"]
-albedo_color = Color(0.3, 0.5, 0.3, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_painting_portrait"]
-albedo_color = Color(0.5, 0.4, 0.35, 1)
 
 [node name="Hallway" type="Node3D"]
 
@@ -293,6 +285,27 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 
 
 [node name="EleanorHeartwell" parent="PhotoFrames" instance=ExtResource("7_yixj0")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.1, 2, 7)
+
+[node name="Boat" parent="PhotoFrames" instance=ExtResource("11_boat01")]
+transform = Transform3D(-0.99998635, 0, -0.005235955, 0, 1, 0, 0.005235955, 0, -0.99998635, 10.215564, 2.2645006, -1.7164738)
+
+[node name="Dog" parent="PhotoFrames" instance=ExtResource("8_dog01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7541747, 1.7373915, 1.7)
+
+[node name="Cat" parent="PhotoFrames" instance=ExtResource("9_cat01")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.4270124, 2.083717, -1.6)
+
+[node name="Car" parent="PhotoFrames" instance=ExtResource("10_car01")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 11.996684, 2.5, 1.6339257)
+
+[node name="Flowers" parent="PhotoFrames" instance=ExtResource("12_flow01")]
+transform = Transform3D(0.9989997, 0, 0.04471777, 0.021612676, 0.87544763, -0.48282948, -0.039148066, 0.48331293, 0.8745719, 1.7117245, 1.203001, 1.496881)
+
+[node name="Books" parent="PhotoFrames" instance=ExtResource("13_book01")]
+transform = Transform3D(-0.9999998, 0, -0.00064586103, 0, 1, 0, 0.00064586103, 0, -0.9999998, -1.0481386, 1.9952164, -1.7381669)
+
+[node name="Clock" parent="PhotoFrames" instance=ExtResource("14_clck01")]
+transform = Transform3D(0.38479534, 0.2862098, 0.87750584, 0.042413935, 0.9442213, -0.32656884, -0.92202705, 0.16288067, 0.3511927, 11.796404, 0.45583522, 4.849784)
 
 [node name="CrimeSceneObjects" type="Node3D" parent="."]
 
@@ -597,190 +610,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_brass")
 
 [node name="grandfatherclock" parent="RandomObjects" instance=ExtResource("6_ko40w")]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0.9538851, 0, -1.75)
-
-[node name="WallSconces" type="Node3D" parent="."]
-
-[node name="LongCorridorNorthSconce1" type="Node3D" parent="WallSconces"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 1.72)
-
-[node name="Backplate" type="MeshInstance3D" parent="WallSconces/LongCorridorNorthSconce1"]
-mesh = SubResource("BoxMesh_sconce_plate")
-surface_material_override/0 = SubResource("StandardMaterial3D_brass")
-
-[node name="Candle" type="MeshInstance3D" parent="WallSconces/LongCorridorNorthSconce1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
-mesh = SubResource("CylinderMesh_candle")
-surface_material_override/0 = SubResource("StandardMaterial3D_candle")
-
-[node name="LongCorridorNorthSconce2" type="Node3D" parent="WallSconces"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1.72)
-
-[node name="Backplate" type="MeshInstance3D" parent="WallSconces/LongCorridorNorthSconce2"]
-mesh = SubResource("BoxMesh_sconce_plate")
-surface_material_override/0 = SubResource("StandardMaterial3D_brass")
-
-[node name="Candle" type="MeshInstance3D" parent="WallSconces/LongCorridorNorthSconce2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
-mesh = SubResource("CylinderMesh_candle")
-surface_material_override/0 = SubResource("StandardMaterial3D_candle")
-
-[node name="LongCorridorNorthSconce3" type="Node3D" parent="WallSconces"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 1.72)
-
-[node name="Backplate" type="MeshInstance3D" parent="WallSconces/LongCorridorNorthSconce3"]
-mesh = SubResource("BoxMesh_sconce_plate")
-surface_material_override/0 = SubResource("StandardMaterial3D_brass")
-
-[node name="Candle" type="MeshInstance3D" parent="WallSconces/LongCorridorNorthSconce3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
-mesh = SubResource("CylinderMesh_candle")
-surface_material_override/0 = SubResource("StandardMaterial3D_candle")
-
-[node name="LongCorridorSouthSconce1" type="Node3D" parent="WallSconces"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -4, 2, -1.72)
-
-[node name="Backplate" type="MeshInstance3D" parent="WallSconces/LongCorridorSouthSconce1"]
-mesh = SubResource("BoxMesh_sconce_plate")
-surface_material_override/0 = SubResource("StandardMaterial3D_brass")
-
-[node name="Candle" type="MeshInstance3D" parent="WallSconces/LongCorridorSouthSconce1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
-mesh = SubResource("CylinderMesh_candle")
-surface_material_override/0 = SubResource("StandardMaterial3D_candle")
-
-[node name="LongCorridorSouthSconce2" type="Node3D" parent="WallSconces"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 4, 2, -1.72)
-
-[node name="Backplate" type="MeshInstance3D" parent="WallSconces/LongCorridorSouthSconce2"]
-mesh = SubResource("BoxMesh_sconce_plate")
-surface_material_override/0 = SubResource("StandardMaterial3D_brass")
-
-[node name="Candle" type="MeshInstance3D" parent="WallSconces/LongCorridorSouthSconce2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
-mesh = SubResource("CylinderMesh_candle")
-surface_material_override/0 = SubResource("StandardMaterial3D_candle")
-
-[node name="ShortCorridorWestSconce1" type="Node3D" parent="WallSconces"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.12, 2, 2)
-
-[node name="Backplate" type="MeshInstance3D" parent="WallSconces/ShortCorridorWestSconce1"]
-mesh = SubResource("BoxMesh_sconce_plate")
-surface_material_override/0 = SubResource("StandardMaterial3D_brass")
-
-[node name="Candle" type="MeshInstance3D" parent="WallSconces/ShortCorridorWestSconce1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
-mesh = SubResource("CylinderMesh_candle")
-surface_material_override/0 = SubResource("StandardMaterial3D_candle")
-
-[node name="ShortCorridorWestSconce2" type="Node3D" parent="WallSconces"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.12, 2, 4)
-
-[node name="Backplate" type="MeshInstance3D" parent="WallSconces/ShortCorridorWestSconce2"]
-mesh = SubResource("BoxMesh_sconce_plate")
-surface_material_override/0 = SubResource("StandardMaterial3D_brass")
-
-[node name="Candle" type="MeshInstance3D" parent="WallSconces/ShortCorridorWestSconce2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
-mesh = SubResource("CylinderMesh_candle")
-surface_material_override/0 = SubResource("StandardMaterial3D_candle")
-
-[node name="ShortCorridorEastSconce1" type="Node3D" parent="WallSconces"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.88, 2, 2)
-
-[node name="Backplate" type="MeshInstance3D" parent="WallSconces/ShortCorridorEastSconce1"]
-mesh = SubResource("BoxMesh_sconce_plate")
-surface_material_override/0 = SubResource("StandardMaterial3D_brass")
-
-[node name="Candle" type="MeshInstance3D" parent="WallSconces/ShortCorridorEastSconce1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
-mesh = SubResource("CylinderMesh_candle")
-surface_material_override/0 = SubResource("StandardMaterial3D_candle")
-
-[node name="ShortCorridorEastSconce2" type="Node3D" parent="WallSconces"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 11.88, 2, 4)
-
-[node name="Backplate" type="MeshInstance3D" parent="WallSconces/ShortCorridorEastSconce2"]
-mesh = SubResource("BoxMesh_sconce_plate")
-surface_material_override/0 = SubResource("StandardMaterial3D_brass")
-
-[node name="Candle" type="MeshInstance3D" parent="WallSconces/ShortCorridorEastSconce2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.08)
-mesh = SubResource("CylinderMesh_candle")
-surface_material_override/0 = SubResource("StandardMaterial3D_candle")
-
-[node name="WallPaintings" type="Node3D" parent="."]
-
-[node name="LongCorridorNorthPainting1" type="Node3D" parent="WallPaintings"]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -2, 2.2, 1.7)
-
-[node name="Frame" type="MeshInstance3D" parent="WallPaintings/LongCorridorNorthPainting1"]
-mesh = SubResource("BoxMesh_painting_frame")
-surface_material_override/0 = SubResource("StandardMaterial3D_table")
-
-[node name="Canvas" type="MeshInstance3D" parent="WallPaintings/LongCorridorNorthPainting1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04)
-mesh = SubResource("BoxMesh_painting_canvas")
-surface_material_override/0 = SubResource("StandardMaterial3D_painting_landscape")
-
-[node name="LongCorridorNorthPainting2" type="Node3D" parent="WallPaintings"]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 2, 2.2, 1.7)
-
-[node name="Frame" type="MeshInstance3D" parent="WallPaintings/LongCorridorNorthPainting2"]
-mesh = SubResource("BoxMesh_painting_frame")
-surface_material_override/0 = SubResource("StandardMaterial3D_table")
-
-[node name="Canvas" type="MeshInstance3D" parent="WallPaintings/LongCorridorNorthPainting2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04)
-mesh = SubResource("BoxMesh_painting_canvas")
-surface_material_override/0 = SubResource("StandardMaterial3D_painting_portrait")
-
-[node name="LongCorridorSouthPainting1" type="Node3D" parent="WallPaintings"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -2, 2.2, -1.7)
-
-[node name="Frame" type="MeshInstance3D" parent="WallPaintings/LongCorridorSouthPainting1"]
-mesh = SubResource("BoxMesh_painting_frame")
-surface_material_override/0 = SubResource("StandardMaterial3D_table")
-
-[node name="Canvas" type="MeshInstance3D" parent="WallPaintings/LongCorridorSouthPainting1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04)
-mesh = SubResource("BoxMesh_painting_canvas")
-surface_material_override/0 = SubResource("StandardMaterial3D_painting_portrait")
-
-[node name="LongCorridorSouthPainting2" type="Node3D" parent="WallPaintings"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 4, 2.2, -1.7)
-
-[node name="Frame" type="MeshInstance3D" parent="WallPaintings/LongCorridorSouthPainting2"]
-mesh = SubResource("BoxMesh_painting_frame")
-surface_material_override/0 = SubResource("StandardMaterial3D_table")
-
-[node name="Canvas" type="MeshInstance3D" parent="WallPaintings/LongCorridorSouthPainting2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04)
-mesh = SubResource("BoxMesh_painting_canvas")
-surface_material_override/0 = SubResource("StandardMaterial3D_painting_landscape")
-
-[node name="ShortCorridorWestPainting" type="Node3D" parent="WallPaintings"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.13, 2.3, 1)
-
-[node name="Frame" type="MeshInstance3D" parent="WallPaintings/ShortCorridorWestPainting"]
-mesh = SubResource("BoxMesh_painting_frame")
-surface_material_override/0 = SubResource("StandardMaterial3D_table")
-
-[node name="Canvas" type="MeshInstance3D" parent="WallPaintings/ShortCorridorWestPainting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04)
-mesh = SubResource("BoxMesh_painting_canvas")
-surface_material_override/0 = SubResource("StandardMaterial3D_painting_landscape")
-
-[node name="ShortCorridorEastPainting" type="Node3D" parent="WallPaintings"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 11.87, 2.3, 5)
-
-[node name="Frame" type="MeshInstance3D" parent="WallPaintings/ShortCorridorEastPainting"]
-mesh = SubResource("BoxMesh_painting_frame")
-surface_material_override/0 = SubResource("StandardMaterial3D_table")
-
-[node name="Canvas" type="MeshInstance3D" parent="WallPaintings/ShortCorridorEastPainting"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04)
-mesh = SubResource("BoxMesh_painting_canvas")
-surface_material_override/0 = SubResource("StandardMaterial3D_painting_portrait")
 
 [node name="LongCorridorFurniture" type="Node3D" parent="."]
 
