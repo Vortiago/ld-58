@@ -156,6 +156,25 @@ size = Vector3(3, 0.02, 4)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_carpet_green"]
 albedo_color = Color(0.196078, 0.392157, 0.196078, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_shoe_cabinet"]
+size = Vector3(1.2, 0.6, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_shoe_leg"]
+size = Vector3(0.08, 0.3, 0.08)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_coat_post"]
+top_radius = 0.08
+bottom_radius = 0.08
+height = 1.8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_coat_base"]
+top_radius = 0.25
+bottom_radius = 0.25
+height = 0.05
+
+[sub_resource type="BoxMesh" id="BoxMesh_coat_hook"]
+size = Vector3(0.15, 0.08, 0.08)
+
 [node name="Hallway" type="Node3D"]
 
 [node name="HallwayGeometry" parent="." instance=ExtResource("1_hallwaygeom")]
@@ -910,6 +929,79 @@ surface_material_override/0 = SubResource("StandardMaterial3D_brass")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.01, 4.5)
 mesh = SubResource("BoxMesh_area_rug")
 surface_material_override/0 = SubResource("StandardMaterial3D_carpet_green")
+
+[node name="EntranceFurniture" type="Node3D" parent="ShortCorridorFurniture"]
+
+[node name="ShoeStorage" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0, 7.5)
+
+[node name="CabinetBody" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("BoxMesh_shoe_cabinet")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg1" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56, 0.15, -0.16)
+mesh = SubResource("BoxMesh_shoe_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg2" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.56, 0.15, -0.16)
+mesh = SubResource("BoxMesh_shoe_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg3" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.56, 0.15, 0.16)
+mesh = SubResource("BoxMesh_shoe_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Leg4" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/ShoeStorage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.56, 0.15, 0.16)
+mesh = SubResource("BoxMesh_shoe_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="CoatRack" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 0, 7.5)
+
+[node name="Base" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+mesh = SubResource("CylinderMesh_coat_base")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Post" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CylinderMesh_coat_post")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook1" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155, 1.2, 0)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook2" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(-0.5, 0, 0.866, 0, 1, 0, -0.866, 0, -0.5, -0.0775, 1.2, 0.134)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook3" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(-0.5, 0, -0.866, 0, 1, 0, 0.866, 0, -0.5, -0.0775, 1.2, -0.134)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook4" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(0.5, 0, 0.866, 0, 1, 0, -0.866, 0, 0.5, 0.0775, 1.5, 0.134)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook5" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -0.155, 1.5, 0)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Hook6" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/CoatRack"]
+transform = Transform3D(0.5, 0, -0.866, 0, 1, 0, 0.866, 0, 0.5, 0.0775, 1.5, -0.134)
+mesh = SubResource("BoxMesh_coat_hook")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
 
 [editable path="PhotoFrames/DrHenryMorrison"]
 [editable path="PhotoFrames/DrHenryMorrison/victorian_5"]
