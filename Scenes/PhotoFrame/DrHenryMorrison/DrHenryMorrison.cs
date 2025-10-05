@@ -17,16 +17,14 @@ public partial class DrHenryMorrison : Node3D
     // Dialog configuration - First Visit
     private readonly DialogSystem.DialogLine[] _firstVisitDialog = new[]
     {
-        new DialogSystem.DialogLine("Dr. Morrison, your medical expertise serves you well even in painted form. What can you observe from your frame's position?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Inspector, my frame's angle gives me an excellent diagnostic view. Single puncture wound, angled upward. My medical training, preserved in oils and canvas, tells me the attacker was either shorter or crouching. We portrait doctors often consult on such matters.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("Can your position reveal anything about the attacker's identity?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("The defensive wounds suggest Edgar knew his attacker—he faced them directly, no surprise. From this vantage point, I can see every detail clearly. The other medical portraits and I have been discussing the wound pattern all morning.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("Other medical portraits? You mean Dr. Pemberton?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("No, Victor doesn't have a portrait here yet. But the late Dr. Blackwood—Edgar's father—his portrait hangs in the library. We often compare observations. Victor was at dinner tonight, actually. Edgar threatened him over that surgery mishap.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("A serious accusation. Where was Dr. Pemberton during the murder?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("The smoking room, according to the portrait of Admiral Henderson who hangs there. Though he admits he was dozing. From my position, I see surgical instruments near the body—unusual for a study.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("Could those instruments be the murder weapon?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("The wound suggests something thin and sharp—letter opener, scalpel, even young Timothy's fencing foil could match. Victor always carries his medical bag, true. But then, Lady Margaret mentioned Edgar kept his father's old surgical kit in the study. Multiple possibilities, Inspector.", DialogSystem.SpeakerSide.Right)
+        new DialogSystem.DialogLine("Dr. Morrison, what can you observe from your frame's position?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Single puncture wound, angled upward. Defensive wounds on his hands—Edgar knew his attacker and faced them directly.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("What else can you see from there?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Surgical instruments near the body—unusual. Dr. Pemberton was at dinner. Edgar had threatened him over a botched surgery.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("The wine glass near the body—could poison be involved?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("I examined the residue. Digitalis traces are present.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Poison and stabbing?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Perhaps poison was attempted first, then panic led to the blade. Or Edgar was simply drinking during the confrontation. Hard to say.", DialogSystem.SpeakerSide.Right)
     };
 
     // Dialog configuration - Subsequent Visits
@@ -110,13 +108,21 @@ public partial class DrHenryMorrison : Node3D
                 _drMorrisonPortrait
             );
 
+            // Add poison possibility clue
+            _main.AddClue(
+                "Poison Theory - Digitalis",
+                "Dr. Morrison examined the wine glass residue and found traces consistent with digitalis poisoning. He suggests poison may have been attempted initially—the killer perhaps panicked when it didn't work fast enough and grabbed the letter opener. The stab wound appears fatal, but was Edgar already dying from poison? The wine glass was knocked over during the struggle, complicating the evidence.",
+                _drMorrisonPortrait
+            );
+
             // Unlock Dr. Pemberton as suspect
             _main.SetOptionText(0, 1, "Dr. Victor Pemberton"); // Who option 2
             _main.UnlockOption(0, 1);
 
-            // Unlock multiple weapon options
-            _main.SetOptionText(1, 0, "Ornate Letter Opener"); // What option 1
-            _main.UnlockOption(1, 0);
+            // Unlock Poison as weapon option
+            _main.UnlockOption(1, 1); // What option 2: "Poison (Digitalis)"
+
+            // Note: Ornate Letter Opener now unlocked by examining it directly in the hallway
 
             // Note: Medical Scalpel option removed (limited to 4 options per question)
 

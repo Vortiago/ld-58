@@ -17,18 +17,14 @@ public partial class LadyBlackwood : Node3D
     // Dialog configuration - First Visit
     private readonly DialogSystem.DialogLine[] _firstVisitDialog = new[]
     {
-        new DialogSystem.DialogLine("Lady Margaret, I'm deeply sorry. Your portrait hangs directly across from where Edgar fell. What did you observe?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Inspector, my portrait was commissioned just last year—I'm still learning from the older portraits here. My frame gives me perfect view of... of where Edgar died. Being a newer portrait, the household secrets are still revealing themselves to me.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("What secrets have the other portraits shared with you?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Miss Catherine Ashworth, the governess—the servants' portraits whisper about her gambling debts. £5,000 to dangerous people. Edgar planned to dismiss her. Though the nursery portraits say she's devoted to young Timothy, almost protectively so.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("Protective of Timothy? In what way?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("The older portraits won't say directly. Portrait etiquette, you understand. But Edgar discovered something yesterday—financial irregularities. From my position, I watched him review the ledgers. Such anger in his face.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("Who had access to manipulate the company finances?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Thomas Hartwell, the business partner. James Whitmore, our lawyer. Even I have signing authority—Edgar insisted when we married. The portrait of Edgar's father warned him about giving too many people access, but Edgar trusted those close to him.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("You have signing authority? That's unusual for the era.", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Edgar was progressive in some ways. From my frame, I saw him write something before dinner—a new will, perhaps? He burned it in the fireplace afterward. The other portraits were whispering about it all evening. Even we paintings have our gossip networks, Inspector.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("A new will? Do you know what it contained?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("The portrait of Edgar's solicitor in the study might know, but he's been strangely quiet since last night. Some portraits choose silence, Inspector. We all have our reasons for what we reveal and what we conceal.", DialogSystem.SpeakerSide.Right)
+        new DialogSystem.DialogLine("Lady Margaret, I'm deeply sorry. What did you observe?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("My portrait has perfect view of where Edgar died. Miss Catherine, the governess—she has gambling debts. £5,000. Edgar planned to dismiss her.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("What else did you see?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Edgar discovered financial irregularities yesterday. Multiple people had access to the company accounts—Thomas Hartwell, James Whitmore, even myself.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("From your position, what else can you observe about the scene?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("The heavy brass candlestick on the corner table. Solid, weighty.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Could that be the murder weapon?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("A single blow could have killed him. Blood is hard to see on brass from here. The letter opener was there too—both within reach.", DialogSystem.SpeakerSide.Right)
     };
 
     // Dialog configuration - Subsequent Visits
@@ -121,9 +117,19 @@ public partial class LadyBlackwood : Node3D
                 _ladyMargaretPortrait
             );
 
+            // Add candlestick weapon possibility clue
+            _main.AddClue(
+                "Heavy Brass Candlestick",
+                "Lady Margaret's frame provides perfect view of the corner table's heavy brass candlestick. She suspected it as the murder weapon—'A single blow could have killed him.' The portraits examined it closely, though blood can be difficult to see on certain metals from a painted perspective. The candlestick was within arm's reach during the struggle. Did someone grab it, or reach past it for the letter opener?",
+                _ladyMargaretPortrait
+            );
+
             // Unlock Miss Catherine as suspect
             _main.SetOptionText(0, 3, "Miss Catherine Ashworth"); // Who option 4
             _main.UnlockOption(0, 3);
+
+            // Unlock Candlestick as weapon option
+            _main.UnlockOption(1, 2); // What option 3: "Heavy Candlestick"
 
             // Unlock embezzlement motive
             _main.SetOptionText(2, 1, "Business Fraud/Embezzlement"); // Why option 2

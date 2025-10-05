@@ -18,18 +18,14 @@ public partial class EleanorHeartwell : Node3D
     // Dialog configuration - First Visit (nervous, protective, portrait perspective)
     private readonly DialogSystem.DialogLine[] _firstVisitDialog = new[]
     {
-        new DialogSystem.DialogLine("Mrs. Hartwell, from your portrait's position, what did you observe about your husband's movements?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Inspector, my portrait faces slightly away—the artist captured me looking toward the garden. I must turn to see the hallway properly. Thomas was... he mentioned visiting the library after dinner. We portraits do enjoy our social calls to other frames.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("Did you see him in the library portrait gallery?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Not directly. Thomas and I were painted together originally, but we hang in different wings now. He visits my frame often—portrait etiquette, you understand. Last night he seemed... distracted. The other portraits noticed too.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("Which portraits noticed his behavior?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("The Colonel in the smoking room mentioned seeing him. Or was it young Timothy's portrait? We share observations constantly. From my angle, I noticed muddy footprints near where Edgar... The servants' portraits blame the gardener, but they gossip terribly.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("The gardener was working during the dinner party?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("The kitchen portraits say he left at six. But footprints... they could be anyone's. Lord Blackwood himself came from the garden earlier. Even young Timothy was playing outside. My frame position makes it hard to distinguish details.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("The wound angle suggests a left-handed attacker. Is Thomas left-handed?", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Thomas writes with his right hand—I've watched him from my frame for years. Though the artist did capture both our hands rather oddly. Portrait artists take such liberties with anatomy.", DialogSystem.SpeakerSide.Right),
-        new DialogSystem.DialogLine("Mrs. Hartwell, the guest register shows Thomas signed with his left hand tonight.", DialogSystem.SpeakerSide.Left),
-        new DialogSystem.DialogLine("Did he? How peculiar. Perhaps... sometimes we portraits see what we expect to see. Or perhaps he injured his right hand at dinner? Lady Margaret's portrait mentioned something about a minor accident with the carving knife. These details blur when you exist as paint and memory.", DialogSystem.SpeakerSide.Right)
+        new DialogSystem.DialogLine("Mrs. Hartwell, what did you observe about your husband's movements?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Thomas visits my frame often. Last night he seemed distracted. The other portraits noticed too.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("Where was Thomas during the murder?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("He mentioned visiting the library. Though portraits in other wings saw him elsewhere. We share observations constantly.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("From your angle, could you see signs of strangulation?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("When I first looked, I saw no blood. Only Edgar slumped there.", DialogSystem.SpeakerSide.Right),
+        new DialogSystem.DialogLine("So you suspected a silk scarf?", DialogSystem.SpeakerSide.Left),
+        new DialogSystem.DialogLine("Victorian gentlemen carry such scarves. Like in mystery novels. Though other portraits later mentioned a stab wound... scarves can hide marks.", DialogSystem.SpeakerSide.Right)
     };
 
     // Dialog configuration - Subsequent Visits (resigned, cryptic)
@@ -114,6 +110,16 @@ public partial class EleanorHeartwell : Node3D
                 "Eleanor reveals portraits can keep secrets from each other—they don't share everything despite constant gossip. Thomas visits Eleanor's frame often for 'portrait etiquette' but seemed 'distracted' last night. Her final words: 'even paintings can keep secrets.' Suggests portraits may be withholding information or protecting someone.",
                 _eleanorHeartwellPortrait
             );
+
+            // Add strangulation possibility clue
+            _main.AddClue(
+                "Strangulation Theory - Silk Scarf",
+                "Eleanor's initial observation saw no blood, only Edgar slumped over. She wondered if a silk scarf was used—'like in those mystery novels.' Victorian gentlemen often carry such scarves. Other portraits later mentioned a stab wound, but Eleanor notes scarves can hide marks on the neck. Perhaps both methods were attempted? The lack of visible blood initially suggested something more subtle than a blade.",
+                _eleanorHeartwellPortrait
+            );
+
+            // Unlock Silk Scarf as weapon option
+            _main.UnlockOption(1, 3); // What option 4: "Silk Scarf (Strangulation)"
 
             // Note: Multiple Conspirators option removed (limited to 4 options per question)
         }
