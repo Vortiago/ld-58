@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://d5713qx52vb1"]
+[gd_scene load_steps=48 format=3 uid="uid://d5713qx52vb1"]
 
 [ext_resource type="PackedScene" uid="uid://egcjovpb1kfo" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
 [ext_resource type="PackedScene" uid="uid://bw6xmw805w165" path="res://components/Door.tscn" id="2_dqxua"]
@@ -31,15 +31,31 @@ albedo_color = Color(1, 0.843137, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_blood"]
 albedo_color = Color(0.545098, 0, 0, 1)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_body"]
-radius = 0.3
-height = 1.8
+[sub_resource type="BoxMesh" id="BoxMesh_head"]
+size = Vector3(0.3, 0.3, 0.25)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_body"]
-albedo_color = Color(0.607843, 0.34902, 0.713726, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skin"]
+albedo_color = Color(0.956863, 0.807843, 0.639216, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_blood"]
-size = Vector3(1.2, 0.02, 0.8)
+[sub_resource type="BoxMesh" id="BoxMesh_torso"]
+size = Vector3(0.6, 0.3, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_suit"]
+albedo_color = Color(0.117647, 0.156863, 0.235294, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_arm"]
+size = Vector3(0.6, 0.15, 0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_leg"]
+size = Vector3(0.8, 0.2, 0.18)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pants"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_blood"]
+top_radius = 0.6
+bottom_radius = 0.6
+height = 0.02
 
 [sub_resource type="BoxMesh" id="BoxMesh_chair"]
 size = Vector3(0.5, 0.1, 0.5)
@@ -162,6 +178,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6506758, 4, 0)
 [node name="roof_lamp5" parent="HallwayGeometry" instance=ExtResource("3_as5ck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4, 7)
 
+[node name="Door2" parent="HallwayGeometry" instance=ExtResource("2_dqxua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.264849, 0.02269888, 1.6577454)
+
+[node name="Door2" parent="HallwayGeometry/Door2" instance=ExtResource("2_dqxua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13205409, 0.02269888, -3.3949375)
+
 [node name="PhotoFrames" type="Node3D" parent="."]
 
 [node name="HouseKeeper" parent="PhotoFrames" instance=ExtResource("3_cvgsa")]
@@ -228,18 +250,45 @@ surface_material_override/0 = SubResource("StandardMaterial3D_blood")
 [node name="BodyAndEvidence" type="Node3D" parent="CrimeSceneObjects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 
-[node name="LordBlackwoodBody" type="MeshInstance3D" parent="CrimeSceneObjects/BodyAndEvidence"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.3, 0)
-mesh = SubResource("CapsuleMesh_body")
-surface_material_override/0 = SubResource("StandardMaterial3D_body")
+[node name="LordBlackwoodBody" type="Node3D" parent="CrimeSceneObjects/BodyAndEvidence"]
+transform = Transform3D(0.6846871, 0, 0.7288372, 0, 1, 0, -0.7288372, 0, 0.6846871, 4.3407273, 0.15, 0)
+
+[node name="Head" type="MeshInstance3D" parent="CrimeSceneObjects/BodyAndEvidence/LordBlackwoodBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+mesh = SubResource("BoxMesh_head")
+surface_material_override/0 = SubResource("StandardMaterial3D_skin")
+
+[node name="Torso" type="MeshInstance3D" parent="CrimeSceneObjects/BodyAndEvidence/LordBlackwoodBody"]
+mesh = SubResource("BoxMesh_torso")
+surface_material_override/0 = SubResource("StandardMaterial3D_suit")
+
+[node name="LeftArm" type="MeshInstance3D" parent="CrimeSceneObjects/BodyAndEvidence/LordBlackwoodBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0.3)
+mesh = SubResource("BoxMesh_arm")
+surface_material_override/0 = SubResource("StandardMaterial3D_suit")
+
+[node name="RightArm" type="MeshInstance3D" parent="CrimeSceneObjects/BodyAndEvidence/LordBlackwoodBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, -0.3)
+mesh = SubResource("BoxMesh_arm")
+surface_material_override/0 = SubResource("StandardMaterial3D_suit")
+
+[node name="LeftLeg" type="MeshInstance3D" parent="CrimeSceneObjects/BodyAndEvidence/LordBlackwoodBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0.12)
+mesh = SubResource("BoxMesh_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_pants")
+
+[node name="RightLeg" type="MeshInstance3D" parent="CrimeSceneObjects/BodyAndEvidence/LordBlackwoodBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, -0.12)
+mesh = SubResource("BoxMesh_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_pants")
 
 [node name="BloodPool" type="MeshInstance3D" parent="CrimeSceneObjects/BodyAndEvidence"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
-mesh = SubResource("BoxMesh_blood")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3886585, 0.048289545, -0.29042244)
+mesh = SubResource("CylinderMesh_blood")
 surface_material_override/0 = SubResource("StandardMaterial3D_blood")
 
 [node name="DroppedRing" type="MeshInstance3D" parent="CrimeSceneObjects/BodyAndEvidence"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.05, -0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0897007, 0.05, -0.3)
 mesh = SubResource("CylinderMesh_item")
 surface_material_override/0 = SubResource("StandardMaterial3D_gold")
 
