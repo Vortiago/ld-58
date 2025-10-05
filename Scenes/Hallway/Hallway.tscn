@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d5713qx52vb1"]
+[gd_scene load_steps=42 format=3 uid="uid://d5713qx52vb1"]
 
 [ext_resource type="PackedScene" uid="uid://egcjovpb1kfo" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
 [ext_resource type="PackedScene" uid="uid://bw6xmw805w165" path="res://components/Door.tscn" id="2_dqxua"]
@@ -88,6 +88,58 @@ albedo_color = Color(0.2, 0.1, 0.05, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_frame_vertical"]
 size = Vector3(0.05, 1, 0.1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_console_table"]
+size = Vector3(1.2, 0.8, 0.4)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vase"]
+top_radius = 0.1
+bottom_radius = 0.15
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brass"]
+albedo_color = Color(0.803922, 0.521569, 0.247059, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plant"]
+albedo_color = Color(0.156863, 0.392157, 0.156863, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_plant"]
+top_radius = 0.0
+bottom_radius = 0.2
+height = 0.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_carpet_runner"]
+size = Vector3(6, 0.02, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_carpet_red"]
+albedo_color = Color(0.545098, 0.117647, 0.117647, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bookshelf_back"]
+size = Vector3(0.05, 2.5, 1.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bookshelf_side"]
+size = Vector3(0.3, 2.5, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_shelf"]
+size = Vector3(0.25, 0.05, 1.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_book"]
+size = Vector3(0.15, 0.25, 0.08)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_book_green"]
+albedo_color = Color(0.196078, 0.294118, 0.196078, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_book_red"]
+albedo_color = Color(0.392157, 0.117647, 0.117647, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_book_brown"]
+albedo_color = Color(0.396078, 0.196078, 0.0980392, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_area_rug"]
+size = Vector3(3, 0.02, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_carpet_green"]
+albedo_color = Color(0.196078, 0.392157, 0.196078, 1)
+
 [node name="Hallway" type="Node3D"]
 
 [node name="HallwayGeometry" parent="." instance=ExtResource("1_hallwaygeom")]
@@ -127,7 +179,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.1,
 [node name="CrimeSceneObjects" type="Node3D" parent="."]
 
 [node name="CornerTableGroup" type="Node3D" parent="CrimeSceneObjects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1.3323832)
 
 [node name="TableSurface" type="MeshInstance3D" parent="CrimeSceneObjects/CornerTableGroup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -232,7 +284,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
 light_color = Color(1, 0.7, 0.4, 1)
 light_energy = 1.8
 omni_range = 6.0
-omni_attenuation = 1.0
 
 [node name="WestOuterWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.958821, 1.6020832, 8.879583)
@@ -267,7 +318,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
 light_color = Color(1, 0.7, 0.4, 1)
 light_energy = 1.8
 omni_range = 6.0
-omni_attenuation = 1.0
 
 [node name="EastInnerWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.017524, 1.6020832, 8.879583)
@@ -302,7 +352,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
 light_color = Color(1, 0.7, 0.4, 1)
 light_energy = 1.8
 omni_range = 6.0
-omni_attenuation = 1.0
 
 [node name="EastOuterWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.110363, 1.6020832, 8.879583)
@@ -337,12 +386,452 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
 light_color = Color(1, 0.7, 0.4, 1)
 light_energy = 1.8
 omni_range = 6.0
-omni_attenuation = 1.0
 
 [node name="RandomObjects" type="Node3D" parent="."]
 
 [node name="grandfatherclock" parent="RandomObjects" instance=ExtResource("6_ko40w")]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0.9538851, 0, -1.75)
+
+[node name="LongCorridorFurniture" type="Node3D" parent="."]
+
+[node name="EastConsoleTable" type="Node3D" parent="LongCorridorFurniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 1.4)
+
+[node name="TableTop" type="MeshInstance3D" parent="LongCorridorFurniture/EastConsoleTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("BoxMesh_console_table")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg1" type="MeshInstance3D" parent="LongCorridorFurniture/EastConsoleTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, -0.15)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg2" type="MeshInstance3D" parent="LongCorridorFurniture/EastConsoleTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, -0.15)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg3" type="MeshInstance3D" parent="LongCorridorFurniture/EastConsoleTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, 0.15)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg4" type="MeshInstance3D" parent="LongCorridorFurniture/EastConsoleTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, 0.15)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="DecorativeVase" type="MeshInstance3D" parent="LongCorridorFurniture/EastConsoleTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_vase")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="WestSideTable" type="Node3D" parent="LongCorridorFurniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -1.4)
+
+[node name="TableTop" type="MeshInstance3D" parent="LongCorridorFurniture/WestSideTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("BoxMesh_console_table")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg1" type="MeshInstance3D" parent="LongCorridorFurniture/WestSideTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, -0.15)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg2" type="MeshInstance3D" parent="LongCorridorFurniture/WestSideTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, -0.15)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg3" type="MeshInstance3D" parent="LongCorridorFurniture/WestSideTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, 0.15)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg4" type="MeshInstance3D" parent="LongCorridorFurniture/WestSideTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, 0.15)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="PottedPlant" type="Node3D" parent="LongCorridorFurniture/WestSideTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.8, 0)
+
+[node name="Pot" type="MeshInstance3D" parent="LongCorridorFurniture/WestSideTable/PottedPlant"]
+mesh = SubResource("CylinderMesh_vase")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Plant" type="MeshInstance3D" parent="LongCorridorFurniture/WestSideTable/PottedPlant"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("CylinderMesh_plant")
+surface_material_override/0 = SubResource("StandardMaterial3D_plant")
+
+[node name="RunnerCarpet" type="MeshInstance3D" parent="LongCorridorFurniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = SubResource("BoxMesh_carpet_runner")
+surface_material_override/0 = SubResource("StandardMaterial3D_carpet_red")
+
+[node name="ShortCorridorFurniture" type="Node3D" parent="."]
+
+[node name="WestBookshelf" type="Node3D" parent="ShortCorridorFurniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2, 0, 5)
+
+[node name="BackPanel" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -0.044974327)
+mesh = SubResource("BoxMesh_bookshelf_back")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="LeftSide" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -0.725)
+mesh = SubResource("BoxMesh_bookshelf_side")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="RightSide" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0.725)
+mesh = SubResource("BoxMesh_bookshelf_side")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Shelf1" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_shelf")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Shelf2" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_shelf")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Shelf3" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_shelf")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Shelf4" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("BoxMesh_shelf")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Shelf5" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("BoxMesh_shelf")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Book1" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0.65, -0.5)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="Book2" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0.65, -0.35)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_red")
+
+[node name="Book3" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0.65, -0.2)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book4" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0.65, -0.05)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="Book5" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0.65, 0.1)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book6" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0.65, 0.25)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_red")
+
+[node name="Book7" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.15, -0.45)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book8" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.15, -0.3)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="Book9" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.15, -0.15)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_red")
+
+[node name="Book10" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.15, 0)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book11" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.15, 0.15)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="Book12" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.65, -0.5)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_red")
+
+[node name="Book13" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.65, -0.35)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="Book14" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.65, -0.2)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book15" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.65, -0.05)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_red")
+
+[node name="Book16" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.65, 0.1)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="Book17" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.65, 0.25)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book18" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2.15, -0.45)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="Book19" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2.15, -0.3)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_red")
+
+[node name="Book20" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2.15, -0.15)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book21" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2.15, 0)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="Book22" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2.15, 0.15)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_red")
+
+[node name="Book23" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2.65, -0.4)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book24" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2.65, -0.2)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_red")
+
+[node name="Book25" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2.65, 0)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="Book26" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2.65, 0.2)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="EastBookshelf" type="Node3D" parent="ShortCorridorFurniture"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 11.8, 0, 6)
+
+[node name="BackPanel" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09100723, 1.25, 0.008790016)
+mesh = SubResource("BoxMesh_bookshelf_back")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="LeftSide" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -0.725)
+mesh = SubResource("BoxMesh_bookshelf_side")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="RightSide" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0.725)
+mesh = SubResource("BoxMesh_bookshelf_side")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Shelf1" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_shelf")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Shelf2" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_shelf")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Shelf3" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("BoxMesh_shelf")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Shelf4" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("BoxMesh_shelf")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Book1" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0.65, -0.5)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book2" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0.65, -0.35)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="Book3" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0.65, -0.2)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_red")
+
+[node name="Book4" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0.65, -0.05)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book5" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0.65, 0.1)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_red")
+
+[node name="Book6" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0.65, 0.25)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="Book7" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.15, -0.45)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_red")
+
+[node name="Book8" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.15, -0.3)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book9" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.15, -0.15)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="Book10" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.15, 0)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_red")
+
+[node name="Book11" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.15, 0.15)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book12" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.65, -0.5)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="Book13" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.65, -0.35)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book14" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.65, -0.2)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_red")
+
+[node name="Book15" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.65, -0.05)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="Book16" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.65, 0.1)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book17" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.65, 0.25)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_red")
+
+[node name="Book18" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2.15, -0.45)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book19" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2.15, -0.3)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="Book20" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2.15, -0.15)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_red")
+
+[node name="Book21" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2.15, 0)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
+
+[node name="Book22" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2.15, 0.15)
+mesh = SubResource("BoxMesh_book")
+surface_material_override/0 = SubResource("StandardMaterial3D_book_green")
+
+[node name="EastSideTable" type="Node3D" parent="ShortCorridorFurniture"]
+transform = Transform3D(4.371139e-08, 0, 1, 0, 1, 0, -1, 0, 4.371139e-08, 11.716994, 0, 2)
+
+[node name="TableTop" type="MeshInstance3D" parent="ShortCorridorFurniture/EastSideTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("BoxMesh_console_table")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg1" type="MeshInstance3D" parent="ShortCorridorFurniture/EastSideTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, -0.15)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg2" type="MeshInstance3D" parent="ShortCorridorFurniture/EastSideTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, -0.15)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg3" type="MeshInstance3D" parent="ShortCorridorFurniture/EastSideTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, 0.15)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="TableLeg4" type="MeshInstance3D" parent="ShortCorridorFurniture/EastSideTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, 0.15)
+mesh = SubResource("BoxMesh_tableleg")
+surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="DecorativeVase" type="MeshInstance3D" parent="ShortCorridorFurniture/EastSideTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1, 0)
+mesh = SubResource("CylinderMesh_vase")
+surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="AreaRug" type="MeshInstance3D" parent="ShortCorridorFurniture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.01, 4.5)
+mesh = SubResource("BoxMesh_area_rug")
+surface_material_override/0 = SubResource("StandardMaterial3D_carpet_green")
 
 [editable path="PhotoFrames/DrHenryMorrison"]
 [editable path="PhotoFrames/DrHenryMorrison/victorian_5"]
