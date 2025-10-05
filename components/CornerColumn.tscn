@@ -1,6 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://tyxmuwse34y7"]
+[gd_scene load_steps=5 format=3 uid="uid://tyxmuwse34y7"]
+
+[ext_resource type="Texture2D" uid="uid://sw6vpxqyk1au" path="res://assets/textures/wood1.png" id="1_8tv7d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fcyai"]
+albedo_texture = ExtResource("1_8tv7d")
 
 [sub_resource type="BoxMesh" id="BoxMesh_477tv"]
+material = SubResource("StandardMaterial3D_fcyai")
 size = Vector3(0.3, 4, 0.3)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kmj1a"]
