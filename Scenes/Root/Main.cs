@@ -50,7 +50,7 @@ public partial class Main : Node3D
 		_drHenryMorrison = GetNode<DrHenryMorrison>("Hallway/PhotoFrames/DrHenryMorrison");
 		_ladyBlackwood = GetNode<LadyBlackwood>("Hallway/PhotoFrames/LadyBlackwood");
 		_youngTimBlackwood = GetNode<YoungTimBlackwood>("Hallway/PhotoFrames/YoungTimBlackwood");
-		_eleanorHartwell = GetNode<EleanorHeartwell>("Hallway/PhotoFrames/EleanorHartwell");
+		_eleanorHartwell = GetNode<EleanorHeartwell>("Hallway/PhotoFrames/EleanorHeartwell");
 
 		// Start with the start screen visible
 		_startScreen.Show();
