@@ -182,38 +182,53 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6506758, 4, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4, 7)
 
 [node name="Door2" parent="HallwayGeometry" instance=ExtResource("2_dqxua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.264849, 0.02269888, 1.6577454)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6, 0, 0)
 
-[node name="Door2" parent="HallwayGeometry/Door2" instance=ExtResource("2_dqxua")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13205409, 0.02269888, -3.3949375)
+[node name="Door3" parent="HallwayGeometry" instance=ExtResource("2_dqxua")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.1, 0.045, 3.25)
 
 [node name="PhotoFrames" type="Node3D" parent="."]
 
 [node name="HouseKeeper" parent="PhotoFrames" instance=ExtResource("3_cvgsa")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2.5, 1.625)
+
+[node name="Camera3D" parent="PhotoFrames/HouseKeeper" index="2"]
+transform = Transform3D(0.99613976, 0.04489005, -0.075435415, 0, 0.8593529, 0.51138306, 0.08778165, -0.509409, 0.8560356, 0, 0, 0)
 
 [node name="InspectorCrawford" parent="PhotoFrames" instance=ExtResource("4_05vpa")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.9564824, 2.3363762, -0.005804062)
-
-[node name="LadyBlackwood" parent="PhotoFrames" instance=ExtResource("4_hifnc")]
-transform = Transform3D(-0.003019372, 0, -0.99999547, 0, 1, 0, 0.99999547, 0, -0.003019372, 6.1, 2.25, 3.25)
-
-[node name="DrHenryMorrison" parent="PhotoFrames" instance=ExtResource("5_ko40w")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.8132255, 2.98376, -1.6)
-
-[node name="Camera3D" parent="PhotoFrames/DrHenryMorrison" index="0"]
-transform = Transform3D(0.98533654, -0.07583795, 0.15284161, -3.885757e-08, 0.89578944, 0.4444789, -0.17062226, -0.4379613, 0.8826541, 0, 0, 0)
-
-[node name="YoungTimBlackwood" parent="PhotoFrames" instance=ExtResource("6_83k6l")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 2.5, 3.5)
 
+[node name="Camera3D" parent="PhotoFrames/InspectorCrawford" index="0"]
+transform = Transform3D(1, 1.4522103e-08, 2.4828317e-09, -1.4522103e-08, 0.94319946, 0.332227, 2.4828317e-09, -0.332227, 0.94319946, 0, 0, 0)
+
+[node name="LadyBlackwood" parent="PhotoFrames" instance=ExtResource("4_hifnc")]
+transform = Transform3D(-0.003019372, 0, -0.99999547, 0, 1, 0, 0.99999547, 0, -0.003019372, 6.1, 2.25, 5)
+
+[node name="Camera3D" parent="PhotoFrames/LadyBlackwood" index="0"]
+transform = Transform3D(0.9966966, -0.024074245, 0.077566594, 0.00086436694, 0.9581479, 0.2862724, -0.081212066, -0.28525966, 0.95500356, 0, 0, 0)
+
+[node name="YoungTimBlackwood" parent="PhotoFrames" instance=ExtResource("6_83k6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 1.625)
+
+[node name="Camera3D" parent="PhotoFrames/YoungTimBlackwood" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.99879843, 0.049006663, 0, -0.049006663, 0.99879843, 0, 0, 0)
+
 [node name="EleanorHeartwell" parent="PhotoFrames" instance=ExtResource("7_yixj0")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6.1, 2, 7)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.75, 2, -1.625)
+
+[node name="Camera3D" parent="PhotoFrames/EleanorHeartwell" index="0"]
+transform = Transform3D(1, 8.827032e-09, 4.4677506e-10, -8.827032e-09, 0.9948895, 0.10096948, 4.4677506e-10, -0.10096948, 0.9948895, 0, 0, 0)
+
+[node name="DrHenryMorrison" parent="PhotoFrames" instance=ExtResource("5_ko40w")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.548, 3.008, -1.625)
+
+[node name="Camera3D" parent="PhotoFrames/DrHenryMorrison" index="0"]
+transform = Transform3D(1, 4.474717e-08, 1.2319958e-08, -4.474717e-08, 0.8590761, 0.511848, 1.2319958e-08, -0.511848, 0.8590761, 0, 0, 0)
 
 [node name="CrimeSceneObjects" type="Node3D" parent="."]
 
 [node name="CornerTableGroup" type="Node3D" parent="CrimeSceneObjects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1.3323832)
+transform = Transform3D(0.92132115, 0, -0.38880238, 0, 1, 0, 0.38880238, 0, 0.92132115, 10.791587, 0, -0.57085073)
 
 [node name="TableSurface" type="MeshInstance3D" parent="CrimeSceneObjects/CornerTableGroup"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -254,7 +269,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_blood")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 
 [node name="LordBlackwoodBody" type="Node3D" parent="CrimeSceneObjects/BodyAndEvidence"]
-transform = Transform3D(0.6846871, 0, 0.7288372, 0, 1, 0, -0.7288372, 0, 0.6846871, 4.3407273, 0.15, 0)
+transform = Transform3D(0.6846871, 0, 0.7288372, 0, 1, 0, -0.7288372, 0, 0.6846871, 8.884956, 0.15, 1.6102068)
 
 [node name="Head" type="MeshInstance3D" parent="CrimeSceneObjects/BodyAndEvidence/LordBlackwoodBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
@@ -286,28 +301,28 @@ mesh = SubResource("BoxMesh_leg")
 surface_material_override/0 = SubResource("StandardMaterial3D_pants")
 
 [node name="BloodPool" type="MeshInstance3D" parent="CrimeSceneObjects/BodyAndEvidence"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3886585, 0.048289545, -0.29042244)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3700075, 0.048289545, 1.4408431)
 mesh = SubResource("CylinderMesh_blood")
 surface_material_override/0 = SubResource("StandardMaterial3D_blood")
 
 [node name="DroppedRing" type="MeshInstance3D" parent="CrimeSceneObjects/BodyAndEvidence"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0897007, 0.05, -0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.267146, 0.05, 1.5342667)
 mesh = SubResource("CylinderMesh_item")
 surface_material_override/0 = SubResource("StandardMaterial3D_gold")
 
 [node name="LetterOpener" parent="CrimeSceneObjects/BodyAndEvidence" instance=ExtResource("10_5tr82")]
-transform = Transform3D(0.01351787, -0.021025227, 0.0004546334, -0.02103013, -0.013515405, 0.00025966545, 2.7401133e-05, -0.0005228449, -0.024994517, 5.9099927, 1.0027466, 1.5998628)
+transform = Transform3D(0.0151940975, 0.019852936, -8.6779967e-10, 0, -1.0927843e-09, -0.025, -0.019852938, 0.015194096, -6.641552e-10, 9.658769, 0.059087038, 6.0181813)
 
 [node name="DroppedLedger" parent="CrimeSceneObjects/BodyAndEvidence" instance=ExtResource("11_jbjv5")]
-transform = Transform3D(0.17218038, 0, -0.10175422, 0, 0.2, 0, 0.10175422, 0, 0.17218038, 9.835372, 0.05646658, 7.535824)
+transform = Transform3D(0.17218038, 0, -0.10175422, 0, 0.2, 0, 0.10175422, 0, 0.17218038, -0.5220938, 0.05646658, 1.1510835)
 
 [node name="Handkerchief" parent="CrimeSceneObjects/BodyAndEvidence" instance=ExtResource("12_dfkrl")]
-transform = Transform3D(0.44438422, -0.40314093, 1.7621849e-08, 0, -2.622683e-08, -0.59999996, 0.40314093, 0.44438422, -1.942465e-08, 5.799626, 0.024209797, 5.334777)
+transform = Transform3D(0.44438422, -0.40314093, 1.7621849e-08, 0, -2.622683e-08, -0.59999996, 0.40314093, 0.44438422, -1.942465e-08, -4.4443336, 0.024209797, -0.9364557)
 
 [node name="EnvironmentalDetails" type="Node3D" parent="CrimeSceneObjects"]
 
 [node name="KnockedChair" type="Node3D" parent="CrimeSceneObjects/EnvironmentalDetails"]
-transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 1, 0, -0.3)
+transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 9.3509035, 0, -0.4072922)
 
 [node name="ChairSeat" type="MeshInstance3D" parent="CrimeSceneObjects/EnvironmentalDetails/KnockedChair"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
@@ -322,7 +337,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_table")
 [node name="Windows" type="Node3D" parent="CrimeSceneObjects"]
 
 [node name="WestInnerWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9502664, 1.6020832, 8.879583)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.5, 1.602, -1.87)
 
 [node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
@@ -361,7 +376,7 @@ spot_attenuation = 1.5
 spot_angle = 30.0
 
 [node name="WestOuterWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.958821, 1.6020832, 8.879583)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2, 1.602, -1.87)
 
 [node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
@@ -400,7 +415,7 @@ spot_attenuation = 1.5
 spot_angle = 30.0
 
 [node name="EastInnerWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.017524, 1.6020832, 8.879583)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 1.602, 0.5)
 
 [node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastInnerWindow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
@@ -439,7 +454,7 @@ spot_attenuation = 1.5
 spot_angle = 30.0
 
 [node name="EastOuterWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.110363, 1.6020832, 8.879583)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 1.6, 5.8)
 
 [node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastOuterWindow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
@@ -477,10 +492,49 @@ spot_range = 13.0
 spot_attenuation = 1.5
 spot_angle = 30.0
 
+[node name="Window5" type="Node3D" parent="CrimeSceneObjects/Windows"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9, 1.602, -1.87)
+
+[node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/Window5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_window")
+surface_material_override/0 = SubResource("ShaderMaterial_window_glass")
+
+[node name="FrameTop" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/Window5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5250001, -0.111694336)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameBottom" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/Window5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, -0.111694336)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameLeft" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/Window5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0, -0.111694336)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameRight" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/Window5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37499952, 0, -0.111694336)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="SunriseLight" type="SpotLight3D" parent="CrimeSceneObjects/Windows/Window5"]
+transform = Transform3D(1, 1.4551917e-11, 0.0002616962, -6.802751e-05, 0.96562254, 0.25994837, -0.00025269974, -0.25994837, 0.9656225, -0.041039467, 0.2186532, 0.5053148)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
+
 [node name="RandomObjects" type="Node3D" parent="."]
 
 [node name="grandfatherclock" parent="RandomObjects" instance=ExtResource("6_ko40w")]
-transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0.9538851, 0, -1.75)
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 6.508112, 0, -1.625)
 
 [node name="LongCorridorFurniture" type="Node3D" parent="."]
 
@@ -565,7 +619,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_carpet_red")
 [node name="ShortCorridorFurniture" type="Node3D" parent="."]
 
 [node name="WestBookshelf" type="Node3D" parent="ShortCorridorFurniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2, 0, 7.0552964)
 
 [node name="BackPanel" type="MeshInstance3D" parent="ShortCorridorFurniture/WestBookshelf"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -0.044974327)
@@ -738,7 +792,7 @@ mesh = SubResource("BoxMesh_book")
 surface_material_override/0 = SubResource("StandardMaterial3D_book_brown")
 
 [node name="EastBookshelf" type="Node3D" parent="ShortCorridorFurniture"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 11.8, 0, 6)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.176, 0, 1.625)
 
 [node name="BackPanel" type="MeshInstance3D" parent="ShortCorridorFurniture/EastBookshelf"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09100723, 1.25, 0.008790016)
@@ -923,5 +977,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.01, 4.5)
 mesh = SubResource("BoxMesh_area_rug")
 surface_material_override/0 = SubResource("StandardMaterial3D_carpet_green")
 
+[editable path="PhotoFrames/HouseKeeper"]
+[editable path="PhotoFrames/HouseKeeper/PortraitFrame2"]
+[editable path="PhotoFrames/InspectorCrawford"]
+[editable path="PhotoFrames/InspectorCrawford/Frame"]
+[editable path="PhotoFrames/LadyBlackwood"]
+[editable path="PhotoFrames/LadyBlackwood/victorian_3"]
+[editable path="PhotoFrames/YoungTimBlackwood"]
+[editable path="PhotoFrames/YoungTimBlackwood/victorian_1"]
+[editable path="PhotoFrames/EleanorHeartwell"]
+[editable path="PhotoFrames/EleanorHeartwell/victorian_2"]
 [editable path="PhotoFrames/DrHenryMorrison"]
 [editable path="PhotoFrames/DrHenryMorrison/victorian_5"]
