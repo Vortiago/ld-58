@@ -1,8 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://d5713qx52vb1"]
+[gd_scene load_steps=27 format=3 uid="uid://d5713qx52vb1"]
 
 [ext_resource type="PackedScene" uid="uid://egcjovpb1kfo" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
 [ext_resource type="PackedScene" uid="uid://bw6xmw805w165" path="res://components/Door.tscn" id="2_dqxua"]
-[ext_resource type="PackedScene" uid="uid://mjbenx6we15q" path="res://assets/roof_lamp.tscn" id="3_as5ck"]
+[ext_resource type="PackedScene" path="res://assets/roof_lamp.tscn" id="3_as5ck"]
 [ext_resource type="PackedScene" uid="uid://btlm13sldjwnq" path="res://Scenes/PhotoFrame/HouseKeeper/HouseKeeper.tscn" id="3_cvgsa"]
 [ext_resource type="PackedScene" uid="uid://bv2d2i0odcgfk" path="res://Scenes/PhotoFrame/InspectorCrawford/InspectorCrawford.tscn" id="4_05vpa"]
 [ext_resource type="PackedScene" uid="uid://cg22nmohjn64o" path="res://Scenes/PhotoFrame/LadyBlackwood/LadyBlackwood.tscn" id="4_hifnc"]
@@ -43,6 +43,50 @@ size = Vector3(1.2, 0.02, 0.8)
 
 [sub_resource type="BoxMesh" id="BoxMesh_chair"]
 size = Vector3(0.5, 0.1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_window"]
+size = Vector3(0.7, 1, 0.1)
+
+[sub_resource type="Shader" id="Shader_sunrise"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform vec3 bottom_color : source_color = vec3(1.0, 0.6, 0.2);
+uniform vec3 top_color : source_color = vec3(0.6, 0.8, 1.0);
+uniform float transparency : hint_range(0.0, 1.0) = 0.55;
+uniform float emission_strength : hint_range(0.0, 3.0) = 1.2;
+uniform float metallic : hint_range(0.0, 1.0) = 0.1;
+uniform float roughness : hint_range(0.0, 1.0) = 0.1;
+
+void fragment() {
+	vec3 gradient = mix(bottom_color, top_color, UV.y);
+	ALBEDO = gradient;
+	EMISSION = gradient * emission_strength;
+	ALPHA = transparency;
+	METALLIC = metallic;
+	ROUGHNESS = roughness;
+	SPECULAR = 0.8;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_window_glass"]
+render_priority = 0
+shader = SubResource("Shader_sunrise")
+shader_parameter/bottom_color = Color(1, 0.6, 0.2, 1)
+shader_parameter/top_color = Color(0.6, 0.8, 1, 1)
+shader_parameter/transparency = 0.55
+shader_parameter/emission_strength = 1.2
+shader_parameter/metallic = 0.1
+shader_parameter/roughness = 0.1
+
+[sub_resource type="BoxMesh" id="BoxMesh_frame_horizontal"]
+size = Vector3(0.8, 0.05, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_window_frame"]
+albedo_color = Color(0.2, 0.1, 0.05, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_frame_vertical"]
+size = Vector3(0.05, 1, 0.1)
 
 [node name="Hallway" type="Node3D"]
 
@@ -152,6 +196,148 @@ surface_material_override/0 = SubResource("StandardMaterial3D_table")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.2)
 mesh = SubResource("BoxMesh_tableleg")
 surface_material_override/0 = SubResource("StandardMaterial3D_table")
+
+[node name="Windows" type="Node3D" parent="CrimeSceneObjects"]
+
+[node name="WestInnerWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9502664, 1.6020832, 8.879583)
+
+[node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
+mesh = SubResource("BoxMesh_window")
+surface_material_override/0 = SubResource("ShaderMaterial_window_glass")
+
+[node name="FrameTop" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5250001, -0.111694336)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameBottom" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, -0.111694336)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameLeft" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0, -0.111694336)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameRight" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37499952, 0, -0.111694336)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="SunriseLight" type="OmniLight3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 1.8
+omni_range = 6.0
+omni_attenuation = 1.0
+
+[node name="WestOuterWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.958821, 1.6020832, 8.879583)
+
+[node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
+mesh = SubResource("BoxMesh_window")
+surface_material_override/0 = SubResource("ShaderMaterial_window_glass")
+
+[node name="FrameTop" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5250001, -0.14858818)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameBottom" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, -0.14858818)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameLeft" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0, -0.14858818)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameRight" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0, -0.14858818)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="SunriseLight" type="OmniLight3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 1.8
+omni_range = 6.0
+omni_attenuation = 1.0
+
+[node name="EastInnerWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.017524, 1.6020832, 8.879583)
+
+[node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastInnerWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
+mesh = SubResource("BoxMesh_window")
+surface_material_override/0 = SubResource("ShaderMaterial_window_glass")
+
+[node name="FrameTop" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastInnerWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5250001, -0.09917641)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameBottom" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastInnerWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, -0.09917641)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameLeft" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastInnerWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0, -0.09917641)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameRight" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastInnerWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0, -0.09917641)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="SunriseLight" type="OmniLight3D" parent="CrimeSceneObjects/Windows/EastInnerWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 1.8
+omni_range = 6.0
+omni_attenuation = 1.0
+
+[node name="EastOuterWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.110363, 1.6020832, 8.879583)
+
+[node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastOuterWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
+mesh = SubResource("BoxMesh_window")
+surface_material_override/0 = SubResource("ShaderMaterial_window_glass")
+
+[node name="FrameTop" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastOuterWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5250001, -0.0942688)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameBottom" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastOuterWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, -0.0942688)
+mesh = SubResource("BoxMesh_frame_horizontal")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameLeft" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastOuterWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.375, 0, -0.0942688)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="FrameRight" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastOuterWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0, -0.0942688)
+mesh = SubResource("BoxMesh_frame_vertical")
+surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
+
+[node name="SunriseLight" type="OmniLight3D" parent="CrimeSceneObjects/Windows/EastOuterWindow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 1.8
+omni_range = 6.0
+omni_attenuation = 1.0
 
 [node name="RandomObjects" type="Node3D" parent="."]
 
