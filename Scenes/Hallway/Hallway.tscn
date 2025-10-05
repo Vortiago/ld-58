@@ -131,14 +131,6 @@ height = 0.15
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_candle"]
 albedo_color = Color(0.95, 0.9, 0.75, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_plant"]
-top_radius = 0.0
-bottom_radius = 0.2
-height = 0.3
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plant"]
-albedo_color = Color(0.156863, 0.392157, 0.156863, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_console_table"]
 size = Vector3(1.2, 0.8, 0.4)
 
@@ -158,6 +150,14 @@ albedo_color = Color(0.9, 0.9, 0.85, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_bust_head"]
 radius = 0.12
 height = 0.24
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_plant"]
+top_radius = 0.0
+bottom_radius = 0.2
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plant"]
+albedo_color = Color(0.156863, 0.392157, 0.156863, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_carpet_runner"]
 size = Vector3(6, 0.02, 1.2)
@@ -459,7 +459,7 @@ mesh = SubResource("BoxMesh_frame_vertical")
 surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
 
 [node name="SunriseLight" type="SpotLight3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
-transform = Transform3D(1, 1.4551917e-11, 0.0002616962, -6.802751e-05, 0.96562254, 0.25994837, -0.00025269974, -0.25994837, 0.9656225, -0.041039467, 0.2186532, 0.5053148)
+transform = Transform3D(1, -4.3274387e-08, 0.00026169565, 6.15822e-05, 0.9719569, -0.23515917, -0.00025434673, 0.23515919, 0.97195685, -0.041039467, -0.15524876, 0.5037675)
 light_color = Color(1, 0.7, 0.4, 1)
 light_energy = 2.5
 light_volumetric_fog_energy = 15000.0
@@ -477,6 +477,26 @@ surface_material_override/0 = SubResource("StandardMaterial3D_brass")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -0.525, 0.5)
 mesh = SubResource("CylinderMesh_candle")
 surface_material_override/0 = SubResource("StandardMaterial3D_candle")
+
+[node name="SunriseLight2" type="SpotLight3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
+transform = Transform3D(0.99999994, 2.3848655e-08, 0.0002617066, -0.0001394388, 0.8462861, 0.5327285, -0.00022146598, -0.53272855, 0.8462861, -0.041039467, 0.45421696, 0.5053148)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
+
+[node name="SunriseLight3" type="SpotLight3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
+transform = Transform3D(1, -2.0204203e-08, 0.00026169323, -7.483001e-06, 0.9995889, 0.028671723, -0.00026158625, -0.028671725, 0.99958885, -0.041039467, 0.1119529, 0.5673957)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 25.78
 
 [node name="WestOuterWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2, 1.602, -1.87)
@@ -508,7 +528,7 @@ mesh = SubResource("BoxMesh_frame_vertical")
 surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
 
 [node name="SunriseLight" type="SpotLight3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
-transform = Transform3D(0.9988874, 0, 0.047158778, -0.013543686, 0.9578726, 0.2868738, -0.045172103, -0.28719333, 0.9568069, 0, 0, 0.5)
+transform = Transform3D(0.9988874, -3.6497617e-08, 0.04715877, 0.004427417, 0.9955833, -0.093778, -0.04695048, 0.09388245, 0.9944756, 0.07560241, -0.20703852, 0.5)
 light_color = Color(1, 0.7, 0.4, 1)
 light_energy = 2.5
 light_volumetric_fog_energy = 15000.0
@@ -517,17 +537,25 @@ spot_range = 13.0
 spot_attenuation = 1.5
 spot_angle = 30.0
 
-[node name="WindowSillPlant" type="Node3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, 0.5)
+[node name="SunriseLight2" type="SpotLight3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
+transform = Transform3D(0.9979553, 0.017328916, -0.06152163, -0.0074365847, 0.9874884, 0.15751733, 0.0634815, -0.15673774, 0.9855981, -0.038014412, 0.21824157, 0.39297152)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 35.63
 
-[node name="Pot" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestOuterWindow/WindowSillPlant"]
-mesh = SubResource("CylinderMesh_small_vase")
-surface_material_override/0 = SubResource("StandardMaterial3D_table")
-
-[node name="Plant" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestOuterWindow/WindowSillPlant"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, 0)
-mesh = SubResource("CylinderMesh_plant")
-surface_material_override/0 = SubResource("StandardMaterial3D_plant")
+[node name="SunriseLight3" type="SpotLight3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
+transform = Transform3D(0.99876225, 0.034898117, -0.035442937, -0.020096736, 0.9349352, 0.35424885, 0.04549947, -0.3530981, 0.9344793, 0.024464011, 0.3567009, 0.46450257)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
 
 [node name="EastInnerWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 1.602, 0.5)
@@ -559,7 +587,7 @@ mesh = SubResource("BoxMesh_frame_vertical")
 surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
 
 [node name="SunriseLight" type="SpotLight3D" parent="CrimeSceneObjects/Windows/EastInnerWindow"]
-transform = Transform3D(0.9997795, 9.282063e-10, 0.020994697, -0.0063016945, 0.9538899, 0.3000903, -0.020026632, -0.30015647, 0.9536796, 0, 0.06456947, 0.5)
+transform = Transform3D(0.9997796, 1.43604435e-08, 0.02099471, -0.012423545, 0.8061245, 0.5916157, -0.016924342, -0.59174603, 0.8059468, 0, 0.23688579, 0.29817772)
 light_color = Color(1, 0.7, 0.4, 1)
 light_energy = 2.5
 light_volumetric_fog_energy = 15000.0
@@ -572,6 +600,16 @@ spot_angle = 30.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, 0.5)
 mesh = SubResource("CylinderMesh_candle")
 surface_material_override/0 = SubResource("StandardMaterial3D_candle")
+
+[node name="SunriseLight2" type="SpotLight3D" parent="CrimeSceneObjects/Windows/EastInnerWindow"]
+transform = Transform3D(0.83800703, 0.11619459, -0.53314453, -0.004334928, 0.9784514, 0.20643193, 0.5456423, -0.17068025, 0.8204528, -0.20874405, 0.30055857, 0.40853024)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
 
 [node name="EastOuterWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 1.6, 5.8)
@@ -603,7 +641,7 @@ mesh = SubResource("BoxMesh_frame_vertical")
 surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
 
 [node name="SunriseLight" type="SpotLight3D" parent="CrimeSceneObjects/Windows/EastOuterWindow"]
-transform = Transform3D(0.9250308, 0, -0.37989205, 0.091460235, 0.97058636, 0.22270414, 0.36871806, -0.24075322, 0.8978223, -0.23935032, 0, 0.5)
+transform = Transform3D(0.9250308, 8.0503835e-09, -0.37989208, 0.17676589, 0.88515013, 0.43042204, 0.33626148, -0.46530557, 0.81879115, -0.17676401, 0.12476301, 0.5)
 light_color = Color(1, 0.7, 0.4, 1)
 light_energy = 2.5
 light_volumetric_fog_energy = 15000.0
@@ -621,6 +659,16 @@ surface_material_override/0 = SubResource("StandardMaterial3D_brass")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.525, 0.5)
 mesh = SubResource("CylinderMesh_small_vase")
 surface_material_override/0 = SubResource("StandardMaterial3D_brass")
+
+[node name="SunriseLight2" type="SpotLight3D" parent="CrimeSceneObjects/Windows/EastOuterWindow"]
+transform = Transform3D(0.8141454, -0.4104396, 0.41073903, 0.25548857, 0.88842106, 0.3813575, -0.5214334, -0.20554131, 0.8281666, 0.3575077, 0.36064374, 0.51123047)
+light_color = Color(1, 0.7, 0.4, 1)
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
 
 [node name="Window5" type="Node3D" parent="CrimeSceneObjects/Windows"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9, 1.602, -1.87)
