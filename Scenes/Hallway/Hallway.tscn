@@ -1,8 +1,8 @@
-[gd_scene load_steps=48 format=3 uid="uid://d5713qx52vb1"]
+[gd_scene load_steps=51 format=3 uid="uid://d5713qx52vb1"]
 
 [ext_resource type="PackedScene" uid="uid://egcjovpb1kfo" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
 [ext_resource type="PackedScene" uid="uid://bw6xmw805w165" path="res://components/Door.tscn" id="2_dqxua"]
-[ext_resource type="PackedScene" path="res://assets/roof_lamp.tscn" id="3_as5ck"]
+[ext_resource type="PackedScene" uid="uid://mjbenx6we15q" path="res://assets/roof_lamp.tscn" id="3_as5ck"]
 [ext_resource type="PackedScene" uid="uid://btlm13sldjwnq" path="res://Scenes/PhotoFrame/HouseKeeper/HouseKeeper.tscn" id="3_cvgsa"]
 [ext_resource type="PackedScene" uid="uid://bv2d2i0odcgfk" path="res://Scenes/PhotoFrame/InspectorCrawford/InspectorCrawford.tscn" id="4_05vpa"]
 [ext_resource type="PackedScene" uid="uid://cg22nmohjn64o" path="res://Scenes/PhotoFrame/LadyBlackwood/LadyBlackwood.tscn" id="4_hifnc"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://d4kcn0ixh7umi" path="res://Scenes/PhotoFrame/YoungTimBlackwood/YoungTimBlackwood.tscn" id="6_83k6l"]
 [ext_resource type="PackedScene" uid="uid://diwkiu7viyhdu" path="res://assets/grandfatherclock.tscn" id="6_ko40w"]
 [ext_resource type="PackedScene" uid="uid://bdvrsv0d4o25a" path="res://Scenes/PhotoFrame/EleanorHartwell/EleanorHeartwell.tscn" id="7_yixj0"]
+[ext_resource type="PackedScene" uid="uid://dte0kjkhp7rr5" path="res://Scenes/Evidence/LetterOpener/LetterOpener.tscn" id="10_5tr82"]
+[ext_resource type="PackedScene" uid="uid://bt12yfrmvyp0" path="res://Scenes/Evidence/DroppedLedger/DroppedLedger.tscn" id="11_jbjv5"]
+[ext_resource type="PackedScene" uid="uid://c1at2ighj8ag6" path="res://Scenes/Evidence/Handkerchief/Handkerchief.tscn" id="12_dfkrl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_table"]
 size = Vector3(1.5, 0.1, 0.8)
@@ -375,6 +378,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_blood")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0897007, 0.05, -0.3)
 mesh = SubResource("CylinderMesh_item")
 surface_material_override/0 = SubResource("StandardMaterial3D_gold")
+
+[node name="LetterOpener" parent="CrimeSceneObjects/BodyAndEvidence" instance=ExtResource("10_5tr82")]
+transform = Transform3D(0.01351787, -0.021025227, 0.0004546334, -0.02103013, -0.013515405, 0.00025966545, 2.7401133e-05, -0.0005228449, -0.024994517, 5.9099927, 1.0027466, 1.5998628)
+
+[node name="DroppedLedger" parent="CrimeSceneObjects/BodyAndEvidence" instance=ExtResource("11_jbjv5")]
+transform = Transform3D(0.17218038, 0, -0.10175422, 0, 0.2, 0, 0.10175422, 0, 0.17218038, 9.835372, 0.05646658, 7.535824)
+
+[node name="Handkerchief" parent="CrimeSceneObjects/BodyAndEvidence" instance=ExtResource("12_dfkrl")]
+transform = Transform3D(0.44438422, -0.40314093, 1.7621849e-08, 0, -2.622683e-08, -0.59999996, 0.40314093, 0.44438422, -1.942465e-08, 5.799626, 0.024209797, 5.334777)
 
 [node name="EnvironmentalDetails" type="Node3D" parent="CrimeSceneObjects"]
 
