@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://bdvrsv0d4o25a" path="res://Scenes/PhotoFrame/EleanorHartwell/EleanorHeartwell.tscn" id="7_yixj0"]
 [ext_resource type="PackedScene" path="res://Scenes/PhotoFrame/Dog/Dog.tscn" id="8_dog01"]
 [ext_resource type="PackedScene" path="res://Scenes/PhotoFrame/Cat/Cat.tscn" id="9_cat01"]
-[ext_resource type="PackedScene" uid="uid://dte0kjkhp7rr5" path="res://Scenes/Evidence/LetterOpener/LetterOpener.tscn" id="10_5tr82"]
 [ext_resource type="PackedScene" path="res://Scenes/PhotoFrame/Car/Car.tscn" id="10_car01"]
 [ext_resource type="PackedScene" path="res://Scenes/PhotoFrame/Boat/Boat.tscn" id="11_boat01"]
 [ext_resource type="PackedScene" uid="uid://bt12yfrmvyp0" path="res://Scenes/Evidence/DroppedLedger/DroppedLedger.tscn" id="11_jbjv5"]
@@ -20,6 +19,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/PhotoFrame/Flowers/Flowers.tscn" id="12_flow01"]
 [ext_resource type="PackedScene" path="res://Scenes/PhotoFrame/Books/Books.tscn" id="13_book01"]
 [ext_resource type="PackedScene" path="res://Scenes/PhotoFrame/Clock/Clock.tscn" id="14_clck01"]
+[ext_resource type="PackedScene" uid="uid://dte0kjkhp7rr5" path="res://Scenes/Evidence/LetterOpener/LetterOpener.tscn" id="19_i8mxe"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_table"]
 size = Vector3(1.5, 0.1, 0.8)
@@ -407,14 +407,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.267146, 0.05, 1.5342667)
 mesh = SubResource("CylinderMesh_item")
 surface_material_override/0 = SubResource("StandardMaterial3D_gold")
 
-[node name="LetterOpener" parent="CrimeSceneObjects/BodyAndEvidence" instance=ExtResource("10_5tr82")]
-transform = Transform3D(0.0151940975, 0.019852936, -8.6779967e-10, 0, -1.0927843e-09, -0.025, -0.019852938, 0.015194096, -6.641552e-10, 9.658769, 0.059087038, 6.0181813)
-
 [node name="DroppedLedger" parent="CrimeSceneObjects/BodyAndEvidence" instance=ExtResource("11_jbjv5")]
 transform = Transform3D(0.17218038, 0, -0.10175422, 0, 0.2, 0, 0.10175422, 0, 0.17218038, -0.5220938, 0.05646658, 1.1510835)
 
 [node name="Handkerchief" parent="CrimeSceneObjects/BodyAndEvidence" instance=ExtResource("12_dfkrl")]
 transform = Transform3D(0.44438422, -0.40314093, 1.7621849e-08, 0, -2.622683e-08, -0.59999996, 0.40314093, 0.44438422, -1.942465e-08, -4.4443336, 0.024209797, -0.9364557)
+
+[node name="LetterOpener" parent="CrimeSceneObjects/BodyAndEvidence" instance=ExtResource("19_i8mxe")]
+transform = Transform3D(0.015184397, 0.019860366, -8.681242e-10, 0, -1.0927848e-09, -0.025, -0.019860366, 0.015184397, -6.6373107e-10, 9.659, 0.059, 6.018)
 
 [node name="EnvironmentalDetails" type="Node3D" parent="CrimeSceneObjects"]
 
