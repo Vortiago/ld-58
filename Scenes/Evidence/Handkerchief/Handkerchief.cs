@@ -4,11 +4,11 @@ using Godot;
 public partial class Handkerchief : Node3D
 {
 
-    [Node("InteractableObject")]
     private InteractableObject _interactableObject;
 
     public override void _Ready()
     {
+        _interactableObject = GetNode<InteractableObject>("InteractableObject");
         _interactableObject.InteractableObjectClicked += OnInteractableObjectClicked;
     }
 

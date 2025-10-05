@@ -1,15 +1,12 @@
-using Godot;
 using System;
+using Godot;
 
 public partial class InspectorCrawford : Node3D
 {
-	[Node("Camera3D")]
 	private Camera3D _camera;
 
-	[Node("InteractableObject")]
 	private InteractableObject _interactableObject;
 
-	[Node("Camera3D/CameraStateMonitor")]
 	private CameraStateMonitor _cameraStateMonitor;
 
 	private DialogSystem _dialogSystem;
@@ -17,6 +14,7 @@ public partial class InspectorCrawford : Node3D
 	private int _visitCount = 0;
 
 	// Dialog configuration
+
 	private readonly DialogSystem.DialogLine[] _firstVisitDialog = new[]
 	{
 		new DialogSystem.DialogLine("Morning light already? From my frame I can see... wait, what's that smell? Blood?", DialogSystem.SpeakerSide.Left),
@@ -31,6 +29,7 @@ public partial class InspectorCrawford : Node3D
 	};
 
 	// End game dialogs based on score
+
 	private readonly DialogSystem.DialogLine[] _allWrongDialog = new[]
 	{
 		new DialogSystem.DialogLine("I'm afraid your deductions are entirely incorrect, Inspector. The evidence points in a completely different direction.", DialogSystem.SpeakerSide.Left),
@@ -62,6 +61,11 @@ public partial class InspectorCrawford : Node3D
 
 	public override void _Ready()
 	{
+		_camera = GetNode<Camera3D>("Camera3D");
+		_interactableObject = GetNode<InteractableObject>("InteractableObject");
+		_cameraStateMonitor = GetNode<CameraStateMonitor>("Camera3D/CameraStateMonitor");
+
+
 		_dialogSystem = GetNode<DialogSystem>("/root/Main/DialogSystem");
 		_main = GetNode<Main>("/root/Main");
 		_interactableObject.InteractableObjectClicked += OnInteractableObjectClicked;
@@ -85,12 +89,14 @@ public partial class InspectorCrawford : Node3D
 	private void OnCameraActivated()
 	{
 		// Disable collision when this frame's camera is active
+
 		_interactableObject.SetCollisionEnabled(false);
 	}
 
 	private void OnCameraDeactivated()
 	{
 		// Re-enable collision when this frame's camera is inactive
+
 		_interactableObject.SetCollisionEnabled(true);
 	}
 
@@ -99,30 +105,36 @@ public partial class InspectorCrawford : Node3D
 		_visitCount++;
 
 		// Set up initial mystery options on first visit
+
 		if (_visitCount == 1)
 		{
 			// Initialize Who options text (all hidden by default) - Max 4 options
+
 			_main.SetOptionText(0, 0, "Lady Margaret Blackwood");
 			_main.SetOptionText(0, 1, "Dr. Victor Pemberton");
 			_main.SetOptionText(0, 2, "Thomas Hartwell");
 			_main.SetOptionText(0, 3, "Miss Catherine Ashworth");
 
 			// Initialize What (weapon) options text - Max 4 options
+
 			_main.SetOptionText(1, 0, "Ornate Letter Opener");
 			_main.SetOptionText(1, 1, "Poison (Digitalis)");
 			_main.SetOptionText(1, 2, "Heavy Candlestick");
 			_main.SetOptionText(1, 3, "Silk Scarf (Strangulation)");
 
 			// Initialize Why (motive) options text - Max 4 options
+
 			_main.SetOptionText(2, 0, "Inheritance Money");
 			_main.SetOptionText(2, 1, "Business Fraud/Embezzlement");
 			_main.SetOptionText(2, 2, "Blackmail Secret");
 			_main.SetOptionText(2, 3, "Medical Cover-up");
 
 			// Unlock Lady Margaret as initial suspect option (she's the wife, always a suspect)
+
 			_main.UnlockOption(0, 0);
 
 			// Unlock Inheritance as initial motive (common motive in murders)
+
 			_main.UnlockOption(2, 0);
 		}
 
@@ -139,6 +151,7 @@ public partial class InspectorCrawford : Node3D
 		GD.Print($"[DEBUG] InspectorCrawford.ShowEndGameDialog called with {correctAnswers} correct answers");
 
 		// Select the appropriate dialog based on score
+
 		DialogSystem.DialogLine[] dialogToShow = correctAnswers switch
 		{
 			0 => _allWrongDialog,
@@ -151,6 +164,7 @@ public partial class InspectorCrawford : Node3D
 		GD.Print($"[DEBUG] Selected dialog with {dialogToShow.Length} lines");
 
 		// Switch to Inspector's camera and show the dialog
+
 		_camera.MakeCurrent();
 		GD.Print("[DEBUG] Inspector camera made current");
 

@@ -15,10 +15,11 @@ run/main_scene="uid://c6dd3yagmchk6"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-GlobalNodeResolver="*res://utilities/NodeResolver/GlobalNodeResolver.cs"
-
 [dotnet]
 
 project/assembly_name="LD58"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
