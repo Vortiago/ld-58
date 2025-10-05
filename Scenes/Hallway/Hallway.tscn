@@ -1316,7 +1316,7 @@ mesh = SubResource("BoxMesh_coat_hook")
 surface_material_override/0 = SubResource("StandardMaterial3D_table")
 
 [node name="UmbrellaStand" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3, 0, 8.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.091413, 0, 8.5)
 
 [node name="Body" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/UmbrellaStand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
@@ -1329,7 +1329,7 @@ mesh = SubResource("CylinderMesh_umbrella_stand")
 surface_material_override/0 = SubResource("StandardMaterial3D_brass")
 
 [node name="EntrywayBench" type="Node3D" parent="ShortCorridorFurniture/EntranceFurniture"]
-transform = Transform3D(-0.024310071, 0, 0.9997045, 0, 1, 0, -0.9997045, 0, -0.024310071, 6.2446356, 0, 7.135268)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.41458, -2.3841858e-07, 8.4826975)
 
 [node name="Seat" type="MeshInstance3D" parent="ShortCorridorFurniture/EntranceFurniture/EntrywayBench"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
