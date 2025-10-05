@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://d5713qx52vb1"]
+[gd_scene load_steps=43 format=3 uid="uid://d5713qx52vb1"]
 
 [ext_resource type="PackedScene" uid="uid://egcjovpb1kfo" path="res://HallwayGeometry.tscn" id="1_hallwaygeom"]
 [ext_resource type="PackedScene" uid="uid://bw6xmw805w165" path="res://components/Door.tscn" id="2_dqxua"]
@@ -99,13 +99,13 @@ height = 0.4
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brass"]
 albedo_color = Color(0.803922, 0.521569, 0.247059, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plant"]
-albedo_color = Color(0.156863, 0.392157, 0.156863, 1)
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_plant"]
 top_radius = 0.0
 bottom_radius = 0.2
 height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plant"]
+albedo_color = Color(0.156863, 0.392157, 0.156863, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_carpet_runner"]
 size = Vector3(6, 0.02, 1.2)
@@ -148,10 +148,19 @@ albedo_color = Color(0.196078, 0.392157, 0.196078, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 8.7)
 
 [node name="roof_lamp" parent="HallwayGeometry" instance=ExtResource("3_as5ck")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.803779, 4, 0)
 
 [node name="roof_lamp2" parent="HallwayGeometry" instance=ExtResource("3_as5ck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4, 4)
+
+[node name="roof_lamp3" parent="HallwayGeometry" instance=ExtResource("3_as5ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14916, 4, 0)
+
+[node name="roof_lamp4" parent="HallwayGeometry" instance=ExtResource("3_as5ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6506758, 4, 0)
+
+[node name="roof_lamp5" parent="HallwayGeometry" instance=ExtResource("3_as5ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4, 7)
 
 [node name="PhotoFrames" type="Node3D" parent="."]
 
@@ -256,6 +265,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9502664, 1.6020832, 8.87958
 
 [node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_window")
 surface_material_override/0 = SubResource("ShaderMaterial_window_glass")
 
@@ -279,17 +289,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37499952, 0, -0.111694336)
 mesh = SubResource("BoxMesh_frame_vertical")
 surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
 
-[node name="SunriseLight" type="OmniLight3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
+[node name="SunriseLight" type="SpotLight3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
+transform = Transform3D(1, 1.4551917e-11, 0.0002616962, -6.802751e-05, 0.96562254, 0.25994837, -0.00025269974, -0.25994837, 0.9656225, -0.041039467, 0.2186532, 0.5053148)
 light_color = Color(1, 0.7, 0.4, 1)
-light_energy = 1.8
-omni_range = 6.0
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
 
 [node name="WestOuterWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.958821, 1.6020832, 8.879583)
 
 [node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_window")
 surface_material_override/0 = SubResource("ShaderMaterial_window_glass")
 
@@ -313,17 +328,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0, -0.14858818)
 mesh = SubResource("BoxMesh_frame_vertical")
 surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
 
-[node name="SunriseLight" type="OmniLight3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
+[node name="SunriseLight" type="SpotLight3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
+transform = Transform3D(0.9988874, 0, 0.047158778, -0.013543686, 0.9578726, 0.2868738, -0.045172103, -0.28719333, 0.9568069, 0, 0, 0.5)
 light_color = Color(1, 0.7, 0.4, 1)
-light_energy = 1.8
-omni_range = 6.0
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
 
 [node name="EastInnerWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.017524, 1.6020832, 8.879583)
 
 [node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastInnerWindow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_window")
 surface_material_override/0 = SubResource("ShaderMaterial_window_glass")
 
@@ -347,17 +367,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0, -0.09917641)
 mesh = SubResource("BoxMesh_frame_vertical")
 surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
 
-[node name="SunriseLight" type="OmniLight3D" parent="CrimeSceneObjects/Windows/EastInnerWindow"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
+[node name="SunriseLight" type="SpotLight3D" parent="CrimeSceneObjects/Windows/EastInnerWindow"]
+transform = Transform3D(0.9997795, 9.282063e-10, 0.020994697, -0.0063016945, 0.9538899, 0.3000903, -0.020026632, -0.30015647, 0.9536796, 0, 0.06456947, 0.5)
 light_color = Color(1, 0.7, 0.4, 1)
-light_energy = 1.8
-omni_range = 6.0
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
 
 [node name="EastOuterWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.110363, 1.6020832, 8.879583)
 
 [node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastOuterWindow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_window")
 surface_material_override/0 = SubResource("ShaderMaterial_window_glass")
 
@@ -381,11 +406,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.375, 0, -0.0942688)
 mesh = SubResource("BoxMesh_frame_vertical")
 surface_material_override/0 = SubResource("StandardMaterial3D_window_frame")
 
-[node name="SunriseLight" type="OmniLight3D" parent="CrimeSceneObjects/Windows/EastOuterWindow"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7)
+[node name="SunriseLight" type="SpotLight3D" parent="CrimeSceneObjects/Windows/EastOuterWindow"]
+transform = Transform3D(0.9250308, 0, -0.37989205, 0.091460235, 0.97058636, 0.22270414, 0.36871806, -0.24075322, 0.8978223, -0.23935032, 0, 0.5)
 light_color = Color(1, 0.7, 0.4, 1)
-light_energy = 1.8
-omni_range = 6.0
+light_energy = 2.5
+light_volumetric_fog_energy = 15000.0
+shadow_enabled = true
+spot_range = 13.0
+spot_attenuation = 1.5
+spot_angle = 30.0
 
 [node name="RandomObjects" type="Node3D" parent="."]
 
