@@ -10,7 +10,13 @@ config_version=5
 
 [application]
 
-config/name="LD58"
+config/name="Inspector Crawford and the Hallway Murder"
+config/description="Inspector Crawford's Last Case
+
+Investigate a murder mystery by jumping between portrait frames. As Inspector Crawford, examine Lord Blackwood's death from multiple perspectives—each frame shows a different angle of the crime scene and a different witness to interrogate.
+
+Collect clues, solve the murder"
+config/version="1.0.0"
 run/main_scene="uid://c6dd3yagmchk6"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
