@@ -430,7 +430,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_table")
 [node name="Windows" type="Node3D" parent="CrimeSceneObjects"]
 
 [node name="WestInnerWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.5, 1.602, -1.87)
+transform = Transform3D(1, -8.742278e-08, 8.742278e-08, -8.742278e-08, -1, 0, 8.742278e-08, -7.642742e-15, -1, 3.5, 1.602, -1.87)
 
 [node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestInnerWindow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
@@ -499,7 +499,7 @@ spot_attenuation = 1.5
 spot_angle = 25.78
 
 [node name="WestOuterWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2, 1.602, -1.87)
+transform = Transform3D(1, -8.742278e-08, 8.742278e-08, -8.742278e-08, -1, 0, 8.742278e-08, -7.642742e-15, -1, -2, 1.602, -1.87)
 
 [node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/WestOuterWindow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
@@ -558,7 +558,7 @@ spot_attenuation = 1.5
 spot_angle = 30.0
 
 [node name="EastInnerWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 1.602, 0.5)
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, 12, 1.602, 0.5)
 
 [node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastInnerWindow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
@@ -612,7 +612,7 @@ spot_attenuation = 1.5
 spot_angle = 30.0
 
 [node name="EastOuterWindow" type="Node3D" parent="CrimeSceneObjects/Windows"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 1.6, 5.8)
+transform = Transform3D(4.371139e-08, -3.821371e-15, 1, -8.742278e-08, -1, 0, 1, -8.742278e-08, -4.371139e-08, 12, 1.6, 5.8)
 
 [node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/EastOuterWindow"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
@@ -671,7 +671,7 @@ spot_attenuation = 1.5
 spot_angle = 30.0
 
 [node name="Window5" type="Node3D" parent="CrimeSceneObjects/Windows"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9, 1.602, -1.87)
+transform = Transform3D(1, -8.742278e-08, 8.742278e-08, -8.742278e-08, -1, 0, 8.742278e-08, -7.642742e-15, -1, 9, 1.602, -1.87)
 
 [node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/Window5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
@@ -746,10 +746,10 @@ spot_attenuation = 1.5
 spot_angle = 30.0
 
 [node name="Window6" type="Node3D" parent="CrimeSceneObjects/Windows"]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9, 1.602, -1.87)
+transform = Transform3D(1, -8.742278e-08, 8.742278e-08, -8.742278e-08, -1, 0, 8.742278e-08, -7.642742e-15, -1, 9, 1.602, -1.87)
 
 [node name="FrontWindowLeft" type="Node3D" parent="CrimeSceneObjects/Windows"]
-transform = Transform3D(1, 0, 1.7484555e-07, 0, 2, 0, -1.7484555e-07, 0, 1, 10.046323, 1.9020202, 8.843189)
+transform = Transform3D(-1, 1.7484555e-07, 0, -8.742278e-08, -2, 0, 0, 0, 1, 10.046323, 1.9020202, 8.843189)
 
 [node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowLeft"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)
@@ -818,7 +818,7 @@ spot_attenuation = 1.5
 spot_angle = 30.0
 
 [node name="FrontWindowRight" type="Node3D" parent="CrimeSceneObjects/Windows"]
-transform = Transform3D(1, 0, 1.7484555e-07, 0, 2, 0, -1.7484555e-07, 0, 1, 7.950159, 1.9020202, 8.843189)
+transform = Transform3D(-1, 1.7484555e-07, 0, -8.742278e-08, -2, 0, 0, 0, 1, 7.950159, 1.9020202, 8.843189)
 
 [node name="GlassPane" type="MeshInstance3D" parent="CrimeSceneObjects/Windows/FrontWindowRight"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08)

@@ -37,6 +37,16 @@ Vortiago and Zearan
 • Art:
 	- Model and textures by Ulf
 	- Nevrax SARL / Winch Gate Properties Ltd. Ryzom. https://atys.wiki.ryzom.com/wiki/Ryzom_Commons:About
+	- Ceiling - Batch of 7 Seamless Textures with normalmaps By http://www.benkyoustudio.com
+	- 2 tilling wood panel textures By Scribe
+	- 6 Panel Door Slab By DataBrace
+	- Grandfather Clock By ubunho
+	- Objects in a house By TiZiana
+	- Book By yd
+	- Breakfast set By Fleurman
+	- Fabric, Flowers, Seamless Texture With Normalmap By Keith333
+	- Royal Dagger By hpalo
+	
 • Background music:
 	Victorian Loop by Joe Baxter-Webb (BossLevelVGM)
 
