@@ -1,10 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnq5yx3r8m2ld"]
+[gd_scene load_steps=6 format=3 uid="uid://bnq5yx3r8m2ld"]
 
-[ext_resource type="Script" path="res://Scenes/StartScreen/StartScreen.cs" id="1_startscreen"]
+[ext_resource type="Script" uid="uid://brfmbqa4bko1b" path="res://Scenes/StartScreen/StartScreen.cs" id="1_startscreen"]
+[ext_resource type="PackedScene" uid="uid://b8rqx5ym3n7pk" path="res://Scenes/AboutDialog/AboutDialog.tscn" id="2_aboutdialog"]
 
-[node name="StartScreen" type="CanvasLayer" node_paths=PackedStringArray("StartButton")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_normal"]
+bg_color = Color(0.761, 0.706, 0.545, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_pressed"]
+bg_color = Color(0.702, 0.655, 0.463, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+bg_color = Color(0.82, 0.765, 0.62, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="StartScreen" type="CanvasLayer" node_paths=PackedStringArray("StartButton", "AboutButton", "AboutDialog")]
 script = ExtResource("1_startscreen")
 StartButton = NodePath("CenterContainer/VBoxContainer/StartButton")
+AboutButton = NodePath("CenterContainer/VBoxContainer/AboutButton")
+AboutDialog = NodePath("AboutDialog")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -38,5 +62,21 @@ layout_mode = 2
 [node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "Start Game"
+
+[node name="AboutButton" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.227, 0.184, 0.122, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_button_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_button_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "About"
+
+[node name="AboutDialog" parent="." instance=ExtResource("2_aboutdialog")]
