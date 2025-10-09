@@ -45,6 +45,13 @@ Alternatively, build from the command line:
 dotnet build LD58.sln
 ```
 
+### Building for Web
+
+Not supported in Godot .NET 4.5, but [@xr0gu3](https://github.com/xr0gu3) has made a docker image that can be used to test web export using the proposed changes from [[.NET] Add web export support
+#106125](https://github.com/godotengine/godot/pull/106125) ([his comment](https://github.com/godotengine/godot/pull/106125#issuecomment-3342182607))
+
+Run `docker run --rm -v ".:/src" kstgrd/godot-mono-web:4.5.dev` while in the project root.
+
 ## Game Jam
 
 Created for **Ludum Dare 58** game jam.
